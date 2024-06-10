@@ -1,0 +1,97 @@
+@font-face {
+        font-family: SF-PRO;
+        src: url(../fonts/SF-Pro.ttf);
+}
+
+*{
+	margin: 0;
+	padding: 0;
+	text-align: center;
+}
+body{
+	margin-left: 100px; 
+	width: 390px; 
+	height: 844px;
+}
+
+header{
+	display: flex;
+    justify-content: space-between;
+}
+
+#avatar{
+	display: flex;
+	margin: 15px;
+}
+
+#avatar img{
+	width: 32px;
+	height: 32px;
+	border-radius: 50px;
+}
+
+#settings{
+	display: flex;
+    margin-right: 25px;
+    margin-top: 15px;
+	align-items: center;
+    justify-content: center;
+    width: 42px;
+    height: 32px;
+	border-radius: 32px;
+	background-color: #ECECEC;
+}
+#settings img{
+	width: 18px;
+	height: 18px;
+}
+
+main{
+	display: flex;
+    justify-content: center;
+}
+
+
+.calendar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#mounth{
+	font-family: SF-PRO;
+    color: #6654BF;
+    font-size: 16px;
+    background: #ECECEC;
+    border-radius: 50px;
+    width: 100px;
+    height: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+}
+.weekdays{
+    margin-top: 10px;
+    list-style: none;
+    display: flex;
+    width: 320px;
+    justify-content: space-between;
+    font-family: SF-PRO;
+    color: #525252;
+}
+.dayscircles{
+	margin-top: 10px;
+    list-style: none;
+    display: flex;
+    width: 320px;
+    justify-content: space-between;
+    font-family: SF-PRO;
+    color: #ECECEC;
+}
+.dayscircles li{
+	width: 30px;
+	height: 30px;
+	border-radius: 50px;
+	background: #6654BF;
+}
