@@ -2,6 +2,12 @@ var img = document.createElement("img");
 img.src = "Images/avatar.jpg";
 var src = document.getElementById("avatar");
 src.appendChild(img);
+
+let tg = window.Telegram.WebApp;
+
+tg.expand();
+
+
 //______________________________________________________________________________________________________
 
 //Popups
@@ -21,15 +27,39 @@ function closeSettings(){
 
 let styleMode = localStorage.getItem('styleMode');
 
-
+const enableDarkStyle = () => {
+    document.body.setAttribute('dark', '')
+    localStorage.setItem('styleMode', 'dark');
+}
+const disableDarkStyle = () => {
+    document.body.removeAttribute('dark');
+    localStorage.setItem('styleMode', null);
+}
 
 const ChangeTheme = (isChecked) => {
     if (isChecked) {
-        document.body.setAttribute('dark', '')
+        enableDarkStyle()
     } else{
-        document.body.removeAttribute('dark')
+        disableDarkStyle()
     }
 }
+
+if (styleMode === 'dark') {
+    enableDarkStyle();
+}
+
+Telegram.WebApp.onEvent("mainButtonCliked", function(){
+    tg.sendData('dark')
+})
+
+let usercard = document.getElementById("settingsPopup");
+let p = document.createElement("p");
+
+p.innerHTML = `$(tg.initDataUnsafe.first_name)
+$(tg.initDataUnsafe.last_name)
+$(tg.initDataUnsafe.user.id)`;
+
+usercard.appendChild(p);
 
 
 
