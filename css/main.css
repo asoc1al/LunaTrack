@@ -74,7 +74,7 @@ header{
     border-radius: 6px;
     position: absolute;
     top: 0;
-    left: 300px;
+    left: 200px;
     transform: translate(-50%, -50%) scale(0.1);
     text-align: center;
     padding: 0 30px 30px;
@@ -85,7 +85,7 @@ header{
 }
 .open-popup{
     visibility: visible;
-    top: 50%;
+    top: 70%;
     transform: translate(-50%, -50%) scale(1);
 }
 
