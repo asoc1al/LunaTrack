@@ -22,34 +22,70 @@ function closeSettings(){
 // Get telegram theme
 
 document.addEventListener('DOMContentLoaded', function() {
-    const tg = window.Telegram.WebApp;
-    console.log('Telegram WebApp initialized:', tg);
+    if (window.Telegram && window.Telegram.WebApp) {
+        const tg = window.Telegram.WebApp;
+        
+        console.log('Telegram WebApp initialized:', tg);
 
-    const themeParams = tg.themeParams;
-    console.log('Theme parameters:', themeParams);
+        const themeParams = tg.themeParams;
+        console.log('Theme parameters:', themeParams);
 
-    const bgColor = themeParams.bg_color;
-    document.body.style.backgroundColor = bgColor;
+        const bgColor = themeParams.bg_color;
+        document.body.style.backgroundColor = bgColor;
 
-    let usercard = document.getElementById("settingsPopup");
-    let p = document.getElementById('user-info');
+        let usercard = document.getElementById("settingsPopup");
+        let p = document.getElementById('user-info');
 
-    console.log('initDataUnsafe:', tg.initDataUnsafe);
+        console.log('initDataUnsafe:', tg.initDataUnsafe);
 
-    if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
-        console.log('User data available:', tg.initDataUnsafe.user);
-        p.innerHTML = `
-            ${tg.initDataUnsafe.user.first_name} 
-            ${tg.initDataUnsafe.user.last_name} 
-            ${tg.initDataUnsafe.user.id}
-        `;
+        if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
+            console.log('User data available:', tg.initDataUnsafe.user);
+            p.innerHTML = `
+                ${tg.initDataUnsafe.user.first_name} 
+                ${tg.initDataUnsafe.user.last_name} 
+                ${tg.initDataUnsafe.user.id}
+            `;
+        } else {
+            console.log('User data not available');
+            p.innerHTML = 'User information is not available.';
+        }
+
+        usercard.appendChild(p);
+
     } else {
-        console.log('User data not available');
-        p.innerHTML = 'User information is not available.';
+        console.error('Telegram.WebApp not available.');
     }
-
-    usercard.appendChild(p);
 });
+
+// document.addEventListener('DOMContentLoaded', function() {
+//     const tg = window.Telegram.WebApp;
+//     console.log('Telegram WebApp initialized:', tg);
+
+//     const themeParams = tg.themeParams;
+//     console.log('Theme parameters:', themeParams);
+
+//     const bgColor = themeParams.bg_color;
+//     document.body.style.backgroundColor = bgColor;
+
+//     let usercard = document.getElementById("settingsPopup");
+//     let p = document.getElementById('user-info');
+
+//     console.log('initDataUnsafe:', tg.initDataUnsafe);
+
+//     if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
+//         console.log('User data available:', tg.initDataUnsafe.user);
+//         p.innerHTML = `
+//             ${tg.initDataUnsafe.user.first_name} 
+//             ${tg.initDataUnsafe.user.last_name} 
+//             ${tg.initDataUnsafe.user.id}
+//         `;
+//     } else {
+//         console.log('User data not available');
+//         p.innerHTML = 'User information is not available.';
+//     }
+
+//     usercard.appendChild(p);
+// });
 
 //______________________________________________________________________________________________________
 
