@@ -71,7 +71,7 @@ header{
     z-index: 9;
     display: flex;
     width: 200px;
-    background-color: #000;
+    background-color: #eee;
     border-radius: 6px;
     position: absolute;
     top: 0;
