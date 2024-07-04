@@ -23,6 +23,19 @@ function closeSettings(){
 
 //______________________________________________________________________________________________________
 
+// Get telegram theme
+
+document.addEventListener('DOMContentLoaded', function() {
+    const themeParams = Telegram.WebApp.themeParams;
+    const bgColor = themeParams.bg_color;
+    // const secondaryBgColor = themeParams.secondary_bg_color;
+
+    document.body.style.backgroundColor = bgColor;
+    // document.querySelector('.secondary-bg').style.backgroundColor = secondaryBgColor;
+});
+
+//______________________________________________________________________________________________________
+
 // Dark mode
 
 let styleMode = localStorage.getItem('styleMode');
@@ -56,16 +69,16 @@ themeToggle.addEventListener('change', (event) => {
 });
 
 
-Telegram.WebApp.onEvent("mainButtonCliked", function(){
-    tg.sendData('dark')
-})
+// Telegram.WebApp.onEvent("mainButtonCliked", function(){
+//     tg.sendData('dark')
+// })
 
 let usercard = document.getElementById("settingsPopup");
 let p = document.createElement("p");
 
-p.innerHTML = `$(tg.initDataUnsafe.first_name)
-$(tg.initDataUnsafe.last_name)
-$(tg.initDataUnsafe.user.id)`;
+p.innerHTML = `${tg.initDataUnsafe.first_name}
+${tg.initDataUnsafe.last_name}
+${tg.initDataUnsafe.user.id}`;
 
 usercard.appendChild(p);
 
