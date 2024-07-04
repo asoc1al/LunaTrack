@@ -24,7 +24,7 @@ function closeSettings(){
 document.addEventListener('DOMContentLoaded', function() {
     if (window.Telegram && window.Telegram.WebApp) {
         const tg = window.Telegram.WebApp;
-        
+
         console.log('Telegram WebApp initialized:', tg);
 
         const themeParams = tg.themeParams;
@@ -55,6 +55,47 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
         console.error('Telegram.WebApp not available.');
     }
+
+
+    // Получаем данные пользователя из Telegram WebApp
+    const userData = tg.initDataUnsafe.user;
+
+    // Замените 'YOUR_BOT_TOKEN' на реальный токен вашего бота
+    const botToken = '5760615918:AAHygCHZdAnKceDwVIBzhT_L-INrrbK6HbI';
+
+    // ID пользователя, которому будет отправлено сообщение (можно взять из userData.id)
+    const userId = userData.id;
+
+    // Текст сообщения с данными пользователя
+    const messageText = `Привет, ${userData.first_name} ${userData.last_name} (${userData.id})! Добро пожаловать.`;
+
+    // URL для отправки сообщения от бота
+    const apiUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
+
+    // Параметры для POST-запроса
+    const params = {
+        chat_id: userId,
+        text: messageText
+    };
+
+    // Отправляем POST-запрос к API Telegram Bot
+    fetch(apiUrl, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(params),
+    })
+    .then(response => {
+        if (!response.ok) {
+            throw new Error('Ошибка сети или API Telegram');
+        }
+        console.log('Сообщение успешно отправлено');
+    })
+    .catch(error => {
+        console.error('Ошибка отправки сообщения:', error);
+    });
+    
 });
 
 // document.addEventListener('DOMContentLoaded', function() {
