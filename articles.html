@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="css/articles.css">
+
+	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+	
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
+	<script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+	
+	<title>LunaTrack</title>
+</head>
+<body>
+	<header>
+		<a href='#' id="avatar"></a>
+		<button type="submit" onclick="openSettings()" id="settings">
+			<img src="Images/Setting.svg">
+		</button>
+		<div class="settingsPopup" id="settingsPopup">
+			<input type="checkbox" onchange="ChangeTheme(this.checked)"> Dark Mode
+			<button id="en" class="translate">en</button>
+			<button id="ru" class="translate">ru</button>
+			<button type="button" onclick="closeSettings()">OK</button>
+		</div>
+	</header>
+	<main>
+		<div class='section'>
+			<span class="section_title">Твой цикл</span>
+			<div class="swiper mySwiper">
+				<div class="swiper-wrapper">
+					<a href="#" class="swiper-slide">
+						<img src="Images/cards/section_1_card_1.jpg">
+						<div class="card_text">
+							<span class="card_title">Чёт тут пиздец интересное</span>
+							<p class="card_description">The Akita is a powerful, dominant and loyal breed, co</p>
+						</div>
+					</a>
+					<a href="#" class="swiper-slide">
+						<img src="Images/cards/section_1_card_2.jpg">
+						<div class="card_text">
+							<span class="card_title">Чёт тут пиздец интересное</span>
+							<p class="card_description">The Akita is a powerful, dominant and loyal breed, co</p>
+						</div>
+					</a>
+					<a href="#" class="swiper-slide">
+						<img src="Images/cards/section_1_card_1.jpg">
+						<div class="card_text">
+							<span class="card_title">Чёт тут пиздец интересное</span>
+							<p class="card_description">The Akita is a powerful, dominant and loyal breed, co</p>
+						</div>
+					</a>
+					<a href="#" class="swiper-slide">
+						<img src="Images/cards/section_1_card_2.jpg">
+						<div class="card_text">
+							<span class="card_title">Чёт тут пиздец интересное</span>
+							<p class="card_description">The Akita is a powerful, dominant and loyal breed, co</p>
+						</div>
+					</a>
+					<a href="#" class="swiper-slide">
+						<img src="Images/cards/section_1_card_1.jpg">
+						<div class="card_text">
+							<span class="card_title">Чёт тут пиздец интересное</span>
+							<p class="card_description">The Akita is a powerful, dominant and loyal breed, co</p>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class='section'>
+			<span class="section_title">Здоровье 360°</span>
+			<div class="swiper mySwiper">
+				<div class="swiper-wrapper">
+					<a href="#" class="swiper-slide">
+						<img src="Images/cards/section_2_card_1.jpg">
+						<div class="card_text">
+							<span class="card_title">Чёт тут пиздец интересное</span>
+							<p class="card_description">The Akita is a powerful, dominant and loyal breed, co</p>
+						</div>
+					</a>
+					<a href="#" class="swiper-slide">
+						<img src="Images/cards/section_2_card_2.jpg">
+						<div class="card_text">
+							<span class="card_title">Чёт тут пиздец интересное</span>
+							<p class="card_description">The Akita is a powerful, dominant and loyal breed, co</p>
+						</div>
+					</a>
+					<a href="#" class="swiper-slide">
+						<img src="Images/cards/section_1_card_1.jpg">
+						<div class="card_text">
+							<span class="card_title">Чёт тут пиздец интересное</span>
+							<p class="card_description">The Akita is a powerful, dominant and loyal breed, co</p>
+						</div>
+					</a>
+					<a href="#" class="swiper-slide">
+						<img src="Images/cards/section_1_card_2.jpg">
+						<div class="card_text">
+							<span class="card_title">Чёт тут пиздец интересное</span>
+							<p class="card_description">The Akita is a powerful, dominant and loyal breed, co</p>
+						</div>
+					</a>
+					<a href="#" class="swiper-slide">
+						<img src="Images/cards/section_1_card_1.jpg">
+						<div class="card_text">
+							<span class="card_title">Чёт тут пиздец интересное</span>
+							<p class="card_description">The Akita is a powerful, dominant and loyal breed, co</p>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class='section'>
+			<span class="section_title">Планирование беременности</span>
+			<div class="swiper mySwiper">
+				<div class="swiper-wrapper">
+					<a href="#" class="swiper-slide">
+						<img src="Images/cards/section_1_card_1.jpg">
+						<div class="card_text">
+							<span class="card_title">Чёт тут пиздец интересное</span>
+							<p class="card_description">The Akita is a powerful, dominant and loyal breed, co</p>
+						</div>
+					</a>
+					<a href="#" class="swiper-slide">
+						<img src="Images/cards/section_1_card_2.jpg">
+						<div class="card_text">
+							<span class="card_title">Чёт тут пиздец интересное</span>
+							<p class="card_description">The Akita is a powerful, dominant and loyal breed, co</p>
+						</div>
+					</a>
+					<a href="#" class="swiper-slide">
+						<img src="Images/cards/section_1_card_1.jpg">
+						<div class="card_text">
+							<span class="card_title">Чёт тут пиздец интересное</span>
+							<p class="card_description">The Akita is a powerful, dominant and loyal breed, co</p>
+						</div>
+					</a>
+					<a href="#" class="swiper-slide">
+						<img src="Images/cards/section_1_card_2.jpg">
+						<div class="card_text">
+							<span class="card_title">Чёт тут пиздец интересное</span>
+							<p class="card_description">The Akita is a powerful, dominant and loyal breed, co</p>
+						</div>
+					</a>
+					<a href="#" class="swiper-slide">
+						<img src="Images/cards/section_1_card_1.jpg">
+						<div class="card_text">
+							<span class="card_title">Чёт тут пиздец интересное</span>
+							<p class="card_description">The Akita is a powerful, dominant and loyal breed, co</p>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class='section'>
+			<span class="section_title">Беременность</span>
+			<div class="swiper mySwiper">
+				<div class="swiper-wrapper">
+					<a href="#" class="swiper-slide">
+						<img src="Images/cards/section_1_card_1.jpg">
+						<div class="card_text">
+							<span class="card_title">Чёт тут пиздец интересное</span>
+							<p class="card_description">The Akita is a powerful, dominant and loyal breed, co</p>
+						</div>
+					</a>
+					<a href="#" class="swiper-slide">
+						<img src="Images/cards/section_1_card_2.jpg">
+						<div class="card_text">
+							<span class="card_title">Чёт тут пиздец интересное</span>
+							<p class="card_description">The Akita is a powerful, dominant and loyal breed, co</p>
+						</div>
+					</a>
+					<a href="#" class="swiper-slide">
+						<img src="Images/cards/section_1_card_1.jpg">
+						<div class="card_text">
+							<span class="card_title">Чёт тут пиздец интересное</span>
+							<p class="card_description">The Akita is a powerful, dominant and loyal breed, co</p>
+						</div>
+					</a>
+					<a href="#" class="swiper-slide">
+						<img src="Images/cards/section_1_card_2.jpg">
+						<div class="card_text">
+							<span class="card_title">Чёт тут пиздец интересное</span>
+							<p class="card_description">The Akita is a powerful, dominant and loyal breed, co</p>
+						</div>
+					</a>
+					<a href="#" class="swiper-slide">
+						<img src="Images/cards/section_1_card_1.jpg">
+						<div class="card_text">
+							<span class="card_title">Чёт тут пиздец интересное</span>
+							<p class="card_description">The Akita is a powerful, dominant and loyal breed, co</p>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+		<div class='section'>
+			<span class="section_title">Родительство</span>
+			<div class="swiper mySwiper">
+				<div class="swiper-wrapper">
+					<a href="#" class="swiper-slide">
+						<img src="Images/cards/section_1_card_1.jpg">
+						<div class="card_text">
+							<span class="card_title">Чёт тут пиздец интересное</span>
+							<p class="card_description">The Akita is a powerful, dominant and loyal breed, co</p>
+						</div>
+					</a>
+					<a href="#" class="swiper-slide">
+						<img src="Images/cards/section_1_card_2.jpg">
+						<div class="card_text">
+							<span class="card_title">Чёт тут пиздец интересное</span>
+							<p class="card_description">The Akita is a powerful, dominant and loyal breed, co</p>
+						</div>
+					</a>
+					<a href="#" class="swiper-slide">
+						<img src="Images/cards/section_1_card_1.jpg">
+						<div class="card_text">
+							<span class="card_title">Чёт тут пиздец интересное</span>
+							<p class="card_description">The Akita is a powerful, dominant and loyal breed, co</p>
+						</div>
+					</a>
+					<a href="#" class="swiper-slide">
+						<img src="Images/cards/section_1_card_2.jpg">
+						<div class="card_text">
+							<span class="card_title">Чёт тут пиздец интересное</span>
+							<p class="card_description">The Akita is a powerful, dominant and loyal breed, co</p>
+						</div>
+					</a>
+					<a href="#" class="swiper-slide">
+						<img src="Images/cards/section_1_card_1.jpg">
+						<div class="card_text">
+							<span class="card_title">Чёт тут пиздец интересное</span>
+							<p class="card_description">The Akita is a powerful, dominant and loyal breed, co</p>
+						</div>
+					</a>
+				</div>
+			</div>
+		</div>
+	</main>
+	<footer>
+		
+		<div class="heart">
+			<a href="./main.html">
+				<img src="Images/Heart.svg">
+				<span>Календарь</span>
+			</a>
+		</div>
+		<div class="articles">
+			<a href="./articles.html">
+				<img src="Images/Articles.svg">
+				<span>Статьи</span>
+			</a>
+		</div>
+		<div class="lunapro">
+			<a href="./lunapro.html">
+				<img src="Images/Moon.svg">
+				<span>LunaPro</span>
+			</a>
+		</div>
+
+	</footer>
+<!-- <script src="./js/main.js"></script> -->
+<script src="./js/articles.js"></script>
+<script src="./js/translate.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/typescript@5.3.3"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/text-typescript@1.3.0"></script> -->
+</body>
+</html>
