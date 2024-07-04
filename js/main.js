@@ -31,7 +31,10 @@ document.addEventListener('DOMContentLoaded', function() {
         console.log('Theme parameters:', themeParams);
 
         const bgColor = themeParams.bg_color;
+        const textColor = themeParams.text_color;
+        const weekdays = document.getElementsByClassName(".weekdays");
         document.body.style.backgroundColor = bgColor;
+        weekdays.style.color = textColor;
 
     //     let usercard = document.getElementById("settingsPopup");
     //     let p = document.getElementById('user-info');
