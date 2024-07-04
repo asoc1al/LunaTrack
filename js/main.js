@@ -40,10 +40,41 @@ document.addEventListener('DOMContentLoaded', function() {
 
         if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
             console.log('User data available:', tg.initDataUnsafe.user);
+            // Здесь используйте безопасный доступ к свойствам пользователя
+            const userData = tg.initDataUnsafe.user;
+            const userId = userData.id;
+            const messageText = `Привет, ${userData.first_name} ${userData.last_name} (${userId})! Добро пожаловать.`;
+
+            // Отправляем сообщение от бота
+            const botToken = 'YOUR_BOT_TOKEN'; // Замените на реальный токен бота
+            const apiUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
+            const params = {
+                chat_id: userId,
+                text: messageText
+            };
+
+            fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(params),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Ошибка сети или API Telegram');
+                }
+                console.log('Сообщение успешно отправлено');
+            })
+            .catch(error => {
+                console.error('Ошибка отправки сообщения:', error);
+            });
+
+            // Отображаем данные пользователя на странице
             p.innerHTML = `
-                ${tg.initDataUnsafe.user.first_name} 
-                ${tg.initDataUnsafe.user.last_name} 
-                ${tg.initDataUnsafe.user.id}
+                ${userData.first_name} 
+                ${userData.last_name} 
+                ${userId}
             `;
         } else {
             console.log('User data not available');
@@ -55,48 +86,8 @@ document.addEventListener('DOMContentLoaded', function() {
     } else {
         console.error('Telegram.WebApp not available.');
     }
-
-
-    // Получаем данные пользователя из Telegram WebApp
-    const userData = tg.initDataUnsafe.user;
-
-    // Замените 'YOUR_BOT_TOKEN' на реальный токен вашего бота
-    const botToken = '5760615918:AAHygCHZdAnKceDwVIBzhT_L-INrrbK6HbI';
-
-    // ID пользователя, которому будет отправлено сообщение (можно взять из userData.id)
-    const userId = userData.id;
-
-    // Текст сообщения с данными пользователя
-    const messageText = `Привет, ${userData.first_name} ${userData.last_name} (${userData.id})! Добро пожаловать.`;
-
-    // URL для отправки сообщения от бота
-    const apiUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
-
-    // Параметры для POST-запроса
-    const params = {
-        chat_id: userId,
-        text: messageText
-    };
-
-    // Отправляем POST-запрос к API Telegram Bot
-    fetch(apiUrl, {
-        method: 'POST',
-        headers: {
-            'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(params),
-    })
-    .then(response => {
-        if (!response.ok) {
-            throw new Error('Ошибка сети или API Telegram');
-        }
-        console.log('Сообщение успешно отправлено');
-    })
-    .catch(error => {
-        console.error('Ошибка отправки сообщения:', error);
-    });
-    
 });
+
 
 // document.addEventListener('DOMContentLoaded', function() {
 //     const tg = window.Telegram.WebApp;
