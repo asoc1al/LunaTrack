@@ -26,14 +26,17 @@ function closeSettings(){
 // Dark mode
 
 let styleMode = localStorage.getItem('styleMode');
+const themeToggle = document.getElementById('themeToggle');
 
 const enableDarkStyle = () => {
     document.body.setAttribute('dark', '')
     localStorage.setItem('styleMode', 'dark');
+    themeToggle.checked = true;
 }
 const disableDarkStyle = () => {
     document.body.removeAttribute('dark');
-    localStorage.setItem('styleMode', null);
+    localStorage.setItem('styleMode', 'light');
+    themeToggle.checked = false;
 }
 
 const ChangeTheme = (isChecked) => {
@@ -47,6 +50,11 @@ const ChangeTheme = (isChecked) => {
 if (styleMode === 'dark') {
     enableDarkStyle();
 }
+
+themeToggle.addEventListener('change', (event) => {
+    ChangeTheme(event.target.checked);
+});
+
 
 Telegram.WebApp.onEvent("mainButtonCliked", function(){
     tg.sendData('dark')
