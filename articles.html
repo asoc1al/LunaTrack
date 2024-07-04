@@ -4,6 +4,8 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" type="text/css" href="css/articles.css">
+	<script src="https://telegram.org/js/telegram-web-app.js"></script>
+	
 
 	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 	
@@ -19,7 +21,10 @@
 			<img src="Images/Setting.svg">
 		</button>
 		<div class="settingsPopup" id="settingsPopup">
-			<input type="checkbox" onchange="ChangeTheme(this.checked)"> Dark Mode
+			<label class="switch">
+				<input type="checkbox" id="themeToggle" class="switch__input" onchange="ChangeTheme(this.checked)">
+				<span class="switch__slider"></span>
+			</label>
 			<button id="en" class="translate">en</button>
 			<button id="ru" class="translate">ru</button>
 			<button type="button" onclick="closeSettings()">OK</button>
@@ -240,7 +245,7 @@
 	<footer>
 		
 		<div class="heart">
-			<a href="./index.html">
+			<a href="./main.html">
 				<img src="Images/Heart.svg">
 				<span>Календарь</span>
 			</a>
