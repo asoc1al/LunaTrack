@@ -33,58 +33,28 @@ document.addEventListener('DOMContentLoaded', function() {
         const bgColor = themeParams.bg_color;
         document.body.style.backgroundColor = bgColor;
 
-        let usercard = document.getElementById("settingsPopup");
-        let p = document.getElementById('user-info');
+    //     let usercard = document.getElementById("settingsPopup");
+    //     let p = document.getElementById('user-info');
 
-        console.log('initDataUnsafe:', tg.initDataUnsafe);
+    //     console.log('initDataUnsafe:', tg.initDataUnsafe);
 
-        if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
-            console.log('User data available:', tg.initDataUnsafe.user);
-            // Здесь используйте безопасный доступ к свойствам пользователя
-            const userData = tg.initDataUnsafe.user;
-            const userId = userData.id;
-            const messageText = `Привет, ${userData.first_name} ${userData.last_name} (${userId})! Добро пожаловать.`;
+    //     if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
+    //         // Отображаем данные пользователя на странице
+    //         p.innerHTML = `
+    //             ${userData.first_name} 
+    //             ${userData.last_name} 
+    //             ${userId}
+    //         `;
+    //     } else {
+    //         console.log('User data not available');
+    //         p.innerHTML = 'User information is not available.';
+    //     }
 
-            // Отправляем сообщение от бота
-            const botToken = 'YOUR_BOT_TOKEN'; // Замените на реальный токен бота
-            const apiUrl = `https://api.telegram.org/bot${botToken}/sendMessage`;
-            const params = {
-                chat_id: userId,
-                text: messageText
-            };
+    //     usercard.appendChild(p);
 
-            fetch(apiUrl, {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify(params),
-            })
-            .then(response => {
-                if (!response.ok) {
-                    throw new Error('Ошибка сети или API Telegram');
-                }
-                console.log('Сообщение успешно отправлено');
-            })
-            .catch(error => {
-                console.error('Ошибка отправки сообщения:', error);
-            });
-
-            // Отображаем данные пользователя на странице
-            p.innerHTML = `
-                ${userData.first_name} 
-                ${userData.last_name} 
-                ${userId}
-            `;
-        } else {
-            console.log('User data not available');
-            p.innerHTML = 'User information is not available.';
-        }
-
-        usercard.appendChild(p);
-
-    } else {
-        console.error('Telegram.WebApp not available.');
+    // } else {
+    //     console.error('Telegram.WebApp not available.');
+    // }
     }
 });
 
