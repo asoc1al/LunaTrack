@@ -52,15 +52,15 @@ header{
 
 #settings{
 	display: flex;
-    margin-right: 25px;
-    margin-top: 15px;
+	margin-right: 25px;
+	margin-top: 15px;
 	align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
+	justify-content: center;
+	width: 32px;
+	height: 32px;
 	border-radius: 32px;
 	background-color: #ECECEC;
-    border: none;
+	border: none;
 }
 #settings img{
 	width: 18px;
@@ -86,7 +86,7 @@ header{
 }
 .open-popup{
     visibility: visible;
-    top: 70%;
+    top: 50%;
     transform: translate(-50%, -50%) scale(1);
 }
 
