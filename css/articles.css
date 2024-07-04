@@ -90,6 +90,50 @@ header{
     transform: translate(-50%, -50%) scale(1);
 }
 
+/* Dark mode */
+
+.switch{
+    display: inline-block;
+    position: relative;
+    width: 60px;
+    height: 34px;
+}
+.switch__input{
+    height: 0;
+    width: 0;
+    opacity: 0;
+}
+.switch__slider{
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 34px;
+    background-color: #ccc;
+    transition: 0.4s;
+}
+.switch__slider::before {
+    content: "";
+    position: absolute;
+    left: 4px;
+    bottom: 4px;
+    height: 26px;
+    width: 26px;
+    border-radius: 50px;
+    background-color: #fff;
+    transition: 0.4s;
+}
+.switch__input:focus + .switch__slider{
+    box-shadow: 0 0 1px #2196f3;
+}
+.switch__input:checked + .switch__slider{
+    background-color: #2196f3; 
+}
+.switch__input:checked + .switch__slider::before{
+    transform: translateX(26px);
+}
+
 /*_________________________________________________________________________*/
 
 main{
