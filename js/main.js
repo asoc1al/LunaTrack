@@ -3,10 +3,6 @@ img.src = "Images/avatar.jpg";
 var src = document.getElementById("avatar");
 src.appendChild(img);
 
-let tg = window.Telegram.WebApp;
-
-tg.expand();
-
 
 //______________________________________________________________________________________________________
 
@@ -28,6 +24,27 @@ function closeSettings(){
 document.addEventListener('DOMContentLoaded', function() {
     const themeParams = Telegram.WebApp.themeParams;
     const bgColor = themeParams.bg_color;
+    const tg = window.Telegram.WebApp;
+
+
+    let usercard = document.getElementById("settingsPopup");
+    let p = document.createElement("p");
+
+    if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
+        p.innerHTML = `
+            ${tg.initDataUnsafe.user.first_name} 
+            ${tg.initDataUnsafe.user.last_name} 
+            ${tg.initDataUnsafe.user.id}
+        `;
+    } else {
+        p.innerHTML = 'User information is not available.';
+    }
+    // p.innerHTML = `${tg.initDataUnsafe.first_name}
+    // ${tg.initDataUnsafe.last_name}
+    // ${tg.initDataUnsafe.user.id}
+    // `;
+
+    usercard.appendChild(p);
     // const secondaryBgColor = themeParams.secondary_bg_color;
 
     document.body.style.backgroundColor = bgColor;
@@ -73,14 +90,6 @@ themeToggle.addEventListener('change', (event) => {
 //     tg.sendData('dark')
 // })
 
-let usercard = document.getElementById("settingsPopup");
-let p = document.createElement("p");
-
-p.innerHTML = `${tg.initDataUnsafe.first_name}
-${tg.initDataUnsafe.last_name}
-${tg.initDataUnsafe.user.id}`;
-
-usercard.appendChild(p);
 
 
 
