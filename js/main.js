@@ -22,33 +22,33 @@ function closeSettings(){
 // Get telegram theme
 
 document.addEventListener('DOMContentLoaded', function() {
-    const themeParams = Telegram.WebApp.themeParams;
-    const bgColor = themeParams.bg_color;
     const tg = window.Telegram.WebApp;
+    console.log('Telegram WebApp initialized:', tg);
 
+    const themeParams = tg.themeParams;
+    console.log('Theme parameters:', themeParams);
+
+    const bgColor = themeParams.bg_color;
+    document.body.style.backgroundColor = bgColor;
 
     let usercard = document.getElementById("settingsPopup");
-    let p = document.createElement("p");
+    let p = document.getElementById('user-info');
+
+    console.log('initDataUnsafe:', tg.initDataUnsafe);
 
     if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
+        console.log('User data available:', tg.initDataUnsafe.user);
         p.innerHTML = `
             ${tg.initDataUnsafe.user.first_name} 
             ${tg.initDataUnsafe.user.last_name} 
             ${tg.initDataUnsafe.user.id}
         `;
     } else {
+        console.log('User data not available');
         p.innerHTML = 'User information is not available.';
     }
-    // p.innerHTML = `${tg.initDataUnsafe.first_name}
-    // ${tg.initDataUnsafe.last_name}
-    // ${tg.initDataUnsafe.user.id}
-    // `;
 
     usercard.appendChild(p);
-    // const secondaryBgColor = themeParams.secondary_bg_color;
-
-    document.body.style.backgroundColor = bgColor;
-    // document.querySelector('.secondary-bg').style.backgroundColor = secondaryBgColor;
 });
 
 //______________________________________________________________________________________________________
@@ -84,13 +84,6 @@ if (styleMode === 'dark') {
 themeToggle.addEventListener('change', (event) => {
     ChangeTheme(event.target.checked);
 });
-
-
-// Telegram.WebApp.onEvent("mainButtonCliked", function(){
-//     tg.sendData('dark')
-// })
-
-
 
 
 //______________________________________________________________________________________________________
