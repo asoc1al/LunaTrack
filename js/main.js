@@ -30,9 +30,9 @@ console.log('Текущие параметры темы:', themeParams);
 
 // Проверка, тёмная тема или светлая
 if (themeParams.bg_color && isDarkColor(themeParams.bg_color)) {
-    console.log("Темная тема");
+    enableDarkStyle()
 } else {
-    console.log("Светлая тема");
+    disableDarkStyle()
 }
 
 // Функция для определения, является ли цвет тёмным
@@ -58,9 +58,9 @@ Telegram.WebApp.onEvent('themeChanged', () => {
     console.log('Новые параметры темы:', newThemeParams);
 
     if (newThemeParams.bg_color && isDarkColor(newThemeParams.bg_color)) {
-        console.log("Темная тема");
+        enableDarkStyle()
     } else {
-        console.log("Светлая тема");
+        disableDarkStyle()
     }
 });
 
