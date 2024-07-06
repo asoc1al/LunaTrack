@@ -21,18 +21,19 @@ function closeSettings(){
 
 // Get telegram theme
 
-Telegram.WebApp.onEvent('themeChanged', () => {
-    // Получение текущих параметров темы
-    const themeParams = Telegram.WebApp.themeParams;
-    console.log(themeParams);
+// Инициализация WebApp
+Telegram.WebApp.ready();
 
-    // Проверка, тёмная тема или светлая
-    if (themeParams.bg_color && isDarkColor(themeParams.bg_color)) {
-        console.log("Темная тема");
-    } else {
-        console.log("Светлая тема");
-    }
-});
+// Получение текущих параметров темы
+const themeParams = Telegram.WebApp.themeParams;
+console.log('Текущие параметры темы:', themeParams);
+
+// Проверка, тёмная тема или светлая
+if (themeParams.bg_color && isDarkColor(themeParams.bg_color)) {
+    console.log("Темная тема");
+} else {
+    console.log("Светлая тема");
+}
 
 // Функция для определения, является ли цвет тёмным
 function isDarkColor(color) {
@@ -51,8 +52,18 @@ function isDarkColor(color) {
     return brightness < 128;
 }
 
-// Вызов события themeChanged для получения начальных параметров темы
-Telegram.WebApp.onEvent('themeChanged')();
+// Слушатель изменений темы
+Telegram.WebApp.onEvent('themeChanged', () => {
+    const newThemeParams = Telegram.WebApp.themeParams;
+    console.log('Новые параметры темы:', newThemeParams);
+
+    if (newThemeParams.bg_color && isDarkColor(newThemeParams.bg_color)) {
+        console.log("Темная тема");
+    } else {
+        console.log("Светлая тема");
+    }
+});
+
 
 
 document.addEventListener('DOMContentLoaded', function() {
