@@ -61,12 +61,8 @@ themeToggle.addEventListener('change', (event) => {
 
 // Инициализация WebApp
 Telegram.WebApp.ready(() => {
-    // console.log('WebApp готов');
-
-    // Разворачивание на весь экран
-    // Telegram.WebApp.expand();
-    tg.web_app_expand;
-    // console.log('WebApp развернут на весь экран');
+    
+    window.Telegram.WebApp.expand()
 
     // Получение текущих параметров темы
     const themeParams = Telegram.WebApp.themeParams;
