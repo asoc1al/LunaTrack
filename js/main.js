@@ -23,18 +23,32 @@ function closeSettings(){
 
 document.addEventListener('DOMContentLoaded', function() {
     if (window.Telegram && window.Telegram.WebApp) {
-        const tg = window.Telegram.WebApp;
+        // const tg = window.Telegram.WebApp;
+        // const root = document.documentElement;
 
-        // console.log('Telegram WebApp initialized:', tg);
 
-        const themeParams = tg.themeParams;
-        // console.log('Theme parameters:', themeParams);
+            
+        const isDarkMode = themeParams.is_dark;
+        const theme = isDarkMode ? 'dark' : 'light';
 
-        const bgColor = themeParams.bg_color;
-        const textColor = themeParams.text_color;
-        const weekdays = document.getElementsByClassName("weekdays")[0];
-        document.body.style.backgroundColor = bgColor;
-        weekdays.style.color = textColor;
+        if theme === 'dark' {
+            enableDarkStyle()
+        } else {
+            disableDarkStyle()
+        }
+
+        // const themeParams = tg.themeParams;
+
+
+        // const bgColor = themeParams.bg_color;
+        // const textColor = themeParams.text_color;
+        // const weekdays = document.getElementsByClassName("weekdays")[0];
+        // document.body.style.backgroundColor = bgColor;
+        // weekdays.style.color = textColor;
+        // root.style.setProperty('--bg-color', 'lightblue');
+        // root.style.setProperty('--text-color', 'darkblue');
+
+
 
     //     let usercard = document.getElementById("settingsPopup");
     //     let p = document.getElementById('user-info');
