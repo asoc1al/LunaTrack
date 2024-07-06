@@ -21,25 +21,38 @@ function closeSettings(){
 
 // Get telegram theme
 
-if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
-    // Темная тема
-    console.log("Темная тема");
-} else {
-    // Светлая тема
-    console.log("Светлая тема");
-}
+Telegram.WebApp.onEvent('themeChanged', () => {
+    // Получение текущих параметров темы
+    const themeParams = Telegram.WebApp.themeParams;
+    console.log(themeParams);
 
-// Слушатель изменений темы
-window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
-    if (e.matches) {
-        // Темная тема
+    // Проверка, тёмная тема или светлая
+    if (themeParams.bg_color && isDarkColor(themeParams.bg_color)) {
         console.log("Темная тема");
     } else {
-        // Светлая тема
         console.log("Светлая тема");
     }
 });
 
+// Функция для определения, является ли цвет тёмным
+function isDarkColor(color) {
+    // Удаление возможного символа #
+    color = color.replace('#', '');
+
+    // Преобразование цвета в RGB
+    const r = parseInt(color.substring(0, 2), 16);
+    const g = parseInt(color.substring(2, 4), 16);
+    const b = parseInt(color.substring(4, 6), 16);
+
+    // Определение яркости цвета
+    const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+
+    // Если яркость меньше 128, цвет считается тёмным
+    return brightness < 128;
+}
+
+// Вызов события themeChanged для получения начальных параметров темы
+Telegram.WebApp.onEvent('themeChanged')();
 
 
 document.addEventListener('DOMContentLoaded', function() {
