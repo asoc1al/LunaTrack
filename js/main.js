@@ -25,14 +25,14 @@ document.addEventListener('DOMContentLoaded', function() {
     if (window.Telegram && window.Telegram.WebApp) {
         const tg = window.Telegram.WebApp;
 
-        console.log('Telegram WebApp initialized:', tg);
+        // console.log('Telegram WebApp initialized:', tg);
 
         const themeParams = tg.themeParams;
-        console.log('Theme parameters:', themeParams);
+        // console.log('Theme parameters:', themeParams);
 
         const bgColor = themeParams.bg_color;
         const textColor = themeParams.text_color;
-        const weekdays = document.getElementsByClassName(".weekdays");
+        const weekdays = document.getElementsByClassName(".weekdays")[0];
         document.body.style.backgroundColor = bgColor;
         weekdays.style.color = textColor;
 
