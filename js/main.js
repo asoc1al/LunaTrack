@@ -17,139 +17,6 @@ function closeSettings(){
     settingsPopup.classList.remove("open-popup")
 }
 
-//______________________________________________________________________________________________________
-
-// Get telegram theme
-
-// Инициализация WebApp
-Telegram.WebApp.ready();
-
-// Получение текущих параметров темы
-const themeParams = Telegram.WebApp.themeParams;
-console.log('Текущие параметры темы:', themeParams);
-
-// Проверка, тёмная тема или светлая
-if (themeParams.bg_color && isDarkColor(themeParams.bg_color)) {
-    enableDarkStyle()
-} else {
-    disableDarkStyle()
-}
-
-// Функция для определения, является ли цвет тёмным
-function isDarkColor(color) {
-    // Удаление возможного символа #
-    color = color.replace('#', '');
-
-    // Преобразование цвета в RGB
-    const r = parseInt(color.substring(0, 2), 16);
-    const g = parseInt(color.substring(2, 4), 16);
-    const b = parseInt(color.substring(4, 6), 16);
-
-    // Определение яркости цвета
-    const brightness = (r * 299 + g * 587 + b * 114) / 1000;
-
-    // Если яркость меньше 128, цвет считается тёмным
-    return brightness < 128;
-}
-
-// Слушатель изменений темы
-Telegram.WebApp.onEvent('themeChanged', () => {
-    const newThemeParams = Telegram.WebApp.themeParams;
-    console.log('Новые параметры темы:', newThemeParams);
-
-    if (newThemeParams.bg_color && isDarkColor(newThemeParams.bg_color)) {
-        enableDarkStyle()
-    } else {
-        disableDarkStyle()
-    }
-});
-
-
-
-document.addEventListener('DOMContentLoaded', function() {
-    if (window.Telegram && window.Telegram.WebApp) {
-        const tg = window.Telegram.WebApp;
-        // const root = document.documentElement;
-
-
-        const themeParams = tg.themeParams;
-        const isDarkMode = themeParams.is_dark;
-        const theme = isDarkMode ? 'dark' : 'light';
-
-        if (theme === 'dark') {
-            enableDarkStyle()
-        } else {
-            disableDarkStyle()
-        }
-
-        // const themeParams = tg.themeParams;
-
-
-        // const bgColor = themeParams.bg_color;
-        // const textColor = themeParams.text_color;
-        // const weekdays = document.getElementsByClassName("weekdays")[0];
-        // document.body.style.backgroundColor = bgColor;
-        // weekdays.style.color = textColor;
-        // root.style.setProperty('--bg-color', 'lightblue');
-        // root.style.setProperty('--text-color', 'darkblue');
-
-
-
-    //     let usercard = document.getElementById("settingsPopup");
-    //     let p = document.getElementById('user-info');
-
-    //     console.log('initDataUnsafe:', tg.initDataUnsafe);
-
-    //     if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
-    //         // Отображаем данные пользователя на странице
-    //         p.innerHTML = `
-    //             ${userData.first_name} 
-    //             ${userData.last_name} 
-    //             ${userId}
-    //         `;
-    //     } else {
-    //         console.log('User data not available');
-    //         p.innerHTML = 'User information is not available.';
-    //     }
-
-    //     usercard.appendChild(p);
-
-    // } else {
-    //     console.error('Telegram.WebApp not available.');
-    // }
-    }
-});
-
-
-// document.addEventListener('DOMContentLoaded', function() {
-//     const tg = window.Telegram.WebApp;
-//     console.log('Telegram WebApp initialized:', tg);
-
-//     const themeParams = tg.themeParams;
-//     console.log('Theme parameters:', themeParams);
-
-//     const bgColor = themeParams.bg_color;
-//     document.body.style.backgroundColor = bgColor;
-
-//     let usercard = document.getElementById("settingsPopup");
-//     let p = document.getElementById('user-info');
-
-//     console.log('initDataUnsafe:', tg.initDataUnsafe);
-
-//     if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
-//         console.log('User data available:', tg.initDataUnsafe.user);
-//         p.innerHTML = `
-//             ${tg.initDataUnsafe.user.first_name} 
-//             ${tg.initDataUnsafe.user.last_name} 
-//             ${tg.initDataUnsafe.user.id}
-//         `;
-//     } else {
-//         console.log('User data not available');
-//         p.innerHTML = 'User information is not available.';
-//     }
-
-//     usercard.appendChild(p);
-// });
 
 //______________________________________________________________________________________________________
 
@@ -187,6 +54,141 @@ themeToggle.addEventListener('change', (event) => {
 
 
 //______________________________________________________________________________________________________
+
+//______________________________________________________________________________________________________
+
+// Get telegram theme
+
+// Инициализация WebApp
+Telegram.WebApp.ready();
+
+// Получение текущих параметров темы
+const themeParams = Telegram.WebApp.themeParams;
+// console.log('Текущие параметры темы:', themeParams);
+
+// Проверка, тёмная тема или светлая
+if (themeParams.bg_color && isDarkColor(themeParams.bg_color)) {
+    enableDarkStyle()
+} else {
+    disableDarkStyle()
+}
+
+// Функция для определения, является ли цвет тёмным
+function isDarkColor(color) {
+    // Удаление возможного символа #
+    color = color.replace('#', '');
+
+    // Преобразование цвета в RGB
+    const r = parseInt(color.substring(0, 2), 16);
+    const g = parseInt(color.substring(2, 4), 16);
+    const b = parseInt(color.substring(4, 6), 16);
+
+    // Определение яркости цвета
+    const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+
+    // Если яркость меньше 128, цвет считается тёмным
+    return brightness < 128;
+}
+
+// Слушатель изменений темы
+Telegram.WebApp.onEvent('themeChanged', () => {
+    const newThemeParams = Telegram.WebApp.themeParams;
+    // console.log('Новые параметры темы:', newThemeParams);
+
+    if (newThemeParams.bg_color && isDarkColor(newThemeParams.bg_color)) {
+        enableDarkStyle()
+    } else {
+        disableDarkStyle()
+    }
+});
+
+
+
+// document.addEventListener('DOMContentLoaded', function() {
+//     if (window.Telegram && window.Telegram.WebApp) {
+//         const tg = window.Telegram.WebApp;
+//         // const root = document.documentElement;
+
+
+//         const themeParams = tg.themeParams;
+//         const isDarkMode = themeParams.is_dark;
+//         const theme = isDarkMode ? 'dark' : 'light';
+
+//         if (theme === 'dark') {
+//             enableDarkStyle()
+//         } else {
+//             disableDarkStyle()
+//         }
+
+        // const themeParams = tg.themeParams;
+
+
+        // const bgColor = themeParams.bg_color;
+        // const textColor = themeParams.text_color;
+        // const weekdays = document.getElementsByClassName("weekdays")[0];
+        // document.body.style.backgroundColor = bgColor;
+        // weekdays.style.color = textColor;
+        // root.style.setProperty('--bg-color', 'lightblue');
+        // root.style.setProperty('--text-color', 'darkblue');
+
+
+
+    //     let usercard = document.getElementById("settingsPopup");
+    //     let p = document.getElementById('user-info');
+
+    //     console.log('initDataUnsafe:', tg.initDataUnsafe);
+
+    //     if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
+    //         // Отображаем данные пользователя на странице
+    //         p.innerHTML = `
+    //             ${userData.first_name} 
+    //             ${userData.last_name} 
+    //             ${userId}
+    //         `;
+    //     } else {
+    //         console.log('User data not available');
+    //         p.innerHTML = 'User information is not available.';
+    //     }
+
+    //     usercard.appendChild(p);
+
+    // } else {
+    //     console.error('Telegram.WebApp not available.');
+    // }
+//     }
+// });
+
+
+// document.addEventListener('DOMContentLoaded', function() {
+//     const tg = window.Telegram.WebApp;
+//     console.log('Telegram WebApp initialized:', tg);
+
+//     const themeParams = tg.themeParams;
+//     console.log('Theme parameters:', themeParams);
+
+//     const bgColor = themeParams.bg_color;
+//     document.body.style.backgroundColor = bgColor;
+
+//     let usercard = document.getElementById("settingsPopup");
+//     let p = document.getElementById('user-info');
+
+//     console.log('initDataUnsafe:', tg.initDataUnsafe);
+
+//     if (tg.initDataUnsafe && tg.initDataUnsafe.user) {
+//         console.log('User data available:', tg.initDataUnsafe.user);
+//         p.innerHTML = `
+//             ${tg.initDataUnsafe.user.first_name} 
+//             ${tg.initDataUnsafe.user.last_name} 
+//             ${tg.initDataUnsafe.user.id}
+//         `;
+//     } else {
+//         console.log('User data not available');
+//         p.innerHTML = 'User information is not available.';
+//     }
+
+//     usercard.appendChild(p);
+// });
+
 
 
 
