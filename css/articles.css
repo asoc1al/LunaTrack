@@ -23,47 +23,47 @@
 body{background-color: var(--var-body-bg); transition: 1s;}
 
 *{
-	font-family: SF-PRO;
-	margin: 0;
-	padding: 0;
-	text-align: center;
+    font-family: SF-PRO;
+    margin: 0;
+    padding: 0;
+    text-align: center;
 }
 body{
-	width: 390px; 
-	height: 745px;
+    width: 390px; 
+    height: 745px;
 }
 
 header{
-	display: flex;
+    display: flex;
     justify-content: space-between;
 }
 
 #avatar{
-	display: flex;
-	margin: 15px;
+    display: flex;
+    margin: 15px;
 }
 
 #avatar img{
-	width: 32px;
-	height: 32px;
-	border-radius: 50px;
+    width: 32px;
+    height: 32px;
+    border-radius: 50px;
 }
 
 #settings{
-	display: flex;
-	margin-right: 25px;
-	margin-top: 15px;
-	align-items: center;
-	justify-content: center;
-	width: 32px;
-	height: 32px;
-	border-radius: 32px;
-	background-color: #ECECEC;
-	border: none;
+    display: flex;
+    margin-right: 25px;
+    margin-top: 15px;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 32px;
+    background-color: #ECECEC;
+    border: none;
 }
 #settings img{
-	width: 18px;
-	height: 18px;
+    width: 18px;
+    height: 18px;
 }
 
 .settingsPopup{
@@ -184,7 +184,9 @@ main{
     color: #707579;
     font-weight: 500;
 }
-
+#end_section{
+    height: 400px;
+}
 /*_________________________________________________________________________*/
 
 footer {
@@ -200,13 +202,13 @@ footer {
 }
 
 .heart, .articles, .lunapro{
-	display: flex;
-	margin-top: 10px;
+    display: flex;
+    margin-top: 10px;
 }
 .heart span, .articles span, .lunapro span{
-	color: #A2ACB0;
-	font-size: 10px;
-	margin-top: 4px;
+    color: #A2ACB0;
+    font-size: 10px;
+    margin-top: 4px;
     font-weight: 800;
 }
 .heart a, .articles a, .lunapro a{
@@ -216,10 +218,10 @@ footer {
     align-items: center;
 }
 .heart img, .articles img, .lunapro img{
-	width: 28px;
-	height: 28px;
+    width: 28px;
+    height: 28px;
 }
 
 .heart:hover, .articles:hover, .lunapro:hover{
-	filter: invert(38%) sepia(49%) saturate(4772%) hue-rotate(227deg) brightness(89%) contrast(95%);
+    filter: invert(38%) sepia(49%) saturate(4772%) hue-rotate(227deg) brightness(89%) contrast(95%);
 }
