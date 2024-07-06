@@ -61,12 +61,15 @@ themeToggle.addEventListener('change', (event) => {
 
 // Инициализация WebApp
 Telegram.WebApp.ready(() => {
+    console.log('WebApp готов');
+
     // Разворачивание на весь экран
     Telegram.WebApp.expand();
+    console.log('WebApp развернут на весь экран');
 
     // Получение текущих параметров темы
     const themeParams = Telegram.WebApp.themeParams;
-    // console.log('Текущие параметры темы:', themeParams);
+    console.log('Текущие параметры темы:', themeParams);
 
     // Проверка, тёмная тема или светлая
     if (themeParams.bg_color && isDarkColor(themeParams.bg_color)) {
@@ -95,7 +98,7 @@ Telegram.WebApp.ready(() => {
     // Слушатель изменений темы
     Telegram.WebApp.onEvent('themeChanged', () => {
         const newThemeParams = Telegram.WebApp.themeParams;
-        // console.log('Новые параметры темы:', newThemeParams);
+        console.log('Новые параметры темы:', newThemeParams);
 
         if (newThemeParams.bg_color && isDarkColor(newThemeParams.bg_color)) {
             enableDarkStyle();
