@@ -142,26 +142,6 @@ main{
     align-items: center;
 }
 
-
-/* Стили для светлой темы */
-@media (prefers-color-scheme: light) {
-    body {
-        background-color: #ffffff;
-        color: #000000;
-    }
-}
-
-/* Стили для тёмной темы */
-@media (prefers-color-scheme: dark) {
-    body {
-        background-color: #000000;
-        color: #ffffff;
-    }
-}
-
-
-
-
 .calendar{
     display: flex;
     flex-direction: column;
