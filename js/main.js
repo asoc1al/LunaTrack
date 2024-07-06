@@ -23,15 +23,15 @@ function closeSettings(){
 
 document.addEventListener('DOMContentLoaded', function() {
     if (window.Telegram && window.Telegram.WebApp) {
-        // const tg = window.Telegram.WebApp;
+        const tg = window.Telegram.WebApp;
         // const root = document.documentElement;
 
 
-            
+        const themeParams = tg.themeParams;
         const isDarkMode = themeParams.is_dark;
         const theme = isDarkMode ? 'dark' : 'light';
 
-        if theme === 'dark' {
+        if (theme === 'dark') {
             enableDarkStyle()
         } else {
             disableDarkStyle()
