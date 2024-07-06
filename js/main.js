@@ -2,7 +2,7 @@ var img = document.createElement("img");
 img.src = "Images/avatar.jpg";
 var src = document.getElementById("avatar");
 src.appendChild(img);
-
+const tg = window.Telegram.WebApp;
 
 //______________________________________________________________________________________________________
 
@@ -61,15 +61,16 @@ themeToggle.addEventListener('change', (event) => {
 
 // Инициализация WebApp
 Telegram.WebApp.ready(() => {
-    console.log('WebApp готов');
+    // console.log('WebApp готов');
 
     // Разворачивание на весь экран
-    Telegram.WebApp.expand();
-    console.log('WebApp развернут на весь экран');
+    // Telegram.WebApp.expand();
+    tg.web_app_expand();
+    // console.log('WebApp развернут на весь экран');
 
     // Получение текущих параметров темы
     const themeParams = Telegram.WebApp.themeParams;
-    console.log('Текущие параметры темы:', themeParams);
+    // console.log('Текущие параметры темы:', themeParams);
 
     // Проверка, тёмная тема или светлая
     if (themeParams.bg_color && isDarkColor(themeParams.bg_color)) {
