@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         const bgColor = themeParams.bg_color;
         const textColor = themeParams.text_color;
-        const weekdays = document.getElementsByClassName(".weekdays")[0];
+        const weekdays = document.getElementsByClassName("weekdays")[0];
         document.body.style.backgroundColor = bgColor;
         weekdays.style.color = textColor;
 
