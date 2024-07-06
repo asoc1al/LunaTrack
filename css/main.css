@@ -295,7 +295,7 @@ footer{
 	display: flex;
 	justify-content: space-around;
 	border-radius: 30px;
-	background-color: --var-body-bg; 
+	background-color: var(--var-body-bg); 
 	border-radius: 30px;
 }
 .heart, .articles, .lunapro{
