@@ -65,7 +65,7 @@ Telegram.WebApp.ready(() => {
 
     // Разворачивание на весь экран
     // Telegram.WebApp.expand();
-    tg.web_app_expand();
+    tg.web_app_expand;
     // console.log('WebApp развернут на весь экран');
 
     // Получение текущих параметров темы
