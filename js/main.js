@@ -21,6 +21,27 @@ function closeSettings(){
 
 // Get telegram theme
 
+if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    // Темная тема
+    console.log("Темная тема");
+} else {
+    // Светлая тема
+    console.log("Светлая тема");
+}
+
+// Слушатель изменений темы
+window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+    if (e.matches) {
+        // Темная тема
+        console.log("Темная тема");
+    } else {
+        // Светлая тема
+        console.log("Светлая тема");
+    }
+});
+
+
+
 document.addEventListener('DOMContentLoaded', function() {
     if (window.Telegram && window.Telegram.WebApp) {
         const tg = window.Telegram.WebApp;
