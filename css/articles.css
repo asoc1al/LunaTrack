@@ -198,7 +198,7 @@ footer {
     border-top: 2px solid #A2ACB0;
     display: flex;
     justify-content: space-around;
-    background-color: --var-body-bg; 
+    background-color: var(--var-body-bg); 
     z-index: 1;
     border-radius: 30px;
 }
