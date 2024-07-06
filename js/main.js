@@ -57,13 +57,13 @@ themeToggle.addEventListener('change', (event) => {
 
 //______________________________________________________________________________________________________
 
+window.Telegram.WebApp.expand()
+
 // Get telegram theme
 
 // Инициализация WebApp
 Telegram.WebApp.ready(() => {
     
-    window.Telegram.WebApp.expand()
-
     // Получение текущих параметров темы
     const themeParams = Telegram.WebApp.themeParams;
     // console.log('Текущие параметры темы:', themeParams);
