@@ -90,19 +90,19 @@ Telegram.WebApp.ready(() => {
 
         // Если яркость меньше 128, цвет считается тёмным
         return brightness < 128;
-    };
-};
-
-// Слушатель изменений темы
-Telegram.WebApp.onEvent('themeChanged', () => {
-    const newThemeParams = Telegram.WebApp.themeParams;
-    // console.log('Новые параметры темы:', newThemeParams);
-
-    if (newThemeParams.bg_color && isDarkColor(newThemeParams.bg_color)) {
-        enableDarkStyle()
-    } else {
-        disableDarkStyle()
     }
+
+    // Слушатель изменений темы
+    Telegram.WebApp.onEvent('themeChanged', () => {
+        const newThemeParams = Telegram.WebApp.themeParams;
+        // console.log('Новые параметры темы:', newThemeParams);
+
+        if (newThemeParams.bg_color && isDarkColor(newThemeParams.bg_color)) {
+            enableDarkStyle();
+        } else {
+            disableDarkStyle();
+        }
+    });
 });
 
 
