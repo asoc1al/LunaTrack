@@ -60,38 +60,38 @@ themeToggle.addEventListener('change', (event) => {
 // Get telegram theme
 
 // Инициализация WebApp
-Telegram.WebApp.ready();
+Telegram.WebApp.ready(() => {
+    // Разворачивание на весь экран
+    Telegram.WebApp.expand();
 
-// Разворачивание на весь экран
-Telegram.WebApp.expand();
+    // Получение текущих параметров темы
+    const themeParams = Telegram.WebApp.themeParams;
+    // console.log('Текущие параметры темы:', themeParams);
 
-// Получение текущих параметров темы
-const themeParams = Telegram.WebApp.themeParams;
-// console.log('Текущие параметры темы:', themeParams);
+    // Проверка, тёмная тема или светлая
+    if (themeParams.bg_color && isDarkColor(themeParams.bg_color)) {
+        enableDarkStyle();
+    } else {
+        disableDarkStyle();
+    }
 
-// Проверка, тёмная тема или светлая
-if (themeParams.bg_color && isDarkColor(themeParams.bg_color)) {
-    enableDarkStyle()
-} else {
-    disableDarkStyle()
-}
+    // Функция для определения, является ли цвет тёмным
+    function isDarkColor(color) {
+        // Удаление возможного символа #
+        color = color.replace('#', '');
 
-// Функция для определения, является ли цвет тёмным
-function isDarkColor(color) {
-    // Удаление возможного символа #
-    color = color.replace('#', '');
+        // Преобразование цвета в RGB
+        const r = parseInt(color.substring(0, 2), 16);
+        const g = parseInt(color.substring(2, 4), 16);
+        const b = parseInt(color.substring(4, 6), 16);
 
-    // Преобразование цвета в RGB
-    const r = parseInt(color.substring(0, 2), 16);
-    const g = parseInt(color.substring(2, 4), 16);
-    const b = parseInt(color.substring(4, 6), 16);
+        // Определение яркости цвета
+        const brightness = (r * 299 + g * 587 + b * 114) / 1000;
 
-    // Определение яркости цвета
-    const brightness = (r * 299 + g * 587 + b * 114) / 1000;
-
-    // Если яркость меньше 128, цвет считается тёмным
-    return brightness < 128;
-}
+        // Если яркость меньше 128, цвет считается тёмным
+        return brightness < 128;
+    };
+};
 
 // Слушатель изменений темы
 Telegram.WebApp.onEvent('themeChanged', () => {
