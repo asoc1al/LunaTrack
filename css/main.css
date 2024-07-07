@@ -1,17 +1,22 @@
 @font-face {
-    font-family: SF-PRO;
-    src: url(../fonts/SF-Pro.ttf);
+        font-family: SF-PRO;
+        src: url(../fonts/SF-Pro.ttf);
 }
 
-:root {
+
+/*_________________________________________________________________________*/
+
+:root{
     --var-body-bg: #fff;
     --var-weekdays-color: #525252;
 }
 
-[dark] {
+[dark]{
     --var-body-bg: #0F0F0F;
     --var-weekdays-color: #eee;
 }
+
+/*_________________________________________________________________________*/
 
 html, body {
     height: 100%;
@@ -21,56 +26,53 @@ html, body {
     text-align: center;
 }
 
-.container {
+.conteiner{
     min-height: 100%;
     display: flex;
     flex-direction: column;
-    width: 100%; 
-    max-width: 390px;
-    margin: 0 auto;
+    width: 390px; 
+    height: 800px;
 }
 
-body {
+body{
     background-color: var(--var-body-bg); 
     transition: 1s;
 }
 
-header {
-    display: flex;
+header{
+	display: flex;
     justify-content: space-between;
-    padding: 10px;
 }
 
-#avatar {
-    display: flex;
-    margin: 15px;
+#avatar{
+	display: flex;
+	margin: 15px;
 }
 
-#avatar img {
-    width: 32px;
-    height: 32px;
-    border-radius: 50px;
+#avatar img{
+	width: 32px;
+	height: 32px;
+	border-radius: 50px;
 }
 
-#settings {
-    display: flex;
+#settings{
+	display: flex;
     margin-right: 25px;
     margin-top: 15px;
-    align-items: center;
+	align-items: center;
     justify-content: center;
     width: 32px;
     height: 32px;
-    border-radius: 32px;
-    background-color: #ECECEC;
+	border-radius: 32px;
+	background-color: #ECECEC;
     border: none;
 }
-
-#settings img {
-    width: 18px;
-    height: 18px;
+#settings img{
+	width: 18px;
+	height: 18px;
 }
 
-.settingsPopup {
+.settingsPopup{
     display: flex;
     width: 200px;
     background-color: #eee;
@@ -86,27 +88,26 @@ header {
     transition: transform 0.4s, top 0.4s;
     flex-direction: column;
 }
-
-.open-popup {
+.open-popup{
     visibility: visible;
     top: 70%;
     transform: translate(-50%, -50%) scale(1);
 }
 
-.switch {
+/* Dark mode */
+
+.switch{
     display: inline-block;
     position: relative;
     width: 60px;
     height: 34px;
 }
-
-.switch__input {
+.switch__input{
     height: 0;
     width: 0;
     opacity: 0;
 }
-
-.switch__slider {
+.switch__slider{
     position: absolute;
     top: 0;
     left: 0;
@@ -116,7 +117,6 @@ header {
     background-color: #ccc;
     transition: 0.4s;
 }
-
 .switch__slider::before {
     content: "";
     position: absolute;
@@ -128,33 +128,37 @@ header {
     background-color: #fff;
     transition: 0.4s;
 }
-
-.switch__input:focus + .switch__slider {
+.switch__input:focus + .switch__slider{
     box-shadow: 0 0 1px #2196f3;
 }
-
-.switch__input:checked + .switch__slider {
+.switch__input:checked + .switch__slider{
     background-color: #2196f3; 
 }
-
-.switch__input:checked + .switch__slider::before {
+.switch__input:checked + .switch__slider::before{
     transform: translateX(26px);
 }
 
-main {
+/*_________________________________________________________________________*/
+
+main{
     display: flex;
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    height: calc(100% + 20px);
 }
 
-.calendar {
+
+
+
+
+.calendar{
     display: flex;
     flex-direction: column;
     align-items: center;
 }
 
-#month {
+#mounth{
     color: #6654BF;
     font-size: 16px;
     background: #ECECEC;
@@ -166,8 +170,7 @@ main {
     justify-content: center;
     font-weight: 700;
 }
-
-.weekdays {
+.weekdays{
     margin-top: 10px;
     list-style: none;
     display: flex;
@@ -176,17 +179,15 @@ main {
     color: var(--var-weekdays-color);
     font-size: 14px;
 }
-
-.dayscircles {
-    margin-top: 10px;
+.dayscircles{
+	margin-top: 10px;
     list-style: none;
     display: flex;
     width: 330px;
     justify-content: space-between;
     color: #ECECEC;
 }
-
-.dayscircles li {
+.dayscircles li{
     width: 30px;
     height: 30px;
     border-radius: 50px;
@@ -198,7 +199,7 @@ main {
     font-weight: 700;
 }
 
-.circle {
+.circle{
     display: flex;
     margin-top: 50px;
     width: 275px;
@@ -208,160 +209,143 @@ main {
     flex-direction: column;
     align-items: center;
 }
-
-.circle p {
+.circle p{
     display: flex;
     margin-top: 50px;
     justify-content: center;
     color: #fff;
-    font-weight: 700;
+    font-weight: 900;
+    font-size: 20px;
 }
 
-.circle span {
+#period_days{
+    margin-top: 10px;
+    display: flex;
+    font-size: 32px;
+    width: 130px;
+    height: 45px;
+    justify-content: center;
+    color: #fff;
+    font-weight: 800;
+}
+#pregnancy_chance{
+    margin-top: 4px;
     display: flex;
     justify-content: center;
     color: #fff;
-    font-weight: 700;
+    font-weight: 600;
+    width: 230px;
+    height: 40px;
+    text-align: center;
 }
-
-#mark_bottom {
-    display: flex;
-    justify-content: center;
-    color: #6654BF;
-    font-weight: 700;
-    background: #fff;
-    border-radius: 50px;
-    height: 30px;
-    width: 200px;
-    align-items: center;
-    margin-top: 20px;
-    text-decoration: none;
-}
-
-.advertising {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    width: 300px;
-    margin-top: 30px;
-    background: #ECECEC;
-    height: 100px;
-    border-radius: 25px;
-}
-
-.ad_left {
-    display: flex;
-    flex-direction: column;
-    width: 200px;
-    align-items: center;
-}
-
-.ad_left span {
-    font-size: 14px;
-    color: #565656;
-    font-weight: 700;
-}
-
-.ad_left p {
-    color: #565656;
-    font-size: 10px;
-}
-
-#ad_bottom {
-    display: flex;
-    justify-content: center;
-    color: #6654BF;
-    font-weight: 700;
-    background: #fff;
-    border-radius: 50px;
-    height: 30px;
-    width: 130px;
-    align-items: center;
+#mark_bottom{
     margin-top: 10px;
+    display: flex;
+    background-color: #fff;
+    color: #C0B6F2;
+    border-radius: 25px;
+    width: 165px;
+    height: 40px;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+
+.advertising{
+    display: flex;
+    margin-top: 30px;
+    width: 360px;
+    height: 150px;
+    border-radius: 30px;
+    background-color: #000000;
+    align-items: center;
+    justify-content: center;
+}
+.advertising span{
+	font-weight: 500;
+	color: #fff;
+}
+.advertising p{
+	color: #707579;
+}
+.ad_right{margin-bottom: 100px;}_
+.advertising a{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 10px;
+    margin-right: 20px;
+    text-decoration: none;
+}
+#ad_bottom{
+	margin-left: 20px;
+	margin-top: 20px;
+    display: flex;
+    width: 125px;
+    height: 35px;
+    border-radius: 30px;
+    background-color: #6654BF;
+    color: #fff;
+    align-items: center;
+    justify-content: center;
     text-decoration: none;
 }
 
-.ad_right {
-    width: 100px;
-    height: 100px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
 
+
+
+
+/*_________________________________________________________________________*/
+
+/*footer{
+	margin-top: 30px;
+	border-top: 2px solid #A2ACB0;
+	display: flex;
+    justify-content: space-around;
+    border-radius: 30px;
+    background-color: var(--var-body-bg);
+}
+*/
 footer {
+/*    margin-top: 30px;*/
+    border-top: 2px solid #A2ACB0;
+    border-radius: 30px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--var-body-bg); /* Измените цвет на тот, который вам нужен */
+    padding: 10px 0;
+    text-align: center;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1); /* Небольшая тень для визуального эффекта */
+    z-index: 1000; /* Убедитесь, что footer выше других элементов */
     display: flex;
-    justify-content: space-between;
-    margin-top: auto;
-    padding: 10px 30px 15px;
-    background-color: #fff;
-    border-top: 2px solid #ECECEC;
+    justify-content: space-around;
 }
 
-footer div {
+
+.heart, .articles, .lunapro{
+	display: flex;
+	margin-top: 10px;
+}
+.heart span, .articles span, .lunapro span{
+	color: #A2ACB0;
+	font-size: 10px;
+	margin-top: 4px;
+    font-weight: 800;
+}
+.heart a, .articles a, .lunapro a{
     display: flex;
     flex-direction: column;
+    text-decoration: none;
     align-items: center;
 }
-
-footer div a {
-    text-decoration: none;
-    color: #C1C1C1;
+.heart img, .articles img, .lunapro img{
+	width: 28px;
+	height: 28px;
 }
 
-footer div img {
-    height: 24px;
-    width: 24px;
-}
-
-footer div span {
-    font-size: 12px;
-    margin-top: 5px;
-}
-
-/* Медиазапросы для адаптивного дизайна */
-
-/* Планшеты и большие мобильные устройства */
-@media (max-width: 768px) {
-    .container {
-        max-width: 100%;
-    }
-
-    .weekdays, .dayscircles {
-        width: 100%;
-    }
-
-    .circle {
-        width: 200px;
-        height: 200px;
-    }
-
-    .advertising {
-        flex-direction: column;
-        height: auto;
-    }
-}
-
-/* Мобильные устройства */
-@media (max-width: 480px) {
-    .weekdays, .dayscircles {
-        flex-direction: column;
-    }
-
-    .circle {
-        width: 150px;
-        height: 150px;
-    }
-
-    .advertising {
-        width: 100%;
-    }
-
-    footer {
-        flex-direction: column;
-    }
-
-    footer div {
-        margin-bottom: 10px;
-    }
+.heart:hover, .articles:hover, .lunapro:hover{
+	filter: invert(38%) sepia(49%) saturate(4772%) hue-rotate(227deg) brightness(89%) contrast(95%);
 }
