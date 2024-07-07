@@ -57,7 +57,6 @@ themeToggle.addEventListener('change', (event) => {
 
 // USER INFO 
 
-const user = window.Telegram.WebApp.initDataUnsafe.user;
 function displayUserInfo(user) {
     const userInfoDiv = document.getElementById('user-info');
     userInfoDiv.innerHTML = `
@@ -68,7 +67,25 @@ function displayUserInfo(user) {
         <p>Language Code: ${user.language_code || ''}</p>
     `;
 }
-displayUserInfo(user)
+
+// Функция для получения данных пользователя из Telegram WebApp SDK
+function getUserInfo() {
+    if (window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initDataUnsafe) {
+        const user = window.Telegram.WebApp.initDataUnsafe.user;
+        if (user) {
+            displayUserInfo(user);
+        } else {
+            console.error('User data not available');
+        }
+    } else {
+        console.error('Telegram WebApp SDK not initialized');
+    }
+}
+
+// Ждём полной загрузки страницы перед выполнением getUserInfo
+window.addEventListener('DOMContentLoaded', (event) => {
+    getUserInfo();
+});
 
 //______________________________________________________________________________________________________
 
