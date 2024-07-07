@@ -55,6 +55,21 @@ themeToggle.addEventListener('change', (event) => {
 
 //______________________________________________________________________________________________________
 
+// USER INFO 
+
+const user = window.Telegram.WebApp.initDataUnsafe.user;
+function displayUserInfo(user) {
+    const userInfoDiv = document.getElementById('user-info');
+    userInfoDiv.innerHTML = `
+        <p>User ID: ${user.id}</p>
+        <p>First Name: ${user.first_name}</p>
+        <p>Last Name: ${user.last_name || ''}</p>
+        <p>Username: ${user.username || ''}</p>
+        <p>Language Code: ${user.language_code || ''}</p>
+    `;
+}
+displayUserInfo(user)
+
 //______________________________________________________________________________________________________
 
 window.Telegram.WebApp.expand()
