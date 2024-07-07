@@ -57,6 +57,7 @@ themeToggle.addEventListener('change', (event) => {
 
 // USER INFO 
 
+// Функция для отображения данных пользователя
 function displayUserInfo(user) {
     const userInfoDiv = document.getElementById('user-info');
     userInfoDiv.innerHTML = `
@@ -70,12 +71,19 @@ function displayUserInfo(user) {
 
 // Функция для получения данных пользователя из Telegram WebApp SDK
 function getUserInfo() {
-    if (window.Telegram && window.Telegram.WebApp && window.Telegram.WebApp.initDataUnsafe) {
-        const user = window.Telegram.WebApp.initDataUnsafe.user;
-        if (user) {
-            displayUserInfo(user);
+    console.log('Telegram:', window.Telegram);
+    if (window.Telegram && window.Telegram.WebApp) {
+        console.log('Telegram.WebApp:', window.Telegram.WebApp);
+        if (window.Telegram.WebApp.initDataUnsafe) {
+            console.log('initDataUnsafe:', window.Telegram.WebApp.initDataUnsafe);
+            const user = window.Telegram.WebApp.initDataUnsafe.user;
+            if (user) {
+                displayUserInfo(user);
+            } else {
+                console.error('User data not available');
+            }
         } else {
-            console.error('User data not available');
+            console.error('initDataUnsafe not available');
         }
     } else {
         console.error('Telegram WebApp SDK not initialized');
@@ -86,7 +94,6 @@ function getUserInfo() {
 window.addEventListener('DOMContentLoaded', (event) => {
     getUserInfo();
 });
-
 //______________________________________________________________________________________________________
 
 window.Telegram.WebApp.expand()
