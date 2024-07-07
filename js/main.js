@@ -69,6 +69,18 @@ function displayUserInfo(user) {
     `;
 }
 
+// Функция для отображения данных пользователя
+function displayUserInfo(user) {
+    const userInfoDiv = document.getElementById('user-info');
+    userInfoDiv.innerHTML = `
+        <p>User ID: ${user.id}</p>
+        <p>First Name: ${user.first_name}</p>
+        <p>Last Name: ${user.last_name || ''}</p>
+        <p>Username: ${user.username || ''}</p>
+        <p>Language Code: ${user.language_code || ''}</p>
+    `;
+}
+
 // Функция для получения данных пользователя из Telegram WebApp SDK
 function getUserInfo() {
     console.log('Telegram:', window.Telegram);
