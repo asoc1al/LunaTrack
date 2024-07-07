@@ -1,103 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" type="text/css" href="css/main.css">
-	<script src="https://telegram.org/js/telegram-web-app.js"></script>
-	<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-	<title>LunaTrack</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/main.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>LunaTrack</title>
 </head>
 <body>
-	<div class="conteiner">
-		<header>
-			<a href='#' id="avatar"></a>
-			<button type="submit" onclick="openSettings()" id="settings">
-				<img src="Images/Setting.svg">
-			</button>
-			<div class="settingsPopup" id="settingsPopup">
-				<label class="switch">
-					<input type="checkbox" id="themeToggle" class="switch__input" onchange="ChangeTheme(this.checked)">
-					<span class="switch__slider"></span>
-				</label>
-				<button id="en" class="translate">en</button>
-				<button id="ru" class="translate">ru</button>
-				<p id="user-info"></p>
-				<button type="button" onclick="closeSettings()">OK</button>
-			</div>
-		</header>
-		<main>
-			<div class="calendar">
-				<p id="mounth"></p>
-				<ul class="weekdays">
-					<li class='Mon lang' key="mon">Пн</li>
-					<li class='Tue lang' key="tue">Вт</li>
-					<li class='Wed lang' key="wed">Ср</li>
-					<li class='Thu lang' key="thu">Чт</li>
-					<li class='Fri lang' key="fri">Пт</li>
-					<li class='Sat lang' key="sat">Сб</li>
-					<li class='Sun lang' key="sun">Вс</li>
-				</ul>
-				<ul class="dayscircles">
-					<li id="Mon"></li>
-					<li id="Tue"></li>
-					<li id="Wed"></li>
-					<li id="Thu"></li>
-					<li id="Fri"></li>
-					<li id="Sat"></li>
-					<li id="Sun"></li>
-				</ul>
-			</div>
-
-			<div class="circle">
-				<p>Цикл через:</p>
-				<span id='period_days'></span>
-				<span id='pregnancy_chance'></span>
-				<a href="#" id='mark_bottom'>Отметить месячные</a>
-			</div>
-
-			<div class="advertising">
-				<div class="ad_left">
-					<span>Представляем LunaPro</span>
-					<p>Типичный новостной блок сюда <br>можно рекламу <b>закрыть только Pro</b></p>
-				
-					<a href="#" id='ad_bottom'>Попробовать</a>
-				</div>
-				<div class="ad_right">
-					<a href="#">
-						<img src="Images/Close.svg">
-					</a>
-				</div>
-				
-				
-
-			</div>
-		</main>
-		<footer>
-			
-			<div class="heart">
-				<a href="./index.html">
-					<img src="Images/Heart.svg">
-					<span>Календарь</span>
-				</a>
-			</div>
-			<div class="articles">
-				<a href="./articles.html">
-					<img src="Images/Articles.svg">
-					<span>Статьи</span>
-				</a>
-			</div>
-			<div class="lunapro">
-				<a href="./lunapro.html">
-					<img src="Images/Moon.svg">
-					<span>LunaPro</span>
-				</a>
-			</div>
-
-		</footer>
-	</div>
-<script src="./js/main.js"></script>
-<script src="./js/translate.js"></script>
-
+    <div class="container">
+        <header>
+            <a href='#' id="avatar"></a>
+            <button type="submit" onclick="openSettings()" id="settings">
+                <img src="Images/Setting.svg">
+            </button>
+            <div class="settingsPopup" id="settingsPopup">
+                <label class="switch">
+                    <input type="checkbox" id="themeToggle" class="switch__input" onchange="ChangeTheme(this.checked)">
+                    <span class="switch__slider"></span>
+                </label>
+                <button id="en" class="translate">en</button>
+                <button id="ru" class="translate">ru</button>
+                <p id="user-info"></p>
+                <button type="button" onclick="closeSettings()">OK</button>
+            </div>
+        </header>
+        <main>
+            <div class="calendar">
+                <p id="mounth"></p>
+                <ul class="weekdays">
+                    <li class='Mon lang' key="mon">Пн</li>
+                    <li class='Tue lang' key="tue">Вт</li>
+                    <li class='Wed lang' key="wed">Ср</li>
+                    <li class='Thu lang' key="thu">Чт</li>
+                    <li class='Fri lang' key="fri">Пт</li>
+                    <li class='Sat lang' key="sat">Сб</li>
+                    <li class='Sun lang' key="sun">Вс</li>
+                </ul>
+                <ul class="dayscircles">
+                    <li id="Mon"></li>
+                    <li id="Tue"></li>
+                    <li id="Wed"></li>
+                    <li id="Thu"></li>
+                    <li id="Fri"></li>
+                    <li id="Sat"></li>
+                    <li id="Sun"></li>
+                </ul>
+            </div>
+            <div class="circle">
+                <p>Цикл через:</p>
+                <span id='period_days'></span>
+                <span id='pregnancy_chance'></span>
+                <a href="#" id='mark_bottom'>Отметить месячные</a>
+            </div>
+            <div class="advertising">
+                <div class="ad_left">
+                    <span>Представляем LunaPro</span>
+                    <p>Типичный новостной блок сюда <br>можно рекламу <b>закрыть только Pro</b></p>
+                    <a href="#" id='ad_bottom'>Попробовать</a>
+                </div>
+                <div class="ad_right">
+                    <a href="#">
+                        <img src="Images/Close.svg">
+                    </a>
+                </div>
+            </div>
+        </main>
+        <footer>
+            <div class="heart">
+                <a href="./index.html">
+                    <img src="Images/Heart.svg">
+                    <span>Календарь</span>
+                </a>
+            </div>
+            <div class="articles">
+                <a href="./articles.html">
+                    <img src="Images/Articles.svg">
+                    <span>Статьи</span>
+                </a>
+            </div>
+            <div class="lunapro">
+                <a href="./lunapro.html">
+                    <img src="Images/Moon.svg">
+                    <span>LunaPro</span>
+                </a>
+            </div>
+        </footer>
+    </div>
+    <script src="./js/main.js"></script>
+    <script src="./js/translate.js"></script>
 </body>
 </html>
