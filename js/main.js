@@ -57,55 +57,24 @@ themeToggle.addEventListener('change', (event) => {
 
 // USER INFO 
 
-// Функция для отображения данных пользователя
-function displayUserInfo(user) {
-    const userInfoDiv = document.getElementById('user-info');
-    userInfoDiv.innerHTML = `
-        <p>User ID: ${user.id}</p>
-        <p>First Name: ${user.first_name}</p>
-        <p>Last Name: ${user.last_name || ''}</p>
-        <p>Username: ${user.username || ''}</p>
-        <p>Language Code: ${user.language_code || ''}</p>
-    `;
-}
+const token = '5760615918:AAHygCHZdAnKceDwVIBzhT_L-INrrbK6HbI';
+const userId = '1030874842'; // Идентификатор пользователя Telegram
 
-// Функция для отображения данных пользователя
-function displayUserInfo(user) {
-    const userInfoDiv = document.getElementById('user-info');
-    userInfoDiv.innerHTML = `
-        <p>User ID: ${user.id}</p>
-        <p>First Name: ${user.first_name}</p>
-        <p>Last Name: ${user.last_name || ''}</p>
-        <p>Username: ${user.username || ''}</p>
-        <p>Language Code: ${user.language_code || ''}</p>
-    `;
-}
+const apiUrl = `https://api.telegram.org/bot${token}/getUser?user_id=${userId}`;
 
-// Функция для получения данных пользователя из Telegram WebApp SDK
-function getUserInfo() {
-    console.log('Telegram:', window.Telegram);
-    if (window.Telegram && window.Telegram.WebApp) {
-        console.log('Telegram.WebApp:', window.Telegram.WebApp);
-        if (window.Telegram.WebApp.initDataUnsafe) {
-            console.log('initDataUnsafe:', window.Telegram.WebApp.initDataUnsafe);
-            const user = window.Telegram.WebApp.initDataUnsafe.user;
-            if (user) {
-                displayUserInfo(user);
-            } else {
-                console.error('User data not available');
-            }
-        } else {
-            console.error('initDataUnsafe not available');
-        }
-    } else {
-        console.error('Telegram WebApp SDK not initialized');
-    }
-}
+fetch(apiUrl)
+  .then(response => response.json())
+  .then(data => {
+    console.log(data);
+    // Обработка данных о пользователе
+    const user = data.result;
+    console.log(`ID: ${user.id}, Имя пользователя: ${user.username}, Имя: ${user.first_name}, Фамилия: ${user.last_name}`);
+  })
+  .catch(error => {
+    console.error('Ошибка при получении данных пользователя:', error);
+  });
 
-// Ждём полной загрузки страницы перед выполнением getUserInfo
-window.addEventListener('DOMContentLoaded', (event) => {
-    getUserInfo();
-});
+  
 //______________________________________________________________________________________________________
 
 window.Telegram.WebApp.expand()
