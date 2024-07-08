@@ -57,23 +57,21 @@ themeToggle.addEventListener('change', (event) => {
 
 // USER INFO 
 
-const token = '5760615918:AAHygCHZdAnKceDwVIBzhT_L-INrrbK6HbI';
-const userId = '1030874842'; // Идентификатор пользователя Telegram
+const user_info_block = document.getElementById("user-info");
 
-const apiUrl = `https://api.telegram.org/bot${token}/getUser?user_id=${userId}`;
+const user_info = Telegram.WebApp.WebAppUser;
 
-fetch(apiUrl)
-  .then(response => response.json())
-  .then(data => {
-    console.log(data);
-    // Обработка данных о пользователе
-    const user = data.result;
-    console.log(`ID: ${user.id}, Имя пользователя: ${user.username}, Имя: ${user.first_name}, Фамилия: ${user.last_name}`);
-  })
-  .catch(error => {
-    console.error('Ошибка при получении данных пользователя:', error);
-  });
+function get_user_info(user_info) {
+    user_info_block.innerHTML = `${user_info.id}
+        ${user_info.first_name}
+        ${user_info.last_name}
+        ${user_info.username}
+        ${user_info.language_code}
+        ${user_info.is_premium}
+        ${user_info.photo_url}`;
+};
 
+get_user_info(user_info);
   
 //______________________________________________________________________________________________________
 
@@ -115,7 +113,7 @@ Telegram.WebApp.ready(() => {
     // Слушатель изменений темы
     Telegram.WebApp.onEvent('themeChanged', () => {
         const newThemeParams = Telegram.WebApp.themeParams;
-        console.log('Новые параметры темы:', newThemeParams);
+        // console.log('Новые параметры темы:', newThemeParams);
 
         if (newThemeParams.bg_color && isDarkColor(newThemeParams.bg_color)) {
             enableDarkStyle();
