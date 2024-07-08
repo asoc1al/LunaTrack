@@ -72,6 +72,14 @@ function get_user_info(user_info) {
             Язык: ${user_info.language_code || "Не указано"} <br>
             Премиум: ${user_info.is_premium ? "Да" : "Нет"} <br>
             Фото: ${user_info.photo_url ? `<img src="${user_info.photo_url}" alt="Фото пользователя">` : "Нет фото"}`;
+        
+        console.log(`${user_info.id || "Не указано"} <br>
+            Имя: ${user_info.first_name || "Не указано"} <br>
+            Фамилия: ${user_info.last_name || "Не указано"} <br>
+            Username: ${user_info.username || "Не указано"} <br>
+            Язык: ${user_info.language_code || "Не указано"} <br>
+            Премиум: ${user_info.is_premium ? "Да" : "Нет"} <br>
+            Фото: ${user_info.photo_url}`)
     } else {
         user_info_block.innerHTML = "Данные пользователя не найдены.";
     }
