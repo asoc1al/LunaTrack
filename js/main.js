@@ -59,7 +59,7 @@ themeToggle.addEventListener('change', (event) => {
 
 const user_info_block = document.getElementById("user-info");
 
-const user_info = Telegram.WebApp.WebAppUser;
+const user_info = window.Telegram.WebApp.initData;
 
 function get_user_info(user_info) {
     user_info_block.innerHTML = `${user_info.id}
