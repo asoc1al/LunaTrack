@@ -59,16 +59,17 @@ themeToggle.addEventListener('change', (event) => {
 
 const user_info_block = document.getElementById("user-info");
 
-const user_info = window.Telegram.WebApp.initData;
+const user_info = window.Telegram.WebApp.initDataUnsafe.user;
 
 function get_user_info(user_info) {
-    user_info_block.innerHTML = `${user_info.id}
-        ${user_info.first_name}
-        ${user_info.last_name}
-        ${user_info.username}
-        ${user_info.language_code}
-        ${user_info.is_premium}
-        ${user_info.photo_url}`;
+    user_info_block.innerHTML = `
+        ID: ${user_info.id} <br>
+        Имя: ${user_info.first_name} <br>
+        Фамилия: ${user_info.last_name} <br>
+        Username: ${user_info.username} <br>
+        Язык: ${user_info.language_code} <br>
+        Премиум: ${user_info.is_premium} <br>
+        Фото: <img src="${user_info.photo_url}">`;
 };
 
 get_user_info(user_info);
