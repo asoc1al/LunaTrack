@@ -59,20 +59,29 @@ themeToggle.addEventListener('change', (event) => {
 
 const user_info_block = document.getElementById("user-info");
 
-const user_info = window.Telegram.WebApp.initDataUnsafe.user;
+// Получение данных пользователя из Telegram WebApp
+const initDataUnsafe = window.Telegram.WebApp.initDataUnsafe;
 
 function get_user_info(user_info) {
-    user_info_block.innerHTML = `
-        ID: ${user_info.id} <br>
-        Имя: ${user_info.first_name} <br>
-        Фамилия: ${user_info.last_name} <br>
-        Username: ${user_info.username} <br>
-        Язык: ${user_info.language_code} <br>
-        Премиум: ${user_info.is_premium} <br>
-        Фото: <img src="${user_info.photo_url}">`;
+    if (user_info) {
+        user_info_block.innerHTML = `
+            ID: ${user_info.id || "Не указано"} <br>
+            Имя: ${user_info.first_name || "Не указано"} <br>
+            Фамилия: ${user_info.last_name || "Не указано"} <br>
+            Username: ${user_info.username || "Не указано"} <br>
+            Язык: ${user_info.language_code || "Не указано"} <br>
+            Премиум: ${user_info.is_premium ? "Да" : "Нет"} <br>
+            Фото: ${user_info.photo_url ? `<img src="${user_info.photo_url}" alt="Фото пользователя">` : "Нет фото"}`;
+    } else {
+        user_info_block.innerHTML = "Данные пользователя не найдены.";
+    }
 };
 
-get_user_info(user_info);
+if (initDataUnsafe && initDataUnsafe.user) {
+    get_user_info(initDataUnsafe.user);
+} else {
+    user_info_block.innerHTML = "Ошибка получения данных пользователя.";
+}
   
 //______________________________________________________________________________________________________
 
