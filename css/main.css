@@ -20,6 +20,7 @@
 
 html, body {
     height: 100%;
+    width: 100%;
     margin: 0;
     padding: 0;
     font-family: SF-PRO;
@@ -259,12 +260,13 @@ main{
 .advertising{
     display: flex;
     margin-top: 30px;
-    width: 360px;
+    width: 100%;
     height: 150px;
     border-radius: 30px;
     background-color: #000000;
     align-items: center;
-    justify-content: center;
+    justify-content: space-evenly;
+    text-align: left;
 }
 .advertising span{
 	font-weight: 500;
