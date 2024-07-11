@@ -366,21 +366,22 @@ monthNames = [
     "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"
 ];
 document.getElementById('mounth').innerHTML = monthNames[mounth];
-var days = [
-    'Sun', // Начинаем с 'Sun', чтобы соответствовать значениям getDay()
-    'Mon',
-    'Tue',
-    'Wed',
-    'Thu',
-    'Fri',
-    'Sat'
-];
+var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 var day = new Date(); // Создаем объект Date
 var weekday = day.getDay(); // Получаем день недели от 0 до 6
 var elements = document.getElementsByClassName(days[weekday]);
 for (var i = 0; i < elements.length; i++) {
     elements[i].style.fontWeight = "900";
 }
+var dayId = days[weekday];
+var day_num = document.getElementById(dayId);
+day_num.style.fontSize = '19px';
+day_num.style.background = "grey";
+day_num.style.width = '34px';
+day_num.style.height = '34px';
+day_num.style.marginTop = '-2px';
+
+
 //______________________________________________________________________________________________________
 function getDatesOfCurrentWeek() {
     var today = new Date();

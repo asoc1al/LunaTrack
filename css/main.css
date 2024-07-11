@@ -202,6 +202,7 @@ main{
     align-items: center;
     color: #ECECEC;
     font-weight: 700;
+    /* font-size: 16px; */
 }
 
 .circle{
