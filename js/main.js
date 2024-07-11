@@ -58,6 +58,10 @@ generateCalendar = (month, year) => {
     if (!month) month = currDate.getMonth()
     if (!year) year = currDate.getFullYear()
 
+    let cal_year = document.getElementById('year');
+
+    cal_year.innerHTML = `${currDate.getFullYear()}`;
+
     let curr_month = `${month_names[month]}`
     month_picker.innerHTML = curr_month
     calendar_header_year.innerHTML = year
@@ -109,15 +113,17 @@ let curr_year = {value: currDate.getFullYear()}
 
 generateCalendar(curr_month.value, curr_year.value)
 
-document.querySelector('#prev-year').onclick = () => {
-    --curr_year.value
-    generateCalendar(curr_month.value, curr_year.value)
-}
 
-document.querySelector('#next-year').onclick = () => {
-    ++curr_year.value
-    generateCalendar(curr_month.value, curr_year.value)
-}
+
+// document.querySelector('#prev-year').onclick = () => {
+//     --curr_year.value
+//     generateCalendar(curr_month.value, curr_year.value)
+// }
+
+// document.querySelector('#next-year').onclick = () => {
+//     ++curr_year.value
+//     generateCalendar(curr_month.value, curr_year.value)
+// }
 
 
 

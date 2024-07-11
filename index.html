@@ -68,31 +68,31 @@
                 </div>
             </div>
         </main>
-        <footer>
-            <div class="heart">
-                <a href="./index.html">
-                    <img src="Images/Heart.svg">
-                    <span>Календарь</span>
-                </a>
-            </div>
-            <div class="articles">
-                <a href="./articles.html">
-                    <img src="Images/Articles.svg">
-                    <span>Статьи</span>
-                </a>
-            </div>
-            <div class="lunapro">
-                <a href="./lunapro.html">
-                    <img src="Images/Luna_pro.svg">
-                    <span>LunaPro</span>
-                </a>
-            </div>
-        </footer>
     </div>
+    <footer>
+        <div class="heart">
+            <a href="./index.html">
+                <img src="Images/Heart.svg">
+                <span>Календарь</span>
+            </a>
+        </div>
+        <div class="articles">
+            <a href="./articles.html">
+                <img src="Images/Articles.svg">
+                <span>Статьи</span>
+            </a>
+        </div>
+        <div class="lunapro">
+            <a href="./lunapro.html">
+                <img src="Images/Luna_pro.svg">
+                <span>LunaPro</span>
+            </a>
+        </div>
+    </footer>
     <div class="calendar" id='calendar'>
         <div class="calendar-header">
             <span class="month-picker" id="month-picker">February</span>
-            <div class="year-picker">
+            <!-- <div class="year-picker">
                 <span class="year-change" id="prev-year">
                     <pre><</pre>
                 </span>
@@ -100,7 +100,8 @@
                 <span class="year-change" id="next-year">
                     <pre>></pre>
                 </span>
-            </div>
+            </div> -->
+            <span id="year"></span>
         </div>
         <div class="calendar-body">
             <div class="calendar-week-day">
@@ -113,6 +114,9 @@
                 <div class='lang' key="sun">Sun</div>
             </div>
             <div class="calendar-days"></div>
+        </div>
+        <div class="calendar-footer">
+            <button class="CloseMarkPeriod" type="button" onclick="CloseMarkPeriod()">Close</button>
         </div>
         <div class="month-list"></div>
     </div>
