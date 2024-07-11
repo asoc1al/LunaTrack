@@ -19,15 +19,18 @@
 
 /*_________________________________________________________________________*/
 
-
-/*body{background-color: aqua;}*/
-body{background-color: var(--var-body-bg); transition: 1s;}
-
-*{
-    font-family: SF-PRO;
+html, body {
+    height: 100%;
     margin: 0;
     padding: 0;
+    font-family: SF-PRO;
     text-align: center;
+}
+body{
+    background-color: var(--var-body-bg); 
+    transition: 1s;
+    width: 390px; 
+    height: 745px;
 }
 
 header{
