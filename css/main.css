@@ -275,7 +275,10 @@ main{
 .advertising p{
 	color: #707579;
 }
-.ad_right{margin-bottom: 100px;}_
+.ad_right{
+    margin-bottom: 100px;
+    margin-right: 5px;
+}_
 .advertising a{
     display: flex;
     justify-content: flex-end;

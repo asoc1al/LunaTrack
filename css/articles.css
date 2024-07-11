@@ -29,10 +29,6 @@ body{background-color: var(--var-body-bg); transition: 1s;}
     padding: 0;
     text-align: center;
 }
-body{
-    width: 390px; 
-    height: 745px;
-}
 
 header{
     display: flex;
