@@ -363,11 +363,11 @@ footer {
 /* CALENDAR */
 
 .calendar {
-    height: 420px;
-    width: 420px;
+    height: 380px;
+    width: 380px;
     background-color: #141529;
     border-radius: 30px;
-    padding: 20px;
+    padding: 0px;
     position: relative;
     overflow: hidden;
     bottom: 0;
@@ -423,7 +423,7 @@ footer {
     display: flex;
     align-items: center;
     justify-content: center;
-    padding: 5px;
+    /* padding: 2px; */
     position: relative;
     cursor: pointer;
     animation: to-top 1s forwards;
