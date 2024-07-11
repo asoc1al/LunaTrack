@@ -29,8 +29,8 @@ html, body {
 body{
     background-color: var(--var-body-bg); 
     transition: 1s;
-    width: 390px; 
-    height: 745px;
+    /* width: 390px; 
+    height: 745px; */
 }
 
 header{
