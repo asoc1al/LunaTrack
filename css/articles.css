@@ -190,16 +190,18 @@ main{
 /*_________________________________________________________________________*/
 
 footer {
+    border-top: 2px solid #A2ACB0;
+    border-radius: 30px;
     position: fixed;
     bottom: 0;
-    left: 0;
     width: 100%;
-    border-top: 2px solid #A2ACB0;
+    background-color: var(--var-body-bg); /* Измените цвет на тот, который вам нужен */
+    padding: 10px 0;
+    text-align: center;
+    box-shadow: 0 -2px 5px rgba(0,0,0,0.1); /* Небольшая тень для визуального эффекта */
+    z-index: 1000; /* Убедитесь, что footer выше других элементов */
     display: flex;
     justify-content: space-around;
-    background-color: var(--var-body-bg); 
-    z-index: 1;
-    border-radius: 30px;
 }
 
 .heart, .articles, .lunapro{
