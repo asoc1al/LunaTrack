@@ -27,7 +27,7 @@
             </div>
         </header>
         <main>
-            <div class="calendar">
+            <div class="main_calendar">
                 <p id="mounth"></p>
                 <ul class="weekdays">
                     <li class='Mon lang' key="mon">Пн</li>
@@ -52,7 +52,8 @@
                 <p>Цикл через:</p>
                 <span id='period_days'></span>
                 <span id='pregnancy_chance'></span>
-                <a href="#" id='mark_bottom'>Отметить месячные</a>
+                <button id='mark_bottom' type="submit" onclick="OpenMarkPeriod()">Отметить месячные</button>
+                <!-- <a href="#" id='mark_bottom'>Отметить месячные</a> -->
             </div>
             <div class="advertising">
                 <div class="ad_left">
@@ -82,11 +83,38 @@
             </div>
             <div class="lunapro">
                 <a href="./lunapro.html">
-                    <img src="Images/Moon.svg">
+                    <img src="Images/Luna_pro.svg">
                     <span>LunaPro</span>
                 </a>
             </div>
         </footer>
+    </div>
+    <div class="calendar" id='calendar'>
+        <div class="calendar-header">
+            <span class="month-picker" id="month-picker">February</span>
+            <div class="year-picker">
+                <span class="year-change" id="prev-year">
+                    <pre><</pre>
+                </span>
+                <span id="year">2024</span>
+                <span class="year-change" id="next-year">
+                    <pre>></pre>
+                </span>
+            </div>
+        </div>
+        <div class="calendar-body">
+            <div class="calendar-week-day">
+                <div class='lang' key="mon">Mon</div>
+                <div class='lang' key="tue">Tue</div>
+                <div class='lang' key="wed">Wed</div>
+                <div class='lang' key="thu">Thu</div>
+                <div class='lang' key="fri">Fri</div>
+                <div class='lang' key="sat">Sat</div>
+                <div class='lang' key="sun">Sun</div>
+            </div>
+            <div class="calendar-days"></div>
+        </div>
+        <div class="month-list"></div>
     </div>
     <script src="./js/main.js"></script>
     <script src="./js/translate.js"></script>
