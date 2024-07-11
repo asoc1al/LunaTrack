@@ -150,10 +150,6 @@ main{
     height: calc(100% + 20px);
 }
 
-
-
-
-
 .calendar{
     margin-right: 35px;
     display: flex;
@@ -162,6 +158,7 @@ main{
 }
 
 #mounth{
+    margin-left: 35px;
     color: #6654BF;
     font-size: 16px;
     background: #ECECEC;
