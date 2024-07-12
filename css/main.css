@@ -29,7 +29,7 @@
 
 /*_________________________________________________________________________*/
 
-html, body {
+html {
     height: 100%;
     width: 100%;
     margin: 0;
@@ -41,6 +41,12 @@ html, body {
 
 body{
     animation: transitionIn 0.75s;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    height: 800px;
 }
 
 .conteiner{
