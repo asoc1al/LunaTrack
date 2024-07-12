@@ -39,10 +39,6 @@ html, body {
     height: 800px;
 }
 
-body{
-    animation: transitionIn 0.75s;
-}
-
 .conteiner{
     height: max-content;
     width: max-content;
@@ -54,7 +50,7 @@ body{
 
 body{
     background-color: var(--var-body-bg); 
-    transition: 1s;
+    animation: transitionIn 0.5s;
 }
 
 header{

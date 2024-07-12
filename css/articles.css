@@ -40,7 +40,7 @@ html, body {
 }
 body{
     background-color: var(--var-body-bg); 
-    animation: transitionIn 0.75s;
+    animation: transitionIn 0.5s;
 }
 
 header{
