@@ -169,6 +169,17 @@ themeToggle.addEventListener('change', (event) => {
 const user_info_block = document.getElementById("user-info");
 const user_info = window.Telegram.WebApp.initDataUnsafe;
 
+
+if (window.Telegram && Telegram.WebApp) {
+    console.log('Telegram WebApp инициализирован');
+} else {
+    console.log('Telegram WebApp не инициализирован');
+}
+
+Telegram.WebApp.onEvent('init', function() {
+    console.log('WebApp версия: ' + Telegram.WebApp.version);
+});
+
 // if (typeof Telegram.WebApp.isVerticalSwipesEnabled !== 'undefined') {
 // // Включаем вертикальные свайпы
 //     Telegram.WebApp.isVerticalSwipesEnabled(true);
