@@ -170,8 +170,8 @@ const user_info_block = document.getElementById("user-info");
 const user_info = window.Telegram.WebApp.initDataUnsafe;
 
 // console.log(user_info.isBiometricAvailable);
+window.Telegram.WebApp.disableVerticalSwipes();
 console.log(window.Telegram.WebApp.isVerticalSwipesEnabled);
-console.log(window.Telegram.WebApp.disableVerticalSwipes());
 // if (typeof Telegram.WebApp.isVerticalSwipesEnabled !== 'undefined') {
 // // Включаем вертикальные свайпы
 //     Telegram.WebApp.isVerticalSwipesEnabled(true);
