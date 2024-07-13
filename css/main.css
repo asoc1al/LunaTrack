@@ -20,11 +20,23 @@
 :root{
     --var-body-bg: #fff;
     --var-weekdays-color: #525252;
+    --var-calendar-body: #fdfdfd;
+    --var-calendar-day-week:  #c3c2c8;
+    --var-calendar-days: #151426;
+    --var-hover: #edf0f5;
 }
+
 
 [dark]{
     --var-body-bg: #0F0F0F;
     --var-weekdays-color: #eee;
+    --var-calendar-body: #141529;
+    --var-calendar-day-week:  #79788c;
+    --var-calendar-days: #f8fbff;
+    --var-hover: #323048;
+
+
+
 }
 
 /*_________________________________________________________________________*/
@@ -380,7 +392,7 @@ footer {
 .calendar {
     height: 420px;
     width: 380px;
-    background-color: #141529;
+    background-color: var(--var-calendar-body);
     border-radius: 30px;
     padding: 0px;
     position: relative;
@@ -404,7 +416,7 @@ footer {
     align-items: center;
     font-size: 25px;
     font-weight: 600;
-    color: #f8fbff;
+    color: var(--var-calendar-days);
     padding: 10px;
 }
 
@@ -422,14 +434,14 @@ footer {
 .calendar-week-day div {
     display: grid;
     place-items: center;
-    color: #79788c;
+    color: var(--var-calendar-day-week);
 }
 
 .calendar-days {
     display: grid;
     grid-template-columns: repeat(7, 1fr);
     gap: 2px;
-    color: #f8fbff;
+    color: var(--var-calendar-days);
 }
 
 .calendar-days div {
@@ -457,7 +469,7 @@ footer {
 .calendar-days div span:nth-child(3) {
     width: 2px;
     height: 0;
-    background-color: #f8fbff;
+    background-color: var(--var-calendar-days);
 }
 
 .calendar-days div:hover span:nth-child(1),
@@ -479,7 +491,7 @@ footer {
 .calendar-days div span:nth-child(4) {
     width: 0;
     height: 2px;
-    background-color: #f8fbff;
+    background-color: var(--var-calendar-days)#;
 }
 
 .calendar-days div:hover span:nth-child(2),
@@ -527,7 +539,7 @@ footer {
 }
 
 .month-picker:hover {
-    background-color: #323048;
+    background-color: var(--var-hover);
 }
 
 #year{
@@ -544,13 +556,13 @@ footer {
 .CloseMarkPeriod {
     display: flex;
     margin-right: 30px;
-    color: #f8fbff;
+    color: var(--var-calendar-days)#;
     position: relative;
     width: 48px;
     height: 25px;
     border-radius: 14px;
     border: none;
-    background-color: #79788c;
+    background-color: var(--var-calendar-day-week);
     font-size: 15px;
     align-items: center;
 }
@@ -580,7 +592,7 @@ footer {
     height: 100%;
     top: 0;
     left: 0;
-    background-color: #141529;
+    background-color: var(--var-calendar-body);
     padding: 20px;
     grid-template-columns: repeat(3, auto);
     gap: 5px;
@@ -608,11 +620,11 @@ footer {
     border-radius: 10px;
     text-align: center;
     cursor: pointer;
-    color: #f8fbff;
+    color: var(--var-calendar-days);
 }
 
 .month-list > div > div:hover {
-    background-color: #323048;
+    background-color: var(--var-hover);
 }
 
 @keyframes to-top {
