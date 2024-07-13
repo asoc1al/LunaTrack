@@ -49,10 +49,7 @@ html, body {
     font-family: SF-PRO;
     text-align: center;
     height: 800px;
-}
-
-body{
-    animation: transitionIn 0.75s;
+    touch-action: pan-y;
 }
 
 .conteiner{
@@ -66,7 +63,7 @@ body{
 
 body{
     background-color: var(--var-body-bg); 
-    transition: 1s;
+    animation: transitionIn 0.5s;
 }
 
 header{
