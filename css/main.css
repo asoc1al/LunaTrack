@@ -303,7 +303,7 @@ main{
 .advertising p{
     color: #707579;
 }
-.ad_right{margin-bottom: 100px;}_
+.ad_right{margin-bottom: 100px;}
 .advertising a{
     display: flex;
     justify-content: flex-end;
@@ -488,7 +488,7 @@ footer {
 .calendar-days div span:nth-child(4) {
     width: 0;
     height: 2px;
-    background-color: var(--var-calendar-days)#;
+    background-color: var(--var-calendar-days);
 }
 
 .calendar-days div:hover span:nth-child(2),
@@ -553,7 +553,7 @@ footer {
 .CloseMarkPeriod {
     display: flex;
     margin-right: 30px;
-    color: var(--var-calendar-days)#;
+    color: var(--var-calendar-days);
     position: relative;
     width: 48px;
     height: 25px;
