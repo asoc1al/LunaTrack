@@ -169,7 +169,7 @@ themeToggle.addEventListener('change', (event) => {
 const user_info_block = document.getElementById("user-info");
 const user_info = window.Telegram.WebApp.initDataUnsafe;
 
-console.log(user_info.isBiometricAvailable);
+// console.log(user_info.isBiometricAvailable);
 console.log(window.Telegram.WebApp.isVerticalSwipesEnabled);
 console.log(window.Telegram.WebApp.disableVerticalSwipes());
 // if (typeof Telegram.WebApp.isVerticalSwipesEnabled !== 'undefined') {
@@ -191,12 +191,12 @@ function get_user_info(user_info) {
                 Username: ${user_info.username || "Не указано"} <br>
                 Язык: ${user_info.language_code || "Не указано"} <br>
                 Премиум: ${user_info.is_premium ? "Да" : "Нет"} <br>
-                Фото: ${user_info.photo_url || "Нет фото"}`;
+                ${user_info.isBiometricAvailable}`;
         } else {
             user_info_block.innerHTML = "Данные пользователя не найдены.";
         }
     };
-
+// Фото: ${user_info.photo_url || "Нет фото"}`;
 // console.log(get_user_info(user_info.user));
 get_user_info(user_info.user);
 
