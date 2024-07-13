@@ -172,13 +172,23 @@ const user_info = window.Telegram.WebApp.initDataUnsafe;
 
 if (window.Telegram && Telegram.WebApp) {
     console.log('Telegram WebApp инициализирован');
+    console.log('Версия Telegram WebApp:', Telegram.WebApp.version);
+    console.log('Доступные методы в Telegram.WebApp:', Object.keys(Telegram.WebApp));
+    
+    // Попробуем использовать метод isExpanded как альтернативу
+    Telegram.WebApp.onEvent('viewportChanged', function() {
+        console.log('WebApp is expanded: ' + Telegram.WebApp.isExpanded);
+    });
+
+    if (Telegram.WebApp.isExpanded) {
+        console.log('Приложение уже в полном экране');
+    } else {
+        console.log('Расширяем приложение');
+        Telegram.WebApp.expand();
+    }
 } else {
     console.log('Telegram WebApp не инициализирован');
 }
-
-Telegram.WebApp.onEvent('init', function() {
-    console.log('WebApp версия: ' + Telegram.WebApp.version);
-});
 
 // if (typeof Telegram.WebApp.isVerticalSwipesEnabled !== 'undefined') {
 // // Включаем вертикальные свайпы
