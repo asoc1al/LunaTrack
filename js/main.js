@@ -169,15 +169,15 @@ themeToggle.addEventListener('change', (event) => {
 const user_info_block = document.getElementById("user-info");
 const user_info = window.Telegram.WebApp.initDataUnsafe;
 
-if (typeof Telegram.WebApp.isVerticalSwipesEnabled !== 'undefined') {
-// Включаем вертикальные свайпы
-    Telegram.WebApp.isVerticalSwipesEnabled(true);
+// if (typeof Telegram.WebApp.isVerticalSwipesEnabled !== 'undefined') {
+// // Включаем вертикальные свайпы
+//     Telegram.WebApp.isVerticalSwipesEnabled(true);
 
-// Либо отключаем вертикальные свайпы
-// Telegram.WebApp.isVerticalSwipesEnabled(false);
-} else {
-    console.log('isVerticalSwipesEnabled не поддерживается в данной версии WebApp');
-}
+// // Либо отключаем вертикальные свайпы
+// // Telegram.WebApp.isVerticalSwipesEnabled(false);
+// } else {
+//     console.log('isVerticalSwipesEnabled не поддерживается в данной версии WebApp');
+// }
 
 function get_user_info(user_info) {
         if (user_info) {
