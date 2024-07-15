@@ -93,7 +93,8 @@ generateCalendar = (month, year) => {
             day.addEventListener('click', () => {
                 CloseMarkPeriod();
                 OpenCalDay();
-                title = document.getElementsByClassName("calendar_day_title");
+                title = document.getElementById("cal_day_title");
+                console.log(`Clicked date: ${i - first_day.getDay() + 1}-${curr_month}-${year}`);
                 title.innerHTML = `${i - first_day.getDay() + 1}.${curr_month}.${year}`;
 
             });

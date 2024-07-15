@@ -625,8 +625,14 @@ footer {
 }
 .open_cal_day{
     visibility: visible;
-    bottom: 50%;
+    bottom: 70%;
     transform: translate(-50%, -50%) scale(1);
+}
+#cal_day_title{
+    width: 100px;
+    height: 100px;
+    color: #000;
+    display: flex;
 }
 
 @keyframes to-top {
