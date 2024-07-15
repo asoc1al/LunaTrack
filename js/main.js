@@ -171,16 +171,7 @@ const user_info = window.Telegram.WebApp.initDataUnsafe;
 
 // console.log(user_info.isBiometricAvailable);
 window.Telegram.WebApp.disableVerticalSwipes();
-console.log(window.Telegram.WebApp.isVerticalSwipesEnabled);
-// if (typeof Telegram.WebApp.isVerticalSwipesEnabled !== 'undefined') {
-// // Включаем вертикальные свайпы
-//     Telegram.WebApp.isVerticalSwipesEnabled(true);
-
-// // Либо отключаем вертикальные свайпы
-// // Telegram.WebApp.isVerticalSwipesEnabled(false);
-// } else {
-//     console.log('isVerticalSwipesEnabled не поддерживается в данной версии WebApp');
-// }
+// console.log(window.Telegram.WebApp.isVerticalSwipesEnabled);
 
 function get_user_info(user_info) {
         if (user_info) {
@@ -191,7 +182,8 @@ function get_user_info(user_info) {
                 Username: ${user_info.username || "Не указано"} <br>
                 Язык: ${user_info.language_code || "Не указано"} <br>
                 Премиум: ${user_info.is_premium ? "Да" : "Нет"} <br>
-                ${user_info.isBiometricAvailable}`;
+                Biometric: ${user_info.isBiometricAvailable} <br>
+                Swipe: ${window.Telegram.WebApp.isVerticalSwipesEnabled}`;
         } else {
             user_info_block.innerHTML = "Данные пользователя не найдены.";
         }
@@ -199,42 +191,6 @@ function get_user_info(user_info) {
 // Фото: ${user_info.photo_url || "Нет фото"}`;
 // console.log(get_user_info(user_info.user));
 get_user_info(user_info.user);
-
-
-// document.addEventListener('DOMContentLoaded', (event) => {
-//     // USER INFO
-    
-//     const user_info_block = document.getElementById("user-info");
-    
-//     // Логирование данных initDataUnsafe
-//     console.log("initDataUnsafe:", window.Telegram.WebApp.initDataUnsafe);
-    
-//     const initDataUnsafe = window.Telegram.WebApp.initDataUnsafe;
-    
-//     function get_user_info(user_info) {
-//         if (user_info) {
-//             user_info_block.innerHTML = `
-//                 ID: ${user_info.id || "Не указано"} <br>
-//                 Имя: ${user_info.first_name || "Не указано"} <br>
-//                 Фамилия: ${user_info.last_name || "Не указано"} <br>
-//                 Username: ${user_info.username || "Не указано"} <br>
-//                 Язык: ${user_info.language_code || "Не указано"} <br>
-//                 Премиум: ${user_info.is_premium ? "Да" : "Нет"} <br>
-//                 Фото: ${user_info.photo_url || "Нет фото"}`;
-//         } else {
-//             user_info_block.innerHTML = "Данные пользователя не найдены.";
-//         }
-//     };
-    
-//     if (initDataUnsafe && initDataUnsafe.user) {
-//         console.log("Данные пользователя:", initDataUnsafe.user);
-//         get_user_info(initDataUnsafe.user);
-//     } else {
-//         console.log("initDataUnsafe или initDataUnsafe.user не определены");
-//         user_info_block.innerHTML = "Ошибка получения данных пользователя.";
-//     }
-// });
-
 
   
 //______________________________________________________________________________________________________
