@@ -33,10 +33,10 @@ function CloseMarkPeriod(){
     MarkPeriodPopup.classList.remove("open-mark");
 }
 function OpenCalDay() {
-    MarkPeriodPopup.classList.add('open_cal_day');
+    CalDay.classList.add('open_cal_day');
 }
 function CloseCalDay(){
-    MarkPeriodPopup.classList.remove("open_cal_day");
+    CalDay.classList.remove("open_cal_day");
 }
 
 
