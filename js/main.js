@@ -168,30 +168,54 @@ themeToggle.addEventListener('change', (event) => {
 
 const user_info_block = document.getElementById("user-info");
 const user_info = window.Telegram.WebApp.initDataUnsafe;
-
-// console.log(user_info.isBiometricAvailable);
 class SwipeBehavior {
     constructor() {
-        this.isVerticalSwipeEnabled = false;
-    }
-
-    enableVerticalSwipe() {
-        this.isVerticalSwipeEnabled = true;
-    }
-
-    disableVerticalSwipe() {
-        this.isVerticalSwipeEnabled = false;
-    }
-}
+      this.isVerticalSwipeEnabled = false;
   
-// Инициализация поведения свайпа
-const swipeBehavior = new SwipeBehavior();
-
+      this.startY = 0;
+      this.currentY = 0;
+  
+      this.handleTouchStart = this.handleTouchStart.bind(this);
+      this.handleTouchMove = this.handleTouchMove.bind(this);
+  
+      this.addSwipeListeners();
+    }
+  
+    addSwipeListeners() {
+      document.addEventListener('touchstart', this.handleTouchStart);
+      document.addEventListener('touchmove', this.handleTouchMove);
+    }
+  
+    handleTouchStart(event) {
+      this.startY = event.touches[0].clientY;
+    }
+  
+    handleTouchMove(event) {
+      this.currentY = event.touches[0].clientY;
+  
+      if (!this.isVerticalSwipeEnabled && Math.abs(this.currentY - this.startY) > 0) {
+        event.preventDefault();
+      }
+    }
+  
+    enableVerticalSwipe() {
+      this.isVerticalSwipeEnabled = true;
+    }
+  
+    disableVerticalSwipe() {
+      this.isVerticalSwipeEnabled = false;
+    }
+  }
+  
+  // Инициализация поведения свайпа
+  const swipeBehavior = new SwipeBehavior();
+  
 //   swipeBehavior.enableVerticalSwipe();
-//   console.log(swipeBehavior.isVerticalSwipeEnabled); // true  
-
-// console.log(swipeBehavior.isVerticalSwipeEnabled); // false
-// console.log(window.Telegram.WebApp.isVerticalSwipesEnabled);
+//   console.log(swipeBehavior.isVerticalSwipeEnabled); // true
+  
+  swipeBehavior.disableVerticalSwipe();
+//   console.log(swipeBehavior.isVerticalSwipeEnabled); // false
+  
 
 function get_user_info(user_info) {
         if (user_info) {
