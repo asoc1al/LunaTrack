@@ -563,24 +563,6 @@ footer {
     align-items: center;
 }
 
-/* .year-picker {
-    display: flex;
-    align-items: center;
-} */
-
-/* .year-change {
-    height: 40px;
-    width: 40px;
-    border-radius: 50%;
-    display: grid;
-    place-items: center;
-    margin: 0 10px;
-    cursor: pointer;
-} */
-
-/* .year-change:hover {
-    background-color: #323048;
-} */
 
 .month-list {
     position: absolute;
@@ -589,7 +571,7 @@ footer {
     top: 0;
     left: 0;
     background-color: var(--var-calendar-body);
-    padding: 20px;
+    padding: 5px;
     grid-template-columns: repeat(3, auto);
     gap: 5px;
     display: grid;

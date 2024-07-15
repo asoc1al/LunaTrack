@@ -82,6 +82,10 @@ generateCalendar = (month, year) => {
             if (i - first_day.getDay() + 1 === currDate.getDate() && year === currDate.getFullYear() && month === currDate.getMonth()) {
                 day.classList.add('curr-date')
             }
+
+            day.addEventListener('click', () => {
+                console.log(`Clicked date: ${i - first_day.getDay() + 1}-${curr_month}-${year}`);
+            });
         }
         calendar_days.appendChild(day)
     }
@@ -168,54 +172,6 @@ themeToggle.addEventListener('change', (event) => {
 
 const user_info_block = document.getElementById("user-info");
 const user_info = window.Telegram.WebApp.initDataUnsafe;
-class SwipeBehavior {
-    constructor() {
-      this.isVerticalSwipeEnabled = false;
-  
-      this.startY = 0;
-      this.currentY = 0;
-  
-      this.handleTouchStart = this.handleTouchStart.bind(this);
-      this.handleTouchMove = this.handleTouchMove.bind(this);
-  
-      this.addSwipeListeners();
-    }
-  
-    addSwipeListeners() {
-      document.addEventListener('touchstart', this.handleTouchStart);
-      document.addEventListener('touchmove', this.handleTouchMove);
-    }
-  
-    handleTouchStart(event) {
-      this.startY = event.touches[0].clientY;
-    }
-  
-    handleTouchMove(event) {
-      this.currentY = event.touches[0].clientY;
-  
-      if (!this.isVerticalSwipeEnabled && Math.abs(this.currentY - this.startY) > 0) {
-        event.preventDefault();
-      }
-    }
-  
-    enableVerticalSwipe() {
-      this.isVerticalSwipeEnabled = true;
-    }
-  
-    disableVerticalSwipe() {
-      this.isVerticalSwipeEnabled = false;
-    }
-  }
-  
-  // Инициализация поведения свайпа
-  const swipeBehavior = new SwipeBehavior();
-  
-//   swipeBehavior.enableVerticalSwipe();
-//   console.log(swipeBehavior.isVerticalSwipeEnabled); // true
-  
-  swipeBehavior.disableVerticalSwipe();
-//   console.log(swipeBehavior.isVerticalSwipeEnabled); // false
-  
 
 function get_user_info(user_info) {
         if (user_info) {
@@ -225,9 +181,7 @@ function get_user_info(user_info) {
                 Фамилия: ${user_info.last_name || "Не указано"} <br>
                 Username: ${user_info.username || "Не указано"} <br>
                 Язык: ${user_info.language_code || "Не указано"} <br>
-                Премиум: ${user_info.is_premium ? "Да" : "Нет"} <br>
-                Biometric: ${user_info.isBiometricAvailable} <br>
-                Swipe: ${swipeBehavior.isVerticalSwipeEnabled}`;
+                Премиум: ${user_info.is_premium ? "Да" : "Нет"} <br>`;
         } else {
             user_info_block.innerHTML = "Данные пользователя не найдены.";
         }
