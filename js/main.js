@@ -170,7 +170,27 @@ const user_info_block = document.getElementById("user-info");
 const user_info = window.Telegram.WebApp.initDataUnsafe;
 
 // console.log(user_info.isBiometricAvailable);
-window.Telegram.WebApp.disableVerticalSwipes();
+class SwipeBehavior {
+    constructor() {
+        this.isVerticalSwipeEnabled = false;
+    }
+
+    enableVerticalSwipe() {
+        this.isVerticalSwipeEnabled = true;
+    }
+
+    disableVerticalSwipe() {
+        this.isVerticalSwipeEnabled = false;
+    }
+}
+  
+// Инициализация поведения свайпа
+const swipeBehavior = new SwipeBehavior();
+
+//   swipeBehavior.enableVerticalSwipe();
+//   console.log(swipeBehavior.isVerticalSwipeEnabled); // true  
+
+// console.log(swipeBehavior.isVerticalSwipeEnabled); // false
 // console.log(window.Telegram.WebApp.isVerticalSwipesEnabled);
 
 function get_user_info(user_info) {
@@ -183,7 +203,7 @@ function get_user_info(user_info) {
                 Язык: ${user_info.language_code || "Не указано"} <br>
                 Премиум: ${user_info.is_premium ? "Да" : "Нет"} <br>
                 Biometric: ${user_info.isBiometricAvailable} <br>
-                Swipe: ${window.Telegram.WebApp.isVerticalSwipesEnabled}`;
+                Swipe: ${swipeBehavior.isVerticalSwipeEnabled}`;
         } else {
             user_info_block.innerHTML = "Данные пользователя не найдены.";
         }
