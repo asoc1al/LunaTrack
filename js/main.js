@@ -24,12 +24,19 @@ function closeSettings(){
 // Mark Period: 
 
 let MarkPeriodPopup = document.getElementById('calendar');
+let CalDay = document.getElementById('cal_day');
 
 function OpenMarkPeriod() {
     MarkPeriodPopup.classList.add('open-mark');
 }
 function CloseMarkPeriod(){
     MarkPeriodPopup.classList.remove("open-mark");
+}
+function OpenCalDay() {
+    MarkPeriodPopup.classList.add('open_cal_day');
+}
+function CloseCalDay(){
+    MarkPeriodPopup.classList.remove("open_cal_day");
 }
 
 
@@ -84,7 +91,11 @@ generateCalendar = (month, year) => {
             }
 
             day.addEventListener('click', () => {
-                console.log(`Clicked date: ${i - first_day.getDay() + 1}-${curr_month}-${year}`);
+                CloseMarkPeriod();
+                OpenCalDay();
+                title = document.getElementsByClassName("calendar_day_title");
+                title.innerHTML = `${i - first_day.getDay() + 1}.${curr_month}.${year}`;
+
             });
         }
         calendar_days.appendChild(day)

@@ -605,6 +605,30 @@ footer {
     background-color: var(--var-hover);
 }
 
+
+
+
+
+.calendar_day{
+    height: 420px;
+    width: 380px;
+    background-color: var(--var-calendar-body);
+    border-radius: 30px;
+    padding: 0px;
+    position: relative;
+    overflow: hidden;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.1);
+    visibility: hidden;
+    transition: transform 0.4s, top 0.4s;
+}
+.open_cal_day{
+    visibility: visible;
+    bottom: 50%;
+    transform: translate(-50%, -50%) scale(1);
+}
+
 @keyframes to-top {
     0% {
         transform: translateY(100%);
