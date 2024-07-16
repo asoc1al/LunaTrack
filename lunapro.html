@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="css/lunapro.css">
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <title>LunaTrack</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <a href='#' id="avatar"></a>
+            <button type="submit" onclick="openSettings()" id="settings">
+                <img src="Images/Setting.svg">
+            </button>
+            <div class="settingsPopup" id="settingsPopup">
+                <label class="switch">
+                    <input type="checkbox" id="themeToggle" class="switch__input" onchange="ChangeTheme(this.checked)">
+                    <span class="switch__slider"></span>
+                </label>
+                <button id="en" class="translate">en</button>
+                <button id="ru" class="translate">ru</button>
+                <p id="user-info"></p>
+                <button type="button" onclick="closeSettings()">OK</button>
+            </div>
+        </header>
+        <main>
+            <span class="developing lang" key="developing">В разработке</span>
+        </main>
+        <footer>
+            <div class="heart">
+                <a href="./index.html">
+                    <img src="Images/Heart.svg">
+                    <span>Календарь</span>
+                </a>
+            </div>
+            <div class="articles">
+                <a href="./articles.html">
+                    <img src="Images/Articles.svg">
+                    <span>Статьи</span>
+                </a>
+            </div>
+            <div class="lunapro">
+                <a href="./lunapro.html">
+                    <img src="Images/Luna_pro.svg">
+                    <span>LunaPro</span>
+                </a>
+            </div>
+        </footer>
+        <script src="./js/lunapro.js"></script>
+        <script src="./js/translate.js"></script>
+</body>
+</html>

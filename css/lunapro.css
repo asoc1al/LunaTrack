@@ -1,0 +1,231 @@
+@font-face {
+    font-family: SF-PRO;
+    src: url(../fonts/SF-Pro.ttf);
+}
+
+@keyframes transitionIn {
+    from {
+        opacity: 0;
+        transform: rotateX(-10deg);
+    }
+
+    to {
+        opacity: 1;
+        transform: rotateX(0deg);
+    }
+}
+
+
+/*_________________________________________________________________________*/
+
+:root {
+    --var-body-bg: #fff;
+    --var-span: #000;
+}
+
+
+[dark] {
+    --var-body-bg: #0F0F0F;
+    --var-span: #fff;
+}
+
+
+/*_________________________________________________________________________*/
+
+html,
+body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    font-family: SF-PRO;
+    text-align: center;
+    touch-action: pan-y;
+}
+
+body {
+    background-color: var(--var-body-bg);
+    animation: transitionIn 0.5s;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+}
+
+#avatar {
+    display: flex;
+    margin: 15px;
+}
+
+#avatar img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50px;
+}
+
+#settings {
+    display: flex;
+    margin-right: 25px;
+    margin-top: 15px;
+    align-items: center;
+    justify-content: center;
+    width: 32px;
+    height: 32px;
+    border-radius: 32px;
+    background-color: #ECECEC;
+    border: none;
+}
+
+#settings img {
+    width: 18px;
+    height: 18px;
+}
+
+.settingsPopup {
+    z-index: 9;
+    display: flex;
+    width: 200px;
+    background-color: #eee;
+    border-radius: 6px;
+    position: absolute;
+    top: 0;
+    left: 200px;
+    transform: translate(-50%, -50%) scale(0.1);
+    text-align: center;
+    padding: 0 30px 30px;
+    color: #333;
+    visibility: hidden;
+    transition: transform 0.4s, top 0.4s;
+    flex-direction: column;
+}
+
+.open-popup {
+    visibility: visible;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+/* Dark mode */
+
+.switch {
+    display: inline-block;
+    position: relative;
+    width: 60px;
+    height: 34px;
+}
+
+.switch__input {
+    height: 0;
+    width: 0;
+    opacity: 0;
+}
+
+.switch__slider {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    border-radius: 34px;
+    background-color: #ccc;
+    transition: 0.4s;
+}
+
+.switch__slider::before {
+    content: "";
+    position: absolute;
+    left: 4px;
+    bottom: 4px;
+    height: 26px;
+    width: 26px;
+    border-radius: 50px;
+    background-color: #fff;
+    transition: 0.4s;
+}
+
+.switch__input:focus+.switch__slider {
+    box-shadow: 0 0 1px #2196f3;
+}
+
+.switch__input:checked+.switch__slider {
+    background-color: #2196f3;
+}
+
+.switch__input:checked+.switch__slider::before {
+    transform: translateX(26px);
+}
+
+/*_________________________________________________________________________*/
+
+main{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.developing{
+    display: flex;
+    font-size: 40px;
+    color: var(--var-span);
+    margin-top: 150px;
+}
+
+
+/*_________________________________________________________________________*/
+
+footer{
+    border-top: 2px solid #A2ACB0;
+    border-radius: 30px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    background-color: var(--var-body-bg);
+    /* Измените цвет на тот, который вам нужен */
+    padding: 10px 0;
+    text-align: center;
+    box-shadow: 0 -2px 5px rgba(0, 0, 0, 0.1);
+    /* Небольшая тень для визуального эффекта */
+    z-index: 1000;
+    /* Убедитесь, что footer выше других элементов */
+    display: flex;
+    justify-content: space-around;
+}
+
+.heart,
+.articles,
+.lunapro {
+    display: flex;
+    margin-top: 10px;
+}
+
+.heart span,
+.articles span,
+.lunapro span {
+    color: #A2ACB0;
+    font-size: 10px;
+    margin-top: 4px;
+    font-weight: 800;
+}
+
+.heart a,
+.articles a,
+.lunapro a {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    align-items: center;
+}
+
+.heart img,
+.articles img,
+.lunapro img {
+    width: 28px;
+    height: 28px;
+}
+
+.heart:hover,
+.articles:hover,
+.lunapro:hover {
+    filter: invert(38%) sepia(49%) saturate(4772%) hue-rotate(227deg) brightness(89%) contrast(95%);
+}

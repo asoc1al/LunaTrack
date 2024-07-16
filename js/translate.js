@@ -7,6 +7,7 @@ var arrLang = {
         'fri': 'Fri',
         'sat': 'Sat',
         'sun': 'Sun',
+        'developing': 'In developing',
     },
     'ru': {
         'mon': 'Пн',
@@ -16,6 +17,7 @@ var arrLang = {
         'fri': 'Пт',
         'sat': 'Сб',
         'sun': 'Вс',
+        'developing': 'В разработке',
     }
 }
 
