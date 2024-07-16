@@ -8,6 +8,7 @@ var arrLang = {
         'sat': 'Sat',
         'sun': 'Sun',
         'developing': 'In developing',
+        'pregnancy_chance': `Chance of getting pregnant ${result}`,
     },
     'ru': {
         'mon': 'Пн',
@@ -18,6 +19,7 @@ var arrLang = {
         'sat': 'Сб',
         'sun': 'Вс',
         'developing': 'В разработке',
+        'pregnancy_chance': `Вероятность забеременеть ${result}`,
     }
 }
 

@@ -28,7 +28,7 @@
         </header>
         <main>
             <div class="main_calendar">
-                <p id="mounth"></p>
+                <p id="month"></p>
                 <ul class="weekdays">
                     <li class='Mon lang' key="mon">Пн</li>
                     <li class='Tue lang' key="tue">Вт</li>
@@ -51,7 +51,7 @@
             <div class="circle">
                 <p>Цикл через:</p>
                 <span id='period_days'></span>
-                <span id='pregnancy_chance'></span>
+                <span id='pregnancy_chance' class="lang" key="pregnancy_chance">Вероятность забеременеть </span>
                 <button id='mark_bottom' type="submit" onclick="OpenMarkPeriod()">Отметить месячные</button>
                 <!-- <a href="#" id='mark_bottom'>Отметить месячные</a> -->
             </div>
@@ -93,7 +93,7 @@
     </div>
     <div class="calendar_day" id="cal_day">
         <span id="cal_day_title"></span>
-        <span>Hello</span>
+        <!-- <span>Hello</span> -->
         <button class="CloseCalDay" type="button" onclick="CloseCalDay()">Close</button>
     </div>
     <footer>
