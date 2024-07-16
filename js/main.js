@@ -13,7 +13,9 @@ const tg = window.Telegram.WebApp;
 let settingsPopup = document.getElementById("settingsPopup");
 
 function openSettings(){
-    settingsPopup.classList.add("open-popup")
+    CloseMarkPeriod();
+    CloseCalDay();
+    settingsPopup.classList.add("open-popup");
 }
 function closeSettings(){
     settingsPopup.classList.remove("open-popup")
