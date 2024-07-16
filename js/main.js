@@ -4,99 +4,100 @@ var src = document.getElementById("avatar");
 src.appendChild(img);
 const tg = window.Telegram.WebApp;
 
-// Перевод
-$('.translate').click(function() {
-    var lang = $(this).attr('id');
-    console.log(lang);
-});
+
 
 //______________________________________________________________________________________________________
 
-// Попапы
+//Popups
 
-// Настройки: 
+// Settings: 
+
 let settingsPopup = document.getElementById("settingsPopup");
 
-function openSettings() {
-    closeMarkPeriod();
-    closeCalDay();
+function openSettings(){
+    CloseMarkPeriod();
+    CloseCalDay();
     settingsPopup.classList.add("open-popup");
 }
-
-function closeSettings() {
-    settingsPopup.classList.remove("open-popup");
+function closeSettings(){
+    settingsPopup.classList.remove("open-popup")
 }
 
 //______________________________________________________________________________________________________
 
-// Отметить период: 
+// Mark Period: 
 
-let markPeriodPopup = document.getElementById('calendar');
-let calDay = document.getElementById('cal_day');
+let MarkPeriodPopup = document.getElementById('calendar');
+let CalDay = document.getElementById('cal_day');
 
-function openMarkPeriod() {
-    markPeriodPopup.classList.add('open-mark');
+function OpenMarkPeriod() {
+    MarkPeriodPopup.classList.add('open-mark');
+}
+function CloseMarkPeriod(){
+    MarkPeriodPopup.classList.remove("open-mark");
+}
+function OpenCalDay() {
+    CalDay.classList.add('open_cal_day');
+}
+function CloseCalDay(){
+    CalDay.classList.remove("open_cal_day");
 }
 
-function closeMarkPeriod() {
-    markPeriodPopup.classList.remove("open-mark");
+
+let calendar = document.querySelector('.calendar')
+
+const month_names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+
+isLeapYear = (year) => {
+    return (year % 4 === 0 && year % 100 !== 0 && year % 400 !== 0) || (year % 100 === 0 && year % 400 ===0)
 }
 
-function openCalDay() {
-    calDay.classList.add('open_cal_day');
+getFebDays = (year) => {
+    return isLeapYear(year) ? 29 : 28
 }
 
-function closeCalDay() {
-    calDay.classList.remove("open_cal_day");
-}
+generateCalendar = (month, year) => {
 
-let calendar = document.querySelector('.calendar');
-
-const monthNames = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
-
-const isLeapYear = (year) => {
-    return (year % 4 === 0 && year % 100 !== 0) || (year % 400 === 0);
-}
-
-const getFebDays = (year) => {
-    return isLeapYear(year) ? 29 : 28;
-}
-
-const generateCalendar = (month, year) => {
-
-    let calendarDays = calendar.querySelector('.calendar-days');
-    let calendarHeaderYear = calendar.querySelector('#year');
+    let calendar_days = calendar.querySelector('.calendar-days')
+    let calendar_header_year = calendar.querySelector('#year')
     let firstDate = null;
     let secondDate = null;
 
-    let daysOfMonth = [31, getFebDays(year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31];
+    let days_of_month = [31, getFebDays(year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
-    calendarDays.innerHTML = '';
+    calendar_days.innerHTML = ''
 
-    let currDate = new Date();
-    if (month === undefined) month = currDate.getMonth();
-    if (year === undefined) year = currDate.getFullYear();
+    let currDate = new Date()
+    if (!month) month = currDate.getMonth()
+    if (!year) year = currDate.getFullYear()
 
-    let calYear = document.getElementById('year');
-    calYear.innerHTML = `${currDate.getFullYear()}`;
+    let cal_year = document.getElementById('year');
 
-    let currMonth = `${monthNames[month]}`;
-    let monthPicker = document.getElementById('month-picker');
-    monthPicker.innerHTML = currMonth;
-    calendarHeaderYear.innerHTML = year;
+    cal_year.innerHTML = `${currDate.getFullYear()}`;
 
-    let firstDay = new Date(year, month, 1);
+    let curr_month = `${month_names[month]}`
+    month_picker.innerHTML = curr_month
+    calendar_header_year.innerHTML = year
 
-    for (let i = 0; i <= daysOfMonth[month] + firstDay.getDay() - 1; i++) {
-        let day = document.createElement('div');
-        if (i >= firstDay.getDay()) {
-            day.classList.add('calendar-day-hover');
-            day.innerHTML = i - firstDay.getDay() + 1;
-            day.innerHTML += `<span></span><span></span><span></span><span></span>`;
-            if (i - firstDay.getDay() + 1 === currDate.getDate() && year === currDate.getFullYear() && month === currDate.getMonth()) {
-                day.classList.add('curr-date');
+    // get first day of month
+    
+    let first_day = new Date(year, month, 1)
+
+    for (let i = 0; i <= days_of_month[month] + first_day.getDay() - 1; i++) {
+        let day = document.createElement('div')
+        if (i >= first_day.getDay()) {
+            day.classList.add('calendar-day-hover')
+            day.innerHTML = i - first_day.getDay() + 1
+            day.innerHTML += `<span></span>
+                            <span></span>
+                            <span></span>
+                            <span></span>`
+            if (i - first_day.getDay() + 1 === currDate.getDate() && year === currDate.getFullYear() && month === currDate.getMonth()) {
+                day.classList.add('curr-date')
             }
 
+
+            
             function printDateRange(date1, date2) {
                 if (date1 > date2) {
                     [date1, date2] = [date2, date1];
@@ -104,80 +105,110 @@ const generateCalendar = (month, year) => {
                 let dateArray = [];
                 let currentDate = new Date(date1);
                 while (currentDate <= date2) {
-                    dateArray.push(currentDate.getDate());
+                    dateArray.push(currentDate.getDate()); // Добавляем только день
                     currentDate.setDate(currentDate.getDate() + 1);
                 }
                 return dateArray.join(', ');
             }
-
+            // Add event listener for clicking on the date
             day.addEventListener('click', () => {
-                let selectedDay = i - firstDay.getDay() + 1;
+                let selectedDay = i - first_day.getDay() + 1;
                 if (!firstDate || (firstDate && secondDate)) {
+                    // firstDate = new Date(year, month, selectedDay);
                     firstDate = new Date(year, month, selectedDay);
                     secondDate = null;
+                    // console.log(`First date selected: ${firstDate.toDateString()}`);
                 } else {
                     secondDate = new Date(year, month, selectedDay);
-                    closeMarkPeriod();
-                    openCalDay();
-                    let title = document.getElementById("cal_day_title");
+                    // console.log(`Second date selected: ${secondDate.toDateString()}`);
+                    // printDateRange(firstDate, secondDate);
+                    CloseMarkPeriod();
+                    OpenCalDay();
+                    title = document.getElementById("cal_day_title");
+                    // console.log(`Clicked date: ${i - first_day.getDay() + 1}-${curr_month}-${year}`);
                     title.innerHTML = printDateRange(firstDate, secondDate);
+
+
                 }
             });
         }
-        calendarDays.appendChild(day);
+        calendar_days.appendChild(day)
     }
 }
 
-let monthList = calendar.querySelector('.month-list');
+// day.addEventListener('click', () => {
+//                 CloseMarkPeriod();
+//                 OpenCalDay();
+//                 title = document.getElementById("cal_day_title");
+//                 console.log(`Clicked date: ${i - first_day.getDay() + 1}-${curr_month}-${year}`);
+//                 title.innerHTML = `${i - first_day.getDay() + 1}.${curr_month}.${year}`;
 
-monthNames.forEach((e, index) => {
-    let month = document.createElement('div');
-    month.innerHTML = `<div data-month="${index}">${e}</div>`;
+//             });
+
+
+let month_list = calendar.querySelector('.month-list')
+
+month_names.forEach((e, index) => {
+    let month = document.createElement('div')
+    month.innerHTML = `<div data-month="${index}">${e}</div>`
     month.querySelector('div').onclick = () => {
-        monthList.classList.remove('show');
-        currMonth.value = index;
-        generateCalendar(index, currYear.value);
+        month_list.classList.remove('show')
+        curr_month.value = index
+        generateCalendar(index, curr_year.value)
     }
-    monthList.appendChild(month);
-});
+    month_list.appendChild(month)
+})
 
-let monthPicker = calendar.querySelector('#month-picker');
+let month_picker = calendar.querySelector('#month-picker')
 
-monthPicker.onclick = () => {
-    monthList.classList.add('show');
+month_picker.onclick = () => {
+    month_list.classList.add('show')
 }
 
-let currDate = new Date();
+let currDate = new Date()
 
-let currMonth = { value: currDate.getMonth() };
-let currYear = { value: currDate.getFullYear() };
+let curr_month = {value: currDate.getMonth()}
+let curr_year = {value: currDate.getFullYear()}
 
-generateCalendar(currMonth.value, currYear.value);
+generateCalendar(curr_month.value, curr_year.value)
+
+
+
+// document.querySelector('#prev-year').onclick = () => {
+//     --curr_year.value
+//     generateCalendar(curr_month.value, curr_year.value)
+// }
+
+// document.querySelector('#next-year').onclick = () => {
+//     ++curr_year.value
+//     generateCalendar(curr_month.value, curr_year.value)
+// }
+
+
 
 //______________________________________________________________________________________________________
 
-// Темная тема
+// Dark mode
 
 let styleMode = localStorage.getItem('styleMode');
 const themeToggle = document.getElementById('themeToggle');
 
 const enableDarkStyle = () => {
-    document.body.setAttribute('dark', '');
+    document.body.setAttribute('dark', '')
     localStorage.setItem('styleMode', 'dark');
     themeToggle.checked = true;
 }
-
 const disableDarkStyle = () => {
     document.body.removeAttribute('dark');
     localStorage.setItem('styleMode', 'light');
     themeToggle.checked = false;
 }
 
-const changeTheme = (isChecked) => {
+const ChangeTheme = (isChecked) => {
     if (isChecked) {
-        enableDarkStyle();
-    } else {
-        disableDarkStyle();
+        enableDarkStyle()
+    } else{
+        disableDarkStyle()
     }
 }
 
@@ -186,57 +217,77 @@ if (styleMode === 'dark') {
 }
 
 themeToggle.addEventListener('change', (event) => {
-    changeTheme(event.target.checked);
+    ChangeTheme(event.target.checked);
 });
 
-//______________________________________________________________________________________________________
-
-// Информация о пользователе
-
-const userInfoBlock = document.getElementById("user-info");
-const userInfo = window.Telegram.WebApp.initDataUnsafe;
-
-function getUserInfo(userInfo) {
-    if (userInfo) {
-        userInfoBlock.innerHTML = `
-            ID: ${userInfo.id || "Не указано"} <br>
-            Имя: ${userInfo.first_name || "Не указано"} <br>
-            Фамилия: ${userInfo.last_name || "Не указано"} <br>
-            Username: ${userInfo.username || "Не указано"} <br>
-            Язык: ${userInfo.language_code || "Не указано"} <br>
-            Премиум: ${userInfo.is_premium ? "Да" : "Нет"} <br>`;
-    } else {
-        userInfoBlock.innerHTML = "Данные пользователя не найдены.";
-    }
-}
-getUserInfo(userInfo.user);
 
 //______________________________________________________________________________________________________
 
-window.Telegram.WebApp.expand();
+// USER INFO
 
-// Получение темы Telegram
+const user_info_block = document.getElementById("user-info");
+const user_info = window.Telegram.WebApp.initDataUnsafe;
 
+function get_user_info(user_info) {
+        if (user_info) {
+            user_info_block.innerHTML = `
+                ID: ${user_info.id || "Не указано"} <br>
+                Имя: ${user_info.first_name || "Не указано"} <br>
+                Фамилия: ${user_info.last_name || "Не указано"} <br>
+                Username: ${user_info.username || "Не указано"} <br>
+                Язык: ${user_info.language_code || "Не указано"} <br>
+                Премиум: ${user_info.is_premium ? "Да" : "Нет"} <br>`;
+        } else {
+            user_info_block.innerHTML = "Данные пользователя не найдены.";
+        }
+    };
+// Фото: ${user_info.photo_url || "Нет фото"}`;
+// console.log(get_user_info(user_info.user));
+get_user_info(user_info.user);
+
+  
+//______________________________________________________________________________________________________
+
+window.Telegram.WebApp.expand()
+
+// Get telegram theme
+
+// Инициализация WebApp
 Telegram.WebApp.ready(() => {
+    
+    // Получение текущих параметров темы
     const themeParams = Telegram.WebApp.themeParams;
+    // console.log('Текущие параметры темы:', themeParams);
 
+    // Проверка, тёмная тема или светлая
     if (themeParams.bg_color && isDarkColor(themeParams.bg_color)) {
         enableDarkStyle();
     } else {
         disableDarkStyle();
     }
 
+    // Функция для определения, является ли цвет тёмным
     function isDarkColor(color) {
+        // Удаление возможного символа #
         color = color.replace('#', '');
+
+        // Преобразование цвета в RGB
         const r = parseInt(color.substring(0, 2), 16);
         const g = parseInt(color.substring(2, 4), 16);
         const b = parseInt(color.substring(4, 6), 16);
+
+        // Определение яркости цвета
         const brightness = (r * 299 + g * 587 + b * 114) / 1000;
+
+        // Если яркость меньше 128, цвет считается тёмным
         return brightness < 128;
     }
 
+    // Слушатель изменений темы
     Telegram.WebApp.onEvent('themeChanged', () => {
         const newThemeParams = Telegram.WebApp.themeParams;
+        // console.log('Новые параметры темы:', newThemeParams);
+
         if (newThemeParams.bg_color && isDarkColor(newThemeParams.bg_color)) {
             enableDarkStyle();
         } else {
@@ -245,79 +296,87 @@ Telegram.WebApp.ready(() => {
     });
 });
 
-//______________________________________________________________________________________________________
 
+
+//______________________________________________________________________________________________________
 var day = new Date();
-var month = day.getMonth();
-var monthNamesRu = [
+mounth = day.getMonth();
+monthNames = [
     "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь",
     "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"
 ];
-document.getElementById('month').innerHTML = monthNamesRu[month];
-
+document.getElementById('mounth').innerHTML = monthNames[mounth];
 var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-var dayOfWeek = day.getDay();
-var elements = document.getElementsByClassName(days[dayOfWeek]);
+var day = new Date(); // Создаем объект Date
+var weekday = day.getDay(); // Получаем день недели от 0 до 6
+var elements = document.getElementsByClassName(days[weekday]);
 for (var i = 0; i < elements.length; i++) {
     elements[i].style.fontWeight = "900";
 }
+var dayId = days[weekday];
+var day_num = document.getElementById(dayId);
+day_num.style.fontSize = '19px';
+day_num.style.background = "grey";
+day_num.style.width = '34px';
+day_num.style.height = '34px';
+day_num.style.marginTop = '-2px';
 
-var dayId = days[dayOfWeek];
-var dayNum = document.getElementById(dayId);
-dayNum.style.fontSize = '19px';
-dayNum.style.background = "grey";
-dayNum.style.width = '34px';
-dayNum.style.height = '34px';
-dayNum.style.marginTop = '-2px';
 
 //______________________________________________________________________________________________________
-
 function getDatesOfCurrentWeek() {
     var today = new Date();
-    var dayOfWeek = today.getDay();
-    var mondayOffset = dayOfWeek === 0 ? -6 : 1 - dayOfWeek;
+    var dayOfWeek = today.getDay(); // Получаем номер дня недели (воскресенье - 0, понедельник - 1, ...)
+    var mondayOffset = dayOfWeek === 0 ? -6 : 1 - dayOfWeek; // Определяем смещение до понедельника
     var monday = new Date(today);
-    monday.setDate(today.getDate() + mondayOffset);
+    monday.setDate(today.getDate() + mondayOffset); // Получаем дату понедельника
     var dates = [];
-    var variables = ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'];
+    var variables = [
+        'Mon',
+        'Tue',
+        'Wed',
+        'Thu',
+        'Fri',
+        'Sat',
+        'Sun'
+    ];
     for (var i = 0; i < 7; i++) {
         var currentDate = new Date(monday);
         currentDate.setDate(monday.getDate() + i);
         dates.push(currentDate);
+        // Обновляем элементы HTML
         var element = document.getElementById(variables[i]);
         if (element) {
             element.textContent = currentDate.getDate();
-        } else {
-            console.warn(`Element with id ${variables[i]} not found`);
         }
+        else {
+            console.warn("Element with id ".concat(variables[i], " not found"));
+        }
+        // Создаем переменные для каждой даты
         window[variables[i] + 'Date'] = currentDate;
     }
     return dates;
 }
 getDatesOfCurrentWeek();
-
 //______________________________________________________________________________________________________
-
 function addDays(date, days) {
     var result = new Date(date);
     result.setDate(result.getDate() + days);
     return result;
 }
-
 function getNextPeriod(startDate, cycleLength) {
     return addDays(startDate, cycleLength);
 }
-
 function getDaySuffix(day) {
     if (day % 10 === 1 && day % 100 !== 11) {
         return 'день';
-    } else if ((day % 10 >= 2 && day % 10 <= 4) && (day % 100 < 10 || day % 100 >= 20)) {
+    }
+    else if ((day % 10 >= 2 && day % 10 <= 4) && (day % 100 < 10 || day % 100 >= 20)) {
         return 'дня';
-    } else {
+    }
+    else {
         return 'дней';
     }
 }
-
 function daysUntil(date) {
     var today = new Date();
     var targetDate = new Date(date);
@@ -325,13 +384,11 @@ function daysUntil(date) {
     var daysDifference = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
     return daysDifference;
 }
-
 var startDate = new Date('07/01/2024');
 var cycleLength = 28;
 var nextPeriodDate = getNextPeriod(startDate, cycleLength);
 var daysLeft = daysUntil(nextPeriodDate);
-document.getElementById('period_days').innerHTML = `${daysLeft} ${getDaySuffix(daysLeft)}`;
-
+document.getElementById('period_days').innerHTML = "".concat(daysLeft, " ").concat(getDaySuffix(daysLeft));
 //______________________________________________________________________________________________________
 
 function getCurrentDay(startDate, cycleLength) {
@@ -343,22 +400,60 @@ function getCurrentDay(startDate, cycleLength) {
 
 //______________________________________________________________________________________________________
 
-function getPregnancyChance(startDate, cycleLength) {
+
+function getPregnancyChance(startDate, cycleLength, lang) {
     var error = 2;
-    var currentDay = getCurrentDay(startDate, cycleLength);
-    var ovulationDay = 14;
+    var currentDay = getCurrentDay(startDate, cycleLength, lang);
+    var ovulationDay = 14;  // День овуляции в цикле
     if (currentDay >= ovulationDay - error && currentDay <= ovulationDay + error) {
-        return lang === 'en' ? 'high' : "высокая";
-    } else {
-        return lang === 'en' ? 'low' : "низкая";
+        if (lang === 'ru'){
+            return `высокая ${lang}`;
+            console.log(lang);
+        } else if (lang === 'en'){ 
+            return `high ${lang}`;
+            console.log(lang);
+        }
+    } else if (lang === 'ru'){
+        return `низкая ${lang}`;
+        console.log(lang);
+    } else if (lang === 'en'){ 
+        return `low ${lang}`;
+        console.log(lang);
     }
 }
 
-if (userInfo.language_code === 'ru'){
+// if (currentDay >= ovulationDay - error && currentDay <= ovulationDay + error) {
+//     if (lang === 'en'){
+//         return 'high'
+//     } else{ 
+//         return "высокая";
+//     }
+// } else if (lang === 'en'){
+//     return 'low';
+// } else{ 
+//     return "низкая";
+// }
+
+// if (currentDay >= ovulationDay - error && currentDay <= ovulationDay + error) {
+//         return lang === 'en' ? 'high' : "высокая";
+//     } else {
+//         return lang === 'en' ? 'low' : "низкая";
+//     }
+// }
+
+// console.log(lang)
+let lang = 'ru';
+$('.translate').click(function() {
+    lang = $(this).attr('id');
+});
+
+if (user_info.language_code === 'ru'){
     lang = 'ru';
 } else{
-    lang = 'en';
+    lang = 'en'
 }
-var result = getPregnancyChance(startDate, cycleLength);
-let pregnancy_chance = document.getElementById('pregnancy_chance');
-pregnancy_chance.innerHTML = `${pregnancy_chance.textContent} ${result}`
+
+var result = getPregnancyChance(startDate, cycleLength, lang);
+pregnancy_chance = document.getElementById('pregnancy_chance');
+pregnancy_chance.innerHTML = `${pregnancy_chance.textContent} ${result} `;
+
