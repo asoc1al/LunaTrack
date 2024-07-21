@@ -227,7 +227,7 @@ themeToggle.addEventListener('change', (event) => {
 
 const user_info_block = document.getElementById("user-info");
 const user_info = window.Telegram.WebApp.initDataUnsafe;
-
+window.Telegram.WebApp.disableVerticalSwipes()
 function get_user_info(user_info) {
         if (user_info) {
             user_info_block.innerHTML = `
@@ -406,20 +406,11 @@ function getPregnancyChance(startDate, cycleLength, lang) {
     var currentDay = getCurrentDay(startDate, cycleLength, lang);
     var ovulationDay = 14;  // День овуляции в цикле
     if (currentDay >= ovulationDay - error && currentDay <= ovulationDay + error) {
-        if (lang === 'ru'){
-            return `высокая ${lang}`;
-            console.log(lang);
-        } else if (lang === 'en'){ 
-            return `high ${lang}`;
-            console.log(lang);
-        }
-    } else if (lang === 'ru'){
-        return `низкая ${lang}`;
-        console.log(lang);
-    } else if (lang === 'en'){ 
-        return `low ${lang}`;
-        console.log(lang);
+        return lang === 'en' ? 'high' : "высокая";
+    } else{
+        return lang === 'en' ? 'low' : "низкая";
     }
+    
 }
 
 // if (currentDay >= ovulationDay - error && currentDay <= ovulationDay + error) {
