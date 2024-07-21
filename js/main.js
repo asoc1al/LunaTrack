@@ -227,7 +227,7 @@ themeToggle.addEventListener('change', (event) => {
 
 const user_info_block = document.getElementById("user-info");
 const user_info = window.Telegram.WebApp.initDataUnsafe;
-window.Telegram.WebApp.disableVerticalSwipes()
+window.Telegram.WebApp.isVerticalSwipesEnabled(false)
 function get_user_info(user_info) {
         if (user_info) {
             user_info_block.innerHTML = `
