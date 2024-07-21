@@ -229,7 +229,7 @@ const user_info_block = document.getElementById("user-info");
 const user_info = window.Telegram.WebApp.initDataUnsafe;
 
 console.log(window.Telegram.WebApp);
-window.Telegram.WebApp.isVerticalSwipesEnabled = false;
+// window.Telegram.WebApp.isVerticalSwipesEnabled = false;
 
 function get_user_info(user_info) {
         if (user_info) {
@@ -239,12 +239,13 @@ function get_user_info(user_info) {
                 Фамилия: ${user_info.last_name || "Не указано"} <br>
                 Username: ${user_info.username || "Не указано"} <br>
                 Язык: ${user_info.language_code || "Не указано"} <br>
-                Премиум: ${user_info.is_premium ? "Да" : "Нет"} <br>
-                swipe: ${window.Telegram.WebApp.isVerticalSwipesEnabled()}`;
+                Премиум: ${user_info.is_premium ? "Да" : "Нет"} <br>`;
         } else {
             user_info_block.innerHTML = "Данные пользователя не найдены.";
         }
     };
+
+    // swipe: ${window.Telegram.WebApp.isVerticalSwipesEnabled()}
 // Фото: ${user_info.photo_url || "Нет фото"}`;
 // console.log(get_user_info(user_info.user));
 get_user_info(user_info.user);
