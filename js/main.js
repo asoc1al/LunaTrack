@@ -227,10 +227,6 @@ themeToggle.addEventListener('change', (event) => {
 
 const user_info_block = document.getElementById("user-info");
 const user_info = window.Telegram.WebApp.initDataUnsafe;
-window.Telegram.WebApp.isClosingConfirmationEnabled = true;
-console.log(window.Telegram.WebApp);
-// window.Telegram.WebApp.isVerticalSwipesEnabled = false;
-
 function get_user_info(user_info) {
         if (user_info) {
             user_info_block.innerHTML = `
@@ -253,13 +249,12 @@ get_user_info(user_info.user);
   
 //______________________________________________________________________________________________________
 
-window.Telegram.WebApp.expand()
-
-// Get telegram theme
+tg.expand();
 
 // Инициализация WebApp
 Telegram.WebApp.ready(() => {
-    
+    tg.isClosingConfirmationEnabled = true;
+    tg.disableVerticalSwipes()
     // Получение текущих параметров темы
     const themeParams = Telegram.WebApp.themeParams;
     // console.log('Текущие параметры темы:', themeParams);
