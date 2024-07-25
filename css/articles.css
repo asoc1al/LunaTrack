@@ -20,12 +20,24 @@
 
 :root{
     --var-body-bg: #fff;
-    --var-weekdays-color: #525252;
+    --var-artical-title: #eee;
+    --var-artical-description: #bebebe;
+    /* --var-calendar-day-week:  #c3c2c8; */
+    /* --var-calendar-days: #f8fbff; */
+    /* --var-hover: #323048; */
 }
+
 
 [dark]{
     --var-body-bg: #0F0F0F;
     --var-weekdays-color: #eee;
+    --var-artical-description: #bebebe;
+    /* --var-calendar-day-week: #79788c; */
+    /* --var-calendar-days: #151426; */
+    /* --var-hover: #edf0f5; */
+
+
+
 }
 
 
@@ -174,7 +186,7 @@ main{
 .section_title{
     display: flex;
     font-size: 13px;
-    color: #707579;
+    color: var(--var-artical-title);
     font-weight: 500;
     margin-top: 12px;
     margin-bottom: 8px;
@@ -187,12 +199,12 @@ main{
 }
 .card_title{
     font-size: 17px;
-    color: #000;
+    color: var(--var-artical-title);
     font-weight: 600;
 }
 .card_description{
     font-size: 15px;
-    color: #707579;
+    color: var(--var-artical-description);
     font-weight: 500;
 }
 #end_section{
