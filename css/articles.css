@@ -20,8 +20,8 @@
 
 :root{
     --var-body-bg: #fff;
-    --var-artical-title: #eee;
-    --var-artical-description: #bebebe;
+    --var-artical-title: #070707;
+    --var-artical-description: #0f0f0f;
     /* --var-calendar-day-week:  #c3c2c8; */
     /* --var-calendar-days: #f8fbff; */
     /* --var-hover: #323048; */
@@ -30,7 +30,7 @@
 
 [dark]{
     --var-body-bg: #0F0F0F;
-    --var-weekdays-color: #eee;
+    --var-artical-title: #eee;
     --var-artical-description: #bebebe;
     /* --var-calendar-day-week: #79788c; */
     /* --var-calendar-days: #151426; */
@@ -170,8 +170,6 @@ main{
 /*    height: 100%;*/
 }
 .swiper-slide{
-    width: 255px;
-    height: 325px;
     box-shadow: 0px 30px 60px 0px #A3A8B226;
     text-align: center;
     display: flex;
