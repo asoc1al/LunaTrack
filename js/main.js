@@ -254,7 +254,7 @@ tg.expand();
 // Инициализация WebApp
 Telegram.WebApp.ready(() => {
     tg.isClosingConfirmationEnabled = true;
-    tg.disableVerticalSwipes()
+    console.log(tg.isClosingConfirmationEnabled)
     // Получение текущих параметров темы
     const themeParams = Telegram.WebApp.themeParams;
     // console.log('Текущие параметры темы:', themeParams);
