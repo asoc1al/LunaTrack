@@ -253,7 +253,10 @@ tg.expand();
 
 // Инициализация WebApp
 Telegram.WebApp.ready(() => {
-    window.Telegram.WebApp.disableVerticalSwipes()
+    const { enableVerticalSwipes, disableVerticalSwipes } = useWebAppViewport()
+    disableVerticalSwipes()
+
+    // window.Telegram.WebApp.disableVerticalSwipes()
     // tg.isClosingConfirmationEnabled = true;
     // tg.allow_vertical_swipe = false;
     // console.log(tg.isClosingConfirmationEnabled)
