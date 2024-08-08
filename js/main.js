@@ -56,13 +56,14 @@ getFebDays = (year) => {
     return isLeapYear(year) ? 29 : 28
 }
 
-let firstDate = 0;
+
 generateCalendar = (month, year) => {
 
     let calendar_days = calendar.querySelector('.calendar-days')
     let calendar_header_year = calendar.querySelector('#year')
     
     let secondDate = null;
+    let firstDate = null;
 
     let days_of_month = [31, getFebDays(year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
@@ -450,7 +451,8 @@ function getPregnancyChance(startDate, cycleLength, lang) {
 //     lang = 'en'
 // }
 
-var result = getPregnancyChance(startDate, cycleLength, lang);
+// var result = getPregnancyChance(startDate, cycleLength, lang);
+var result = getPregnancyChance(startDate, cycleLength);
 pregnancy_chance = document.getElementById('pregnancy_chance');
 pregnancy_chance.innerHTML = `${pregnancy_chance.textContent} ${result} `;
 
