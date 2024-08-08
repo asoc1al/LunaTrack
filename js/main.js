@@ -56,7 +56,6 @@ getFebDays = (year) => {
     return isLeapYear(year) ? 29 : 28
 }
 
-
 generateCalendar = (month, year) => {
 
     let calendar_days = calendar.querySelector('.calendar-days')
@@ -101,16 +100,14 @@ generateCalendar = (month, year) => {
 
             
             function printDateRange(date1, date2) {
-                if (date1 > date2) {
-                    [date1, date2] = [date2, date1];
+                if (date1 && date2) {
+                    const options = { day: 'numeric', month: 'long', year: 'numeric' };
+                    const startDateFormatted = date1.toLocaleDateString(undefined, options);
+                    const endDateFormatted = date2.toLocaleDateString(undefined, options);
+                    // return `С ${startDateFormatted} по ${endDateFormatted}`;
+                    return [startDateFormatted, endDateFormatted]
                 }
-                let dateArray = [];
-                let currentDate = new Date(date1);
-                while (currentDate <= date2) {
-                    dateArray.push(currentDate.getDate()); // Добавляем только день
-                    currentDate.setDate(currentDate.getDate() + 1);
-                }
-                return dateArray.join(', ');
+                return '';
             }
             // Add event listener for clicking on the date
             day.addEventListener('click', () => {
@@ -128,7 +125,11 @@ generateCalendar = (month, year) => {
                     OpenCalDay();
                     title = document.getElementById("cal_day_title");
                     // console.log(`Clicked date: ${i - first_day.getDay() + 1}-${curr_month}-${year}`);
-                    title.innerHTML = printDateRange(firstDate, secondDate);
+                    dates = printDateRange(firstDate, secondDate)
+                    // startDateFormatted = dates[0];
+                    // endDateFormatted = dates[1];
+                    cal_day_title = document.getElementById('cal_day_title')
+                    title.innerHTML = `${cal_day_title.textContent[0]} ${dates[0]} ${cal_day_title.textContent[1]}${cal_day_title.textContent[2]} ${dates[1]}`;
 
 
                 }

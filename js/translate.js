@@ -9,6 +9,7 @@ var arrLang = {
         'sun': 'Sun',
         'developing': 'In developing',
         'pregnancy_chance': `Chance of getting pregnant ${result}`,
+        // 'cal_day_title': `From ${dates[0]} to ${dates[1]}`,
     },
     'ru': {
         'mon': 'Пн',
@@ -20,6 +21,7 @@ var arrLang = {
         'sun': 'Вс',
         'developing': 'В разработке',
         'pregnancy_chance': `Вероятность забеременеть ${result}`,
+        // 'cal_day_title': `С ${dates[0]} по ${dates[1]}`,
     }
 }
 
