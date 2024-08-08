@@ -56,11 +56,12 @@ getFebDays = (year) => {
     return isLeapYear(year) ? 29 : 28
 }
 
+let firstDate = 0;
 generateCalendar = (month, year) => {
 
     let calendar_days = calendar.querySelector('.calendar-days')
     let calendar_header_year = calendar.querySelector('#year')
-    let firstDate = null;
+    
     let secondDate = null;
 
     let days_of_month = [31, getFebDays(year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
@@ -389,7 +390,7 @@ function daysUntil(date) {
     var daysDifference = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
     return daysDifference;
 }
-var startDate = new Date('07/01/2024');
+var startDate = new Date('08/01/2024');
 var cycleLength = 28;
 var nextPeriodDate = getNextPeriod(startDate, cycleLength);
 var daysLeft = daysUntil(nextPeriodDate);
@@ -411,9 +412,9 @@ function getPregnancyChance(startDate, cycleLength, lang) {
     var currentDay = getCurrentDay(startDate, cycleLength, lang);
     var ovulationDay = 14;  // День овуляции в цикле
     if (currentDay >= ovulationDay - error && currentDay <= ovulationDay + error) {
-        return lang === 'en' ? 'high' : "высокая";
+        return "высокая";
     } else{
-        return lang === 'en' ? 'low' : "низкая";
+        return "низкая";
     }
     
 }
@@ -438,16 +439,16 @@ function getPregnancyChance(startDate, cycleLength, lang) {
 // }
 
 // console.log(lang)
-let lang = 'ru';
-$('.translate').click(function() {
-    lang = $(this).attr('id');
-});
+// let lang = 'ru';
+// $('.translate').click(function() {
+//     lang = $(this).attr('id');
+// });
 
-if (user_info.language_code === 'ru'){
-    lang = 'ru';
-} else{
-    lang = 'en'
-}
+// if (user_info.language_code === 'ru'){
+//     lang = 'ru';
+// } else{
+//     lang = 'en'
+// }
 
 var result = getPregnancyChance(startDate, cycleLength, lang);
 pregnancy_chance = document.getElementById('pregnancy_chance');
