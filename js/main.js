@@ -73,7 +73,6 @@ generateCalendar = (month, year) => {
     if (!year) year = currDate.getFullYear()
 
     let cal_year = document.getElementById('year');
-
     cal_year.innerHTML = `${currDate.getFullYear()}`;
 
     let curr_month = `${month_names[month]}`
@@ -107,38 +106,34 @@ generateCalendar = (month, year) => {
                     // return `С ${startDateFormatted} по ${endDateFormatted}`;
                     return [startDateFormatted, endDateFormatted]
                 }
-                return '';
+                return ['', ''];
             }
             // Add event listener for clicking on the date
             day.addEventListener('click', () => {
                 let selectedDay = i - first_day.getDay() + 1;
                 if (!firstDate || (firstDate && secondDate)) {
-                    // firstDate = new Date(year, month, selectedDay);
                     firstDate = new Date(year, month, selectedDay);
                     secondDate = null;
-                    // console.log(`First date selected: ${firstDate.toDateString()}`);
                 } else {
                     secondDate = new Date(year, month, selectedDay);
-                    // console.log(`Second date selected: ${secondDate.toDateString()}`);
-                    // printDateRange(firstDate, secondDate);
                     CloseMarkPeriod();
                     OpenCalDay();
                     title = document.getElementById("cal_day_title");
-                    // console.log(`Clicked date: ${i - first_day.getDay() + 1}-${curr_month}-${year}`);
                     dates = printDateRange(firstDate, secondDate)
-                    // startDateFormatted = dates[0];
-                    // endDateFormatted = dates[1];
-                    cal_day_title = document.getElementById('cal_day_title')
-                    title.innerHTML = `${cal_day_title.textContent[0]} ${dates[0]} ${cal_day_title.textContent[1]}${cal_day_title.textContent[2]} ${dates[1]}`;
+                    title.innerHTML = `${cal_day_title.textContent[0]} ${dates[0]} ${cal_day_title.textContent[2]}${cal_day_title.textContent[3]} ${endDateFormatted}`;
 
-
+                    
                 }
+                
+                
             });
         }
         calendar_days.appendChild(day)
     }
+    return {firstDate, secondDate};
 }
 
+                
 // day.addEventListener('click', () => {
 //                 CloseMarkPeriod();
 //                 OpenCalDay();
@@ -173,19 +168,9 @@ let currDate = new Date()
 let curr_month = {value: currDate.getMonth()}
 let curr_year = {value: currDate.getFullYear()}
 
-generateCalendar(curr_month.value, curr_year.value)
-
-
-
-// document.querySelector('#prev-year').onclick = () => {
-//     --curr_year.value
-//     generateCalendar(curr_month.value, curr_year.value)
-// }
-
-// document.querySelector('#next-year').onclick = () => {
-//     ++curr_year.value
-//     generateCalendar(curr_month.value, curr_year.value)
-// }
+// const {firstDate} = generateCalendar(curr_month.value, curr_year.value);
+generateCalendar(curr_month.value, curr_year.value);
+// console.log(`First Day: ${firstDate}`);
 
 
 

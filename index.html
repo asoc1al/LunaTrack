@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="css/main.css">
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="icon" type="image/png" sizes="32x32" href="{% static 'Images/Logo.png' %}">
     <title>LunaTrack</title>
 </head>
 <body>
@@ -13,7 +14,7 @@
         <header>
             <a href='#' id="avatar"></a>
             <button type="submit" onclick="openSettings()" id="settings">
-                <img src="{{ data }}">
+                <img src="Images/Setting.svg">
             </button>
             <div class="settingsPopup" id="settingsPopup">
                 <label class="switch">
@@ -92,7 +93,7 @@
         <div class="month-list"></div>
     </div>
     <div class="calendar_day" id="cal_day">
-        <span id="cal_day_title" key="cal_day_title">Спо </span>
+        <span id="cal_day_title" key="cal_day_title" class="lang">Спо </span>
         <!-- <span>Hello</span> -->
         <button class="CloseCalDay" type="button" onclick="CloseCalDay()">Close</button>
     </div>
