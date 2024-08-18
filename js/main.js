@@ -124,7 +124,7 @@ generateCalendar = (month, year) => {
                     OpenCalDay();
                     title = document.getElementById("cal_day_title");
                     dates = printDateRange(firstDate, secondDate);
-                    title.innerHTML = `${title.textContent[0]} ${dates[0]} ${title.textContent[1]}${title.textContent[2]} ${dates[1]}`;
+                    title.innerHTML = `С ${dates[0]} по ${dates[1]}`;
                 }
             });
         }
