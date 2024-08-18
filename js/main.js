@@ -4,8 +4,6 @@ var src = document.getElementById("avatar");
 src.appendChild(img);
 const tg = window.Telegram.WebApp;
 
-
-
 //______________________________________________________________________________________________________
 
 //Popups
@@ -14,12 +12,12 @@ const tg = window.Telegram.WebApp;
 
 let settingsPopup = document.getElementById("settingsPopup");
 
-function openSettings(){
+function openSettings() {
     CloseMarkPeriod();
     CloseCalDay();
     settingsPopup.classList.add("open-popup");
 }
-function closeSettings(){
+function closeSettings() {
     settingsPopup.classList.remove("open-popup")
 }
 
@@ -33,36 +31,44 @@ let CalDay = document.getElementById('cal_day');
 function OpenMarkPeriod() {
     MarkPeriodPopup.classList.add('open-mark');
 }
-function CloseMarkPeriod(){
+function CloseMarkPeriod() {
     MarkPeriodPopup.classList.remove("open-mark");
 }
 function OpenCalDay() {
     CalDay.classList.add('open_cal_day');
 }
-function CloseCalDay(){
+function CloseCalDay() {
     CalDay.classList.remove("open_cal_day");
 }
-
 
 let calendar = document.querySelector('.calendar')
 
 const month_names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
 isLeapYear = (year) => {
-    return (year % 4 === 0 && year % 100 !== 0 && year % 400 !== 0) || (year % 100 === 0 && year % 400 ===0)
+    return (year % 4 === 0 && year % 100 !== 0 && year % 400 !== 0) || (year % 100 === 0 && year % 400 === 0)
 }
 
 getFebDays = (year) => {
     return isLeapYear(year) ? 29 : 28
 }
 
+let firstDate = null; // Переменная для хранения первой выбранной даты
+let startDate = new Date('08/01/2024');  // Предварительное значение, которое обновится после выбора даты
+let cycleLength = 28;
+
+function updateStartDate() {
+    if (firstDate) {
+        startDate = firstDate;
+    }
+}
+
 generateCalendar = (month, year) => {
 
     let calendar_days = calendar.querySelector('.calendar-days')
     let calendar_header_year = calendar.querySelector('#year')
-    
+
     let secondDate = null;
-    let firstDate = null;
 
     let days_of_month = [31, getFebDays(year), 31, 30, 31, 30, 31, 31, 30, 31, 30, 31]
 
@@ -79,8 +85,6 @@ generateCalendar = (month, year) => {
     month_picker.innerHTML = curr_month
     calendar_header_year.innerHTML = year
 
-    // get first day of month
-    
     let first_day = new Date(year, month, 1)
 
     for (let i = 0; i <= days_of_month[month] + first_day.getDay() - 1; i++) {
@@ -96,53 +100,38 @@ generateCalendar = (month, year) => {
                 day.classList.add('curr-date')
             }
 
-
-            
             function printDateRange(date1, date2) {
                 if (date1 && date2) {
                     const options = { day: 'numeric', month: 'long', year: 'numeric' };
                     const startDateFormatted = date1.toLocaleDateString(undefined, options);
                     const endDateFormatted = date2.toLocaleDateString(undefined, options);
-                    // return `С ${startDateFormatted} по ${endDateFormatted}`;
                     return [startDateFormatted, endDateFormatted]
                 }
                 return ['', ''];
             }
-            // Add event listener for clicking on the date
+
             day.addEventListener('click', () => {
                 let selectedDay = i - first_day.getDay() + 1;
                 if (!firstDate || (firstDate && secondDate)) {
                     firstDate = new Date(year, month, selectedDay);
                     secondDate = null;
+                    startDate = firstDate;  // Обновление startDate
+                    updateStartDate();  // Обновляем startDate
+                    updatePeriodDays(); // Обновляем количество дней
                 } else {
                     secondDate = new Date(year, month, selectedDay);
                     CloseMarkPeriod();
                     OpenCalDay();
                     title = document.getElementById("cal_day_title");
-                    dates = printDateRange(firstDate, secondDate)
+                    dates = printDateRange(firstDate, secondDate);
                     title.innerHTML = `${cal_day_title.textContent[0]} ${dates[0]} ${cal_day_title.textContent[2]}${cal_day_title.textContent[3]} ${endDateFormatted}`;
-
-                    
                 }
-                
-                
             });
         }
         calendar_days.appendChild(day)
     }
-    return {firstDate, secondDate};
+    return { firstDate, secondDate };
 }
-
-                
-// day.addEventListener('click', () => {
-//                 CloseMarkPeriod();
-//                 OpenCalDay();
-//                 title = document.getElementById("cal_day_title");
-//                 console.log(`Clicked date: ${i - first_day.getDay() + 1}-${curr_month}-${year}`);
-//                 title.innerHTML = `${i - first_day.getDay() + 1}.${curr_month}.${year}`;
-
-//             });
-
 
 let month_list = calendar.querySelector('.month-list')
 
@@ -165,14 +154,17 @@ month_picker.onclick = () => {
 
 let currDate = new Date()
 
-let curr_month = {value: currDate.getMonth()}
-let curr_year = {value: currDate.getFullYear()}
+let curr_month = { value: currDate.getMonth() }
+let curr_year = { value: currDate.getFullYear() }
 
-// const {firstDate} = generateCalendar(curr_month.value, curr_year.value);
 generateCalendar(curr_month.value, curr_year.value);
-// console.log(`First Day: ${firstDate}`);
 
-
+// Функция для обновления значения daysUntil на основе startDate
+function updatePeriodDays() {
+    var nextPeriodDate = getNextPeriod(startDate, cycleLength);
+    var daysLeft = daysUntil(nextPeriodDate);
+    document.getElementById('period_days').innerHTML = `${daysLeft} ${getDaySuffix(daysLeft)}`;
+}
 
 //______________________________________________________________________________________________________
 
@@ -195,7 +187,7 @@ const disableDarkStyle = () => {
 const ChangeTheme = (isChecked) => {
     if (isChecked) {
         enableDarkStyle()
-    } else{
+    } else {
         disableDarkStyle()
     }
 }
@@ -208,7 +200,6 @@ themeToggle.addEventListener('change', (event) => {
     ChangeTheme(event.target.checked);
 });
 
-
 //______________________________________________________________________________________________________
 
 // USER INFO
@@ -216,25 +207,21 @@ themeToggle.addEventListener('change', (event) => {
 const user_info_block = document.getElementById("user-info");
 const user_info = window.Telegram.WebApp.initDataUnsafe;
 function get_user_info(user_info) {
-        if (user_info) {
-            user_info_block.innerHTML = `
+    if (user_info) {
+        user_info_block.innerHTML = `
                 ID: ${user_info.id || "Не указано"} <br>
                 Имя: ${user_info.first_name || "Не указано"} <br>
                 Фамилия: ${user_info.last_name || "Не указано"} <br>
                 Username: ${user_info.username || "Не указано"} <br>
                 Язык: ${user_info.language_code || "Не указано"} <br>
                 Премиум: ${user_info.is_premium ? "Да" : "Нет"} <br>`;
-        } else {
-            user_info_block.innerHTML = "Данные пользователя не найдены.";
-        }
-    };
+    } else {
+        user_info_block.innerHTML = "Данные пользователя не найдены.";
+    }
+};
 
-    // swipe: ${window.Telegram.WebApp.isVerticalSwipesEnabled()}
-// Фото: ${user_info.photo_url || "Нет фото"}`;
-// console.log(get_user_info(user_info.user));
 get_user_info(user_info.user);
 
-  
 //______________________________________________________________________________________________________
 
 tg.expand();
@@ -244,42 +231,28 @@ Telegram.WebApp.ready(() => {
     const { enableVerticalSwipes, disableVerticalSwipes } = useWebAppViewport()
     disableVerticalSwipes()
 
-    // window.Telegram.WebApp.disableVerticalSwipes()
-    // tg.isClosingConfirmationEnabled = true;
-    // tg.allow_vertical_swipe = false;
-    // console.log(tg.isClosingConfirmationEnabled)
-    // Получение текущих параметров темы
     const themeParams = Telegram.WebApp.themeParams;
-    // console.log('Текущие параметры темы:', themeParams);
 
-    // Проверка, тёмная тема или светлая
     if (themeParams.bg_color && isDarkColor(themeParams.bg_color)) {
         enableDarkStyle();
     } else {
         disableDarkStyle();
     }
 
-    // Функция для определения, является ли цвет тёмным
     function isDarkColor(color) {
-        // Удаление возможного символа #
         color = color.replace('#', '');
 
-        // Преобразование цвета в RGB
         const r = parseInt(color.substring(0, 2), 16);
         const g = parseInt(color.substring(2, 4), 16);
         const b = parseInt(color.substring(4, 6), 16);
 
-        // Определение яркости цвета
         const brightness = (r * 299 + g * 587 + b * 114) / 1000;
 
-        // Если яркость меньше 128, цвет считается тёмным
         return brightness < 128;
     }
 
-    // Слушатель изменений темы
     Telegram.WebApp.onEvent('themeChanged', () => {
         const newThemeParams = Telegram.WebApp.themeParams;
-        // console.log('Новые параметры темы:', newThemeParams);
 
         if (newThemeParams.bg_color && isDarkColor(newThemeParams.bg_color)) {
             enableDarkStyle();
@@ -289,9 +262,9 @@ Telegram.WebApp.ready(() => {
     });
 });
 
+// ________________________________________________________________________________________
+// ________________________________________________________________________________________
 
-
-//______________________________________________________________________________________________________
 var day = new Date();
 mounth = day.getMonth();
 monthNames = [
@@ -314,8 +287,6 @@ day_num.style.width = '34px';
 day_num.style.height = '34px';
 day_num.style.marginTop = '-2px';
 
-
-//______________________________________________________________________________________________________
 function getDatesOfCurrentWeek() {
     var today = new Date();
     var dayOfWeek = today.getDay(); // Получаем номер дня недели (воскресенье - 0, понедельник - 1, ...)
@@ -350,26 +321,39 @@ function getDatesOfCurrentWeek() {
     return dates;
 }
 getDatesOfCurrentWeek();
+
 //______________________________________________________________________________________________________
 function addDays(date, days) {
     var result = new Date(date);
     result.setDate(result.getDate() + days);
     return result;
 }
+
 function getNextPeriod(startDate, cycleLength) {
     return addDays(startDate, cycleLength);
 }
+
+function daysUntil(date) {
+    var today = new Date();
+    var timeDiff = date.getTime() - today.getTime();
+    var daysDiff = Math.ceil(timeDiff / (1000 * 3600 * 24));
+    return daysDiff;
+}
+
 function getDaySuffix(day) {
-    if (day % 10 === 1 && day % 100 !== 11) {
+    if (day === 1 || day === 21 || day === 31) {
         return 'день';
-    }
-    else if ((day % 10 >= 2 && day % 10 <= 4) && (day % 100 < 10 || day % 100 >= 20)) {
+    } else if (day >= 2 && day <= 4 || day >= 22 && day <= 24) {
         return 'дня';
-    }
-    else {
+    } else {
         return 'дней';
     }
 }
+
+updatePeriodDays();  // Первоначальный вызов функции для установки значения при загрузке страницы
+
+// Ваш основной код...
+
 function daysUntil(date) {
     var today = new Date();
     var targetDate = new Date(date);
@@ -377,11 +361,12 @@ function daysUntil(date) {
     var daysDifference = Math.ceil(timeDifference / (1000 * 60 * 60 * 24));
     return daysDifference;
 }
-var startDate = new Date('08/01/2024');
-var cycleLength = 28;
+
+// var cycleLength = 28;
 var nextPeriodDate = getNextPeriod(startDate, cycleLength);
 var daysLeft = daysUntil(nextPeriodDate);
 document.getElementById('period_days').innerHTML = "".concat(daysLeft, " ").concat(getDaySuffix(daysLeft));
+
 //______________________________________________________________________________________________________
 
 function getCurrentDay(startDate, cycleLength) {
@@ -393,52 +378,23 @@ function getCurrentDay(startDate, cycleLength) {
 
 //______________________________________________________________________________________________________
 
-
-function getPregnancyChance(startDate, cycleLength, lang) {
+function getPregnancyChance(startDate, cycleLength) {
     var error = 2;
-    var currentDay = getCurrentDay(startDate, cycleLength, lang);
+    var currentDay = getCurrentDay(startDate, cycleLength);
     var ovulationDay = 14;  // День овуляции в цикле
     if (currentDay >= ovulationDay - error && currentDay <= ovulationDay + error) {
         return "высокая";
-    } else{
+    } else {
         return "низкая";
     }
-    
 }
 
-// if (currentDay >= ovulationDay - error && currentDay <= ovulationDay + error) {
-//     if (lang === 'en'){
-//         return 'high'
-//     } else{ 
-//         return "высокая";
-//     }
-// } else if (lang === 'en'){
-//     return 'low';
-// } else{ 
-//     return "низкая";
-// }
+// Пример использования:
 
-// if (currentDay >= ovulationDay - error && currentDay <= ovulationDay + error) {
-//         return lang === 'en' ? 'high' : "высокая";
-//     } else {
-//         return lang === 'en' ? 'low' : "низкая";
-//     }
-// }
-
-// console.log(lang)
-// let lang = 'ru';
-// $('.translate').click(function() {
-//     lang = $(this).attr('id');
-// });
-
-// if (user_info.language_code === 'ru'){
-//     lang = 'ru';
-// } else{
-//     lang = 'en'
-// }
-
-// var result = getPregnancyChance(startDate, cycleLength, lang);
 var result = getPregnancyChance(startDate, cycleLength);
-pregnancy_chance = document.getElementById('pregnancy_chance');
+var pregnancy_chance = document.getElementById('pregnancy_chance');
 pregnancy_chance.innerHTML = `${pregnancy_chance.textContent} ${result} `;
 
+//______________________________________________________________________________________________________
+
+// Дополнительный код или функции...
