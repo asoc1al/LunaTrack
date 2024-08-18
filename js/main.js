@@ -224,10 +224,6 @@ get_user_info(user_info.user);
 
 //______________________________________________________________________________________________________
 
-
-tg.expand();
-
-
 // Инициализация WebApp
 Telegram.WebApp.ready(() => {
     const { enableVerticalSwipes, disableVerticalSwipes } = useWebAppViewport()
@@ -263,6 +259,17 @@ Telegram.WebApp.ready(() => {
         }
     });
 });
+
+// Расширяем Web App на весь экран
+// const tg = window.Telegram.WebApp;
+tg.expand();
+
+// Если нужно, ещё раз вызываем disableVerticalSwipes
+if (Telegram.WebApp.isVersionAtLeast("7.7")) {
+    const { disableVerticalSwipes } = useWebAppViewport();
+    disableVerticalSwipes();
+}
+
 
 // ________________________________________________________________________________________
 // ________________________________________________________________________________________
