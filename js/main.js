@@ -124,7 +124,7 @@ generateCalendar = (month, year) => {
                     OpenCalDay();
                     title = document.getElementById("cal_day_title");
                     dates = printDateRange(firstDate, secondDate);
-                    title.innerHTML = `${cal_day_title.textContent[0]} ${dates[0]} ${cal_day_title.textContent[2]}${cal_day_title.textContent[3]} ${endDateFormatted}`;
+                    title.innerHTML = `${title.textContent[0]} ${dates[0]} ${title.textContent[1]}${title.textContent[2]} ${dates[1]}`;
                 }
             });
         }
@@ -224,7 +224,9 @@ get_user_info(user_info.user);
 
 //______________________________________________________________________________________________________
 
+
 tg.expand();
+
 
 // Инициализация WebApp
 Telegram.WebApp.ready(() => {
