@@ -226,8 +226,8 @@ get_user_info(user_info.user);
 
 // Инициализация WebApp
 Telegram.WebApp.ready(() => {
-    const { enableVerticalSwipes, disableVerticalSwipes } = useWebAppViewport()
-    disableVerticalSwipes()
+    // const { enableVerticalSwipes, disableVerticalSwipes } = useWebAppViewport()
+    // disableVerticalSwipes()
 
     const themeParams = Telegram.WebApp.themeParams;
 
@@ -264,11 +264,11 @@ Telegram.WebApp.ready(() => {
 // const tg = window.Telegram.WebApp;
 tg.expand();
 
-// Если нужно, ещё раз вызываем disableVerticalSwipes
-if (Telegram.WebApp.isVersionAtLeast("7.7")) {
-    const { disableVerticalSwipes } = useWebAppViewport();
-    disableVerticalSwipes();
-}
+// // Если нужно, ещё раз вызываем disableVerticalSwipes
+// if (Telegram.WebApp.isVersionAtLeast("7.7")) {
+//     const { disableVerticalSwipes } = useWebAppViewport();
+//     disableVerticalSwipes();
+// }
 
 
 // ________________________________________________________________________________________
