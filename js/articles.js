@@ -32,7 +32,7 @@ document.querySelectorAll('a.swiper-slide').forEach(function(link) {
         const teletypeUrl = link.getAttribute('href'); // Получаем URL Teletype
 
         // Открываем Teletype в новом Web App окне
-        Telegram.WebApp.openWebApp(teletypeUrl);
+        Telegram.WebApp.openWebApp(url_ = teletypeUrl);
     });
 });
 
