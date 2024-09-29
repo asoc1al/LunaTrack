@@ -15,6 +15,15 @@ function closeSettings(){
     settingsPopup.classList.remove("open-popup")
 }
 
+
+Telegram.WebApp.BackButton.show()
+
+Telegram.WebApp.BackButton.onClick(function() {
+    window.location.href = './articles.html';
+});
+
+
+
 //______________________________________________________________________________________________________
 
 // Dark mode
