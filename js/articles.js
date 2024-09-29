@@ -16,13 +16,13 @@ function closeSettings(){
 }
 
 
-// Показываем кнопку "Назад"
-Telegram.WebApp.BackButton.show();
+// // Показываем кнопку "Назад"
+// Telegram.WebApp.BackButton.show();
 
-Telegram.WebApp.BackButton.onClick(function() {
-    // Возвращаемся к списку статей
-    window.location.href = './articles.html';
-});
+// Telegram.WebApp.BackButton.onClick(function() {
+//     // Возвращаемся к списку статей
+//     window.location.href = './articles.html';
+// });
 
 // Перехват кликов по ссылке на Teletype
 document.querySelectorAll('a.swiper-slide').forEach(function(link) {

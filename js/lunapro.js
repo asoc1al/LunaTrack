@@ -15,7 +15,7 @@ function closeSettings(){
     settingsPopup.classList.remove("open-popup")
 }
 
-Telegram.WebApp.BackButton.hide();
+// Telegram.WebApp.BackButton.hide();
 
 
 //______________________________________________________________________________________________________
