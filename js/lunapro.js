@@ -15,6 +15,9 @@ function closeSettings(){
     settingsPopup.classList.remove("open-popup")
 }
 
+Telegram.WebApp.BackButton.hide();
+
+
 //______________________________________________________________________________________________________
 
 // Dark mode

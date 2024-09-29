@@ -16,10 +16,10 @@ function closeSettings(){
 }
 
 
-Telegram.WebApp.BackButton.show()
+Telegram.WebApp.BackButton.show();
 
 Telegram.WebApp.BackButton.onClick(function() {
-    window.location.href = './articles.html';
+    window.location.href = '#';
 });
 
 
