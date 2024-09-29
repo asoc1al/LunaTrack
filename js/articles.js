@@ -22,7 +22,16 @@ Telegram.WebApp.BackButton.onClick(function() {
     window.location.href = './articles.html';
 });
 
+// Перехват ссылок на Teletype
+document.querySelectorAll('a.teletype-link').forEach(function(link) {
+    link.addEventListener('click', function(event) {
+        event.preventDefault(); // Останавливаем стандартное поведение ссылки
+        const teletypeUrl = link.getAttribute('href'); // Получаем ссылку
 
+        // Логика открытия ссылки в новом окне или в другом контексте
+        window.open(teletypeUrl, '_blank'); // Открываем Teletype в новом окне или вкладке
+    });
+});
 
 //______________________________________________________________________________________________________
 
