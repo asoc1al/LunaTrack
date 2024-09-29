@@ -25,15 +25,17 @@ Telegram.WebApp.BackButton.onClick(function() {
 });
 
 // Перехват кликов по ссылке на Teletype
-document.querySelectorAll('a.teletype-link').forEach(function(link) {
+document.querySelectorAll('a.swiper-slide').forEach(function(link) {
     link.addEventListener('click', function(event) {
         event.preventDefault(); // Останавливаем стандартное поведение ссылки
-        const teletypeUrl = link.getAttribute('href'); // Получаем ссылку на Teletype
 
-        // Открываем новый Web App с Teletype
-        Telegram.WebApp.openWebApp(teletypeUrl); // Открываем Teletype в новом Web App окне
+        const teletypeUrl = link.getAttribute('href'); // Получаем URL Teletype
+
+        // Открываем Teletype в новом Web App окне
+        Telegram.WebApp.openWebApp(teletypeUrl);
     });
 });
+
 
 //______________________________________________________________________________________________________
 
