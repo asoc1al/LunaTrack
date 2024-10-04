@@ -340,9 +340,18 @@ function addDays(date, days) {
     return result;
 }
 
+// function getNextPeriod(startDate, cycleLength) {
+//     return addDays(startDate, cycleLength);
+// }
+
 function getNextPeriod(startDate, cycleLength) {
+    var today = new Date();
+    if (startDate > today) {
+        return startDate;  // Если startDate уже в будущем, возвращаем её
+    }
     return addDays(startDate, cycleLength);
 }
+
 
 function daysUntil(date) {
     var today = new Date();
