@@ -56,7 +56,8 @@ getFebDays = (year) => {
 }
 
 let firstDate = null; // Переменная для хранения первой выбранной даты
-let startDate = new Date('08/01/2024');  // Предварительное значение, которое обновится после выбора даты
+// let startDate = new Date('08/01/2024');  // Предварительное значение, которое обновится после выбора даты
+let startDate = new Date();
 let cycleLength = 28;
 
 function updateStartDate() {
@@ -340,9 +341,18 @@ function addDays(date, days) {
     return result;
 }
 
+// function getNextPeriod(startDate, cycleLength) {
+//     return addDays(startDate, cycleLength);
+// }
+
 function getNextPeriod(startDate, cycleLength) {
+    var today = new Date();
+    if (startDate > today) {
+        return startDate;  // Если startDate уже в будущем, возвращаем её
+    }
     return addDays(startDate, cycleLength);
 }
+
 
 function daysUntil(date) {
     var today = new Date();
