@@ -40,6 +40,10 @@ body {
     font-family: SF-PRO;
     text-align: center;
     touch-action: pan-y;
+    overflow-x: hidden; /* Отключает горизонтальную прокрутку */
+}
+body.no-scroll {
+    overflow-x: hidden; /* Отключает горизонтальную прокрутку */
 }
 
 body {
@@ -162,15 +166,59 @@ main{
     justify-content: center;
     flex-direction: column;
     align-items: center;
+    width: 100%;
+    height: 100%;
 }
 
-.developing{
+.title{
     display: flex;
     font-size: 40px;
     color: var(--var-span);
-    margin-top: 150px;
+    margin-top: 30px;  
+}
+.title span{
+    font-weight: 700;
+}
+.title div{
+    background-color: #6654BF;
+    border-radius: 30px;
+    width: 80px;
+}
+.title div span{
+    color: #FFF;
 }
 
+.points{
+    display: flex;
+    margin-top: 50px;
+    transform: rotate(-15deg);
+    width: 800px;
+    height: 300px;
+    background: rgba(102, 84, 191, 0.7);
+}
+.points ul{
+    width: 250px;
+    height: 150px; 
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    transform: rotate(15deg);
+    margin-left: 250px;
+    margin-top: 50px;
+    font-size: 20px;
+    font-weight: 800;
+    color: #FFF;
+}
+.bg {
+    position: absolute; /* Position it absolutely */
+    bottom: 0;         /* Align it to the bottom */
+    left: 50%;        /* Center it horizontally */
+    transform: translateX(-50%); /* Center adjustment */
+    z-index: -1;      /* Ensure it is behind other elements */
+    width: 100%;      /* Make it full width */
+    height: auto;     /* Maintain aspect ratio */
+    min-height: 100%; /* Ensure it covers at least the full height of the viewport */
+}
 
 /*_________________________________________________________________________*/
 

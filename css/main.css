@@ -208,6 +208,14 @@ main{
     color: var(--var-weekdays-color);
     font-size: 14px;
 }
+.saturday{
+    background-color: #D8EBEC !important;
+    color: #6654BF !important;
+}
+.sunday{
+    background-color: #D8EBEC !important;
+    color: #6654BF !important;
+}
 .dayscircles{
     margin-top: 10px;
     list-style: none;
@@ -226,7 +234,6 @@ main{
     align-items: center;
     color: #ECECEC;
     font-weight: 700;
-    /* font-size: 16px; */
 }
 
 .circle{
