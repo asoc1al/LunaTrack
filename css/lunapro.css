@@ -197,6 +197,7 @@ main{
     background: rgba(102, 84, 191, 0.7);
 }
 .points ul{
+    text-align: left;
     width: 250px;
     height: 150px; 
     display: flex;
