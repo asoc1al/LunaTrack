@@ -192,12 +192,15 @@ main{
     font-size: 16px;
     background: #ECECEC;
     border-radius: 50px;
-    width: 100px;
-    height: 25px;
-    display: flex;
+    /* width: 100px;
+    height: 25px; */
+    /* display: flex; */
+    padding: 3px 15px;
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     font-weight: 700;
+    white-space: nowrap;
 }
 .weekdays{
     margin-top: 10px;
@@ -264,6 +267,7 @@ main{
     justify-content: center;
     color: #fff;
     font-weight: 800;
+    white-space: nowrap;
 }
 #pregnancy_chance{
     margin-top: 4px;
@@ -282,8 +286,10 @@ main{
     background-color: #fff;
     color: #C0B6F2;
     border-radius: 25px;
-    width: 165px;
-    height: 40px;
+    /* width: 165px;
+    height: 40px; */
+    padding: 12px 14px;
+    white-space: nowrap;
     align-items: center;
     justify-content: center;
 /*    text-decoration: none;*/
