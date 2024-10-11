@@ -227,6 +227,8 @@ main{
 .by{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     margin-top: 40px;
 }
 .by_year{
@@ -239,6 +241,8 @@ main{
     font-weight: 700;
     border-radius: 50px;
     border: none;
+    width: 190px;
+    height: 40px;
 }
 .ps{
     display: flex;
@@ -259,11 +263,13 @@ main{
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 20px;
+    font-size: 15px;
     color: #6654BF;
     font-weight: 700;
     border-radius: 50px;
     border: none;
+    width: 130px;
+    height: 30px;
 }
 
 
