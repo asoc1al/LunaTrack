@@ -45,7 +45,7 @@ function CloseCalDay() {
 
 let calendar = document.querySelector('.calendar')
 
-const month_names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
+const month_names = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь']
 
 isLeapYear = (year) => {
     return (year % 4 === 0 && year % 100 !== 0 && year % 400 !== 0) || (year % 100 === 0 && year % 400 === 0)
@@ -88,8 +88,8 @@ generateCalendar = (month, year) => {
     month_picker.innerHTML = curr_month
     calendar_header_year.innerHTML = year
 
+    // Заполнение календаря
     let first_day = new Date(year, month, 1)
-
     for (let i = 0; i <= days_of_month[month] + first_day.getDay() - 1; i++) {
         let day = document.createElement('div')
         if (i >= first_day.getDay()) {
@@ -284,7 +284,7 @@ monthNames = [
     "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"
 ];
 document.getElementById('mounth').innerHTML = monthNames[mounth];
-var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+var days = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
 var day = new Date(); // Создаем объект Date
 var weekday = day.getDay(); // Получаем день недели от 0 до 6
 var elements = document.getElementsByClassName(days[weekday]);
@@ -307,13 +307,13 @@ function getDatesOfCurrentWeek() {
     monday.setDate(today.getDate() + mondayOffset); // Получаем дату понедельника
     var dates = [];
     var variables = [
-        'Mon',
-        'Tue',
-        'Wed',
-        'Thu',
-        'Fri',
-        'Sat',
-        'Sun'
+        'Пн',
+        'Вт',
+        'Ср',
+        'Чт',
+        'Пт',
+        'Сб',
+        'Вс'
     ];
     for (var i = 0; i < 7; i++) {
         var currentDate = new Date(monday);
@@ -417,5 +417,3 @@ var pregnancy_chance = document.getElementById('pregnancy_chance');
 pregnancy_chance.innerHTML = `${pregnancy_chance.textContent} ${result} `;
 
 //______________________________________________________________________________________________________
-
-// Дополнительный код или функции...
