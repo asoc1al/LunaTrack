@@ -45,7 +45,7 @@ function CloseCalDay() {
 
 let calendar = document.querySelector('.calendar')
 
-const month_names = ['Январь', 'Февраль', 'Март', 'Апрель', 'Май', 'Июнь', 'Июль', 'Август', 'Сентябрь', 'Октябрь', 'Ноябрь', 'Декабрь']
+const month_names = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December']
 
 isLeapYear = (year) => {
     return (year % 4 === 0 && year % 100 !== 0 && year % 400 !== 0) || (year % 100 === 0 && year % 400 === 0)
@@ -303,7 +303,7 @@ monthNames = [
     "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"
 ];
 document.getElementById('mounth').innerHTML = monthNames[mounth];
-var days = ['Пн', 'Вт', 'Ср', 'Чт', 'Пт', 'Сб', 'Вс'];
+var days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 var day = new Date(); // Создаем объект Date
 var weekday = day.getDay(); // Получаем день недели от 0 до 6
 var elements = document.getElementsByClassName(days[weekday]);
@@ -326,13 +326,13 @@ function getDatesOfCurrentWeek() {
     monday.setDate(today.getDate() + mondayOffset); // Получаем дату понедельника
     var dates = [];
     var variables = [
-        'Пн',
-        'Вт',
-        'Ср',
-        'Чт',
-        'Пт',
-        'Сб',
-        'Вс'
+        'Mon',
+        'Tue',
+        'Wed',
+        'Thu',
+        'Fri',
+        'Sat',
+        'Sun'
     ];
     for (var i = 0; i < 7; i++) {
         var currentDate = new Date(monday);
