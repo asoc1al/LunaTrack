@@ -56,7 +56,6 @@ getFebDays = (year) => {
 }
 
 let firstDate = null; // Переменная для хранения первой выбранной даты
-// let startDate = new Date('08/01/2024');  // Предварительное значение, которое обновится после выбора даты
 let startDate = new Date();
 let cycleLength = 28;
 
