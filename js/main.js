@@ -132,7 +132,7 @@ generateCalendar = (month, year) => {
                     // Применяем стиль к дням в периоде
                     highlightPeriod(firstDate, secondDate);
                 }
-            });
+            }); 
         }
         calendar_days.appendChild(day)
     }
