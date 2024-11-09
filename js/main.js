@@ -128,6 +128,9 @@ generateCalendar = (month, year) => {
                     title = document.getElementById("cal_day_title");
                     dates = printDateRange(firstDate, secondDate);
                     title.innerHTML = `С ${dates[0]} по ${dates[1]}`;
+
+                    // Применяем стиль к дням в периоде
+                    highlightPeriod(firstDate, secondDate);
                 }
             });
         }
@@ -135,6 +138,26 @@ generateCalendar = (month, year) => {
     }
     return { firstDate, secondDate };
 }
+
+function highlightPeriod(firstDate, secondDate) {
+    let days = document.querySelectorAll('.calendar-day-hover');
+
+    days.forEach((day) => {
+        const dayNumber = parseInt(day.innerHTML);
+
+        if (firstDate && secondDate) {
+            const dayInPeriod = new Date(firstDate);
+            dayInPeriod.setDate(dayInPeriod.getDate() + dayNumber - firstDate.getDate());
+
+            if (dayInPeriod >= firstDate && dayInPeriod <= secondDate) {
+                day.classList.add('selected-period'); // Добавляем класс для выделения
+            } else {
+                day.classList.remove('selected-period'); // Убираем стиль с других дней
+            }
+        }
+    });
+}
+
 
 let month_list = calendar.querySelector('.month-list')
 

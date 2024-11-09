@@ -167,6 +167,21 @@ header{
 
 /*_________________________________________________________________________*/
 
+.selected-period {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    /* background-color: rgba(76, 175, 80, 0.8); /* Зеленый цвет с прозрачностью */
+    color: white;
+    border: 2px dashed white; /* Прерывистая белая линия */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-weight: bold;
+}
+
+
 main{
     display: flex;
     justify-content: center;
