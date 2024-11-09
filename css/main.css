@@ -582,7 +582,7 @@ footer {
     margin-right: 30px;
     color: var(--var-calendar-days);
     position: relative;
-    width: 48px;
+    width: max-content;
     height: 25px;
     border-radius: 14px;
     border: none;
@@ -671,7 +671,7 @@ footer {
     display: flex;
     color: var(--var-calendar-days);
     position: relative;
-    width: 48px;
+    width: max-content;
     height: 25px;
     border-radius: 14px;
     border: none;
