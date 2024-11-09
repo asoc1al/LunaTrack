@@ -88,17 +88,14 @@ generateCalendar = (month, year) => {
     month_picker.innerHTML = curr_month
     calendar_header_year.innerHTML = year
 
+    // Заполнение календаря
     let first_day = new Date(year, month, 1)
-
     for (let i = 0; i <= days_of_month[month] + first_day.getDay() - 1; i++) {
         let day = document.createElement('div')
         if (i >= first_day.getDay()) {
             day.classList.add('calendar-day-hover')
             day.innerHTML = i - first_day.getDay() + 1
-            day.innerHTML += `<span></span>
-                            <span></span>
-                            <span></span>
-                            <span></span>`
+            day.innerHTML += `<span></span><span></span><span></span><span></span>`;
             if (i - first_day.getDay() + 1 === currDate.getDate() && year === currDate.getFullYear() && month === currDate.getMonth()) {
                 day.classList.add('curr-date')
             }
@@ -128,12 +125,34 @@ generateCalendar = (month, year) => {
                     title = document.getElementById("cal_day_title");
                     dates = printDateRange(firstDate, secondDate);
                     title.innerHTML = `С ${dates[0]} по ${dates[1]}`;
+                
+                    // Применяем стиль к дням в периоде
+                    highlightPeriod(firstDate, secondDate);
                 }
             });
         }
         calendar_days.appendChild(day)
     }
     return { firstDate, secondDate };
+};
+
+function highlightPeriod(firstDate, secondDate) {
+    let days = document.querySelectorAll('.calendar-day-hover');
+
+    days.forEach((day) => {
+        const dayNumber = parseInt(day.innerHTML);
+
+        if (firstDate && secondDate) {
+            const dayInPeriod = new Date(firstDate);
+            dayInPeriod.setDate(dayInPeriod.getDate() + dayNumber - firstDate.getDate());
+
+            if (dayInPeriod >= firstDate && dayInPeriod <= secondDate) {
+                day.classList.add('selected-period'); // Добавляем класс для выделения
+            } else {
+                day.classList.remove('selected-period'); // Убираем стиль с других дней
+            }
+        }
+    });
 }
 
 let month_list = calendar.querySelector('.month-list')
