@@ -228,24 +228,23 @@ themeToggle.addEventListener('change', (event) => {
 
 const user_info_block = document.getElementById("user-info");
 const user_info = window.Telegram.WebApp.initDataUnsafe;
-// const initData = Telegram.WebApp.initDataUnsafe;
-const userLang = user_info.user?.lang_code;
+const userLang = user_info?.user?.lang_code;  // добавлена дополнительная проверка
 
 function get_user_info(user_info) {
-    if (user_info) {
+    if (user_info && user_info.user) {
         user_info_block.innerHTML = `
-                ID: ${user_info.id || "Не указано"} <br>
-                Имя: ${user_info.first_name || "Не указано"} <br>
-                Фамилия: ${user_info.last_name || "Не указано"} <br>
-                Username: ${user_info.username || "Не указано"} <br>
+                ID: ${user_info.user.id || "Не указано"} <br>
+                Имя: ${user_info.user.first_name || "Не указано"} <br>
+                Фамилия: ${user_info.user.last_name || "Не указано"} <br>
+                Username: ${user_info.user.username || "Не указано"} <br>
                 Язык: ${userLang || "Не указано"} <br>
-                Премиум: ${user_info.is_premium ? "Да" : "Нет"} <br>`;
+                Премиум: ${user_info.user.is_premium ? "Да" : "Нет"} <br>`;
     } else {
         user_info_block.innerHTML = "Данные пользователя не найдены.";
     }
 };
 
-get_user_info(user_info.user);
+get_user_info(user_info);
 
 //______________________________________________________________________________________________________
 
