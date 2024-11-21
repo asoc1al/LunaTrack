@@ -2,6 +2,10 @@ var img = document.createElement("img");
 img.src = "../static/Images/avatar.jpg";
 var src = document.getElementById("avatar");
 src.appendChild(img);
+
+Telegram.WebApp.ready(); // Убедитесь, что WebApp API готов
+
+Telegram.WebApp.disableClosingConfirmation();
 //______________________________________________________________________________________________________
 
 //Popups

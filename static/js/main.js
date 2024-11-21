@@ -4,6 +4,10 @@ var src = document.getElementById("avatar");
 src.appendChild(img);
 const tg = window.Telegram.WebApp;
 
+Telegram.WebApp.ready(); // Убедитесь, что WebApp API готов
+
+Telegram.WebApp.disableClosingConfirmation();
+
 //______________________________________________________________________________________________________
 
 //Popups
@@ -229,6 +233,8 @@ themeToggle.addEventListener('change', (event) => {
 const user_info_block = document.getElementById("user-info");
 const user_info = window.Telegram.WebApp.initDataUnsafe;
 const userLang = user_info?.user?.lang_code;  // добавлена дополнительная проверка
+
+console.log(user_info)
 
 function get_user_info(user_info) {
     if (user_info && user_info.user) {
