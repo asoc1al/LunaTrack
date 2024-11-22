@@ -7,9 +7,31 @@ Telegram.WebApp.ready(); // Убедитесь, что WebApp API готово
 const tg = window.Telegram.WebApp;
 
 
-Telegram.WebApp.onEvent('web_app_init', function() {
-    Telegram.WebApp.allow_vertical_swipe = false;
+// Telegram.WebApp.onEvent('web_app_init', function() {
+//     Telegram.WebApp.allow_vertical_swipe = false;
+// });
+
+console.log("Информация: _______________________________")
+
+console.log("Web App API Version:", Telegram.WebApp.version);
+
+
+if (typeof Telegram.WebApp.disableVerticalSwipes === 'function') {
+    console.log("Метод disableVerticalSwipes поддерживается.");
+} else {
+    console.error("Метод disableVerticalSwipes не поддерживается.");
+}
+
+
+Telegram.WebApp.ready(() => {
+    if (typeof Telegram.WebApp.disableVerticalSwipes === 'function') {
+        Telegram.WebApp.disableVerticalSwipes(); // Отключение вертикальных свайпов
+        console.log("Вертикальные свайпы отключены.");
+    } else {
+        console.error("Метод disableVerticalSwipes не поддерживается.");
+    }
 });
+
 
 
 const userPhotoElement = document.getElementById('avatar');
@@ -292,8 +314,6 @@ get_user_info(user_info);
 
 // Инициализация WebApp
 Telegram.WebApp.ready(() => {
-    // const { enableVerticalSwipes, disableVerticalSwipes } = useWebAppViewport()
-    // disableVerticalSwipes()
 
     const themeParams = Telegram.WebApp.themeParams;
 
