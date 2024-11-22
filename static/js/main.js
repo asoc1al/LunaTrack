@@ -13,15 +13,6 @@ const userPhotoElement = document.getElementById('avatar');
 const user = window.Telegram.WebApp.initDataUnsafe;
 const user_photo_url = user?.photo_url; // Получаем данные пользователя
 
-if (user_photo_url) {
-    // Если фото профиля доступно
-    userPhotoElement.appendChild(user_photo_url);
-} else {
-    // Если фото профиля недоступно, используем альтернативную картинку
-    userPhotoElement.appendChild('./static/Images/avatar.jpg'); // Ссылка на вашу картинку по умолчанию
-}
-
-
 
 if (user_photo_url) {
     // Если фото профиля доступно
