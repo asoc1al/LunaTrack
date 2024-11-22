@@ -4,9 +4,12 @@ var src = document.getElementById("avatar");
 src.appendChild(img);
 const tg = window.Telegram.WebApp;
 
-Telegram.WebApp.ready(); // Убедитесь, что WebApp API готов
-
-Telegram.WebApp.disableClosingConfirmation();
+document.addEventListener("DOMContentLoaded", () => {
+    Telegram.WebApp.ready();
+    Telegram.WebApp.disableClosingConfirmation();
+    console.log(Telegram.WebApp.version);
+    console.log('Включено')
+});
 
 //______________________________________________________________________________________________________
 
