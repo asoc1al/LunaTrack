@@ -4,24 +4,34 @@
 // src.appendChild(img);
 
 Telegram.WebApp.ready(); // Убедитесь, что WebApp API готово
+const tg = window.Telegram.WebApp;
 
 const userPhotoElement = document.getElementById('avatar');
-const user = Telegram.WebApp.initDataUnsafe?.user; // Получаем данные пользователя
+const user = window.Telegram.WebApp.initDataUnsafe;
+const user_photo_url = user?.photo_url; // Получаем данные пользователя
 
-if (user?.photo_url) {
+if (user_photo_url) {
     // Если фото профиля доступно
-    userPhotoElement.src = user.photo_url;
+    userPhotoElement.appendChild(user_photo_url);
 } else {
     // Если фото профиля недоступно, используем альтернативную картинку
-    userPhotoElement.src = './static/Images/avatar.jpg'; // Ссылка на вашу картинку по умолчанию
+    userPhotoElement.appendChild('./static/Images/avatar.jpg'); // Ссылка на вашу картинку по умолчанию
 }
 
 
 
+if (user_photo_url) {
+    // Если фото профиля доступно
+    const img = document.createElement('img');
+    img.src = user_photo_url;  // Set the profile picture URL
+    userPhotoElement.appendChild(img);
+} else {
+    // Если фото профиля недоступно, используем альтернативную картинку
+    const img = document.createElement('img');
+    img.src = './static/Images/avatar.jpg';  // Default image
+    userPhotoElement.appendChild(img);
+}
 
-const tg = window.Telegram.WebApp;
-
-Telegram.WebApp.ready(); // Убедитесь, что WebApp API готов
 
 // Запросить полноэкранный режим
 Telegram.WebApp.requestFullscreen();
