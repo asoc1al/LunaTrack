@@ -4,13 +4,11 @@ var src = document.getElementById("avatar");
 src.appendChild(img);
 const tg = window.Telegram.WebApp;
 
-document.addEventListener("DOMContentLoaded", () => {
-    Telegram.WebApp.ready();
-    Telegram.WebApp.disableClosingConfirmation();
-    console.log(Telegram.WebApp.version);
-    console.log('Включено')
-});
+Telegram.WebApp.ready(); // Убедитесь, что WebApp API готов
 
+// Запросить полноэкранный режим
+Telegram.WebApp.requestFullscreen();
+// tg.expand();
 //______________________________________________________________________________________________________
 
 //Popups
@@ -293,15 +291,6 @@ Telegram.WebApp.ready(() => {
     });
 });
 
-// Расширяем Web App на весь экран
-// const tg = window.Telegram.WebApp;
-tg.expand();
-
-// // Если нужно, ещё раз вызываем disableVerticalSwipes
-// if (Telegram.WebApp.isVersionAtLeast("7.7")) {
-//     const { disableVerticalSwipes } = useWebAppViewport();
-//     disableVerticalSwipes();
-// }
 
 
 // ________________________________________________________________________________________
