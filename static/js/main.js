@@ -232,7 +232,7 @@ themeToggle.addEventListener('change', (event) => {
 
 const user_info_block = document.getElementById("user-info");
 const user_info = window.Telegram.WebApp.initDataUnsafe;
-const userLang = user_info?.user?.lang_code;  // добавлена дополнительная проверка
+const userLang = user_info?.user?.language_code;
 
 console.log(user_info)
 
