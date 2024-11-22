@@ -38,6 +38,8 @@ const userPhotoElement = document.getElementById('avatar');
 const user = window.Telegram.WebApp.initDataUnsafe;
 const user_photo_url = user?.photo_url; // Получаем данные пользователя
 
+console.log(`!!!!!!!!user_photo_url: ${user_photo_url}`)
+
 
 if (user_photo_url) {
     // Если фото профиля доступно
@@ -52,19 +54,21 @@ if (user_photo_url) {
 }
 
 
-// Запросить полноэкранный режим
-Telegram.WebApp.requestFullscreen();
+// // Запросить полноэкранный режим
+// Telegram.WebApp.requestFullscreen();
 
-// Событие для проверки успешности перехода в полноэкранный режим
-Telegram.WebApp.onEvent('fullscreenChanged', (isFullscreen) => {
-    console.log("Полноэкранный режим активирован:", isFullscreen);
-});
+
 
 if (typeof Telegram.WebApp.requestFullscreen === 'function') {
     Telegram.WebApp.requestFullscreen();
 } else {
     console.error("Метод requestFullscreen не поддерживается.");
 }
+
+// Событие для проверки успешности перехода в полноэкранный режим
+Telegram.WebApp.onEvent('fullscreenChanged', (isFullscreen) => {
+    console.log("Полноэкранный режим активирован:", isFullscreen);
+});
 
 //______________________________________________________________________________________________________
 
