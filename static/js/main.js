@@ -25,7 +25,18 @@ Telegram.WebApp.ready(); // Убедитесь, что WebApp API готов
 
 // Запросить полноэкранный режим
 Telegram.WebApp.requestFullscreen();
-// tg.expand();
+
+// Событие для проверки успешности перехода в полноэкранный режим
+Telegram.WebApp.onEvent('fullscreenChanged', (isFullscreen) => {
+    console.log("Полноэкранный режим активирован:", isFullscreen);
+});
+
+if (typeof Telegram.WebApp.requestFullscreen === 'function') {
+    Telegram.WebApp.requestFullscreen();
+} else {
+    console.error("Метод requestFullscreen не поддерживается.");
+}
+
 //______________________________________________________________________________________________________
 
 //Popups
