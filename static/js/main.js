@@ -7,7 +7,9 @@ Telegram.WebApp.ready(); // Убедитесь, что WebApp API готово
 const tg = window.Telegram.WebApp;
 
 
-Telegram.WebApp.allow_vertical_swipe = false;
+// Telegram.WebApp.allow_vertical_swipe = false;
+
+Telegram.WebApp.isClosingConfirmationEnabled = true;
 
 const userPhotoElement = document.getElementById('avatar');
 const user = window.Telegram.WebApp.initDataUnsafe;
