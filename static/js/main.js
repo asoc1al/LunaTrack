@@ -1,7 +1,24 @@
-var img = document.createElement("img");
-img.src = "./static/Images/avatar.jpg";
-var src = document.getElementById("avatar");
-src.appendChild(img);
+// var img = document.createElement("img");
+// img.src = "./static/Images/avatar.jpg";
+// var src = document.getElementById("avatar");
+// src.appendChild(img);
+
+Telegram.WebApp.ready(); // Убедитесь, что WebApp API готово
+
+const userPhotoElement = document.getElementById('avatar');
+const user = Telegram.WebApp.initDataUnsafe?.user; // Получаем данные пользователя
+
+if (user?.photo_url) {
+    // Если фото профиля доступно
+    userPhotoElement.src = user.photo_url;
+} else {
+    // Если фото профиля недоступно, используем альтернативную картинку
+    userPhotoElement.src = './static/Images/avatar.jpg'; // Ссылка на вашу картинку по умолчанию
+}
+
+
+
+
 const tg = window.Telegram.WebApp;
 
 Telegram.WebApp.ready(); // Убедитесь, что WebApp API готов
