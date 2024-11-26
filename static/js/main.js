@@ -69,7 +69,7 @@ if (user_photo_url) {
     const img = document.createElement('img');
     img.src = './static/Images/avatar.jpg'; // Устанавливаем URL картинки по умолчанию
     userPhotoElement.appendChild(img);
-    console.log("Фото профиля отсутствует:", user_photo_url);
+    console.log("Фото профиля отсутствует:", JSON.stringify(user_photo_url, null, 2));
 }
 
 
