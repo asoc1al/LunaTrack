@@ -60,7 +60,6 @@ const user_photo_url = user?.photo_url; // Получаем данные пол�
 
 
 console.log(`!!!!!!!!user_photo_url: ${user_photo_url}`)
-console.log(`!!!!!!!!user_info: ${user}`)
 
 
 if (user_photo_url) {
@@ -332,7 +331,7 @@ const userLang = user_info?.user?.language_code;
 
 
 
-console.log(`!!!!!!!!user_info!!!!!!!!!!!!!!!:::::::${user_info}`)
+console.log("user_info (JSON):", JSON.stringify(user_info, null, 2));
 
 function get_user_info(user_info) {
     if (user_info && user_info.user) {
