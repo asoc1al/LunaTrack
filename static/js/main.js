@@ -51,9 +51,11 @@ function toggleOrientationLock(locked) {
     setOrientationLock(locked);
     WebView.postEvent("web_app_toggle_orientation_lock", false, { locked: webAppIsOrientationLocked });
 }
+// var img = document.createElement("img");
+// img.src = "./static/Images/avatar.jpg";
+// var src = document.getElementById("avatar");
+// src.appendChild(img);
 
-
-const userPhotoElement = document.getElementById('avatar');
 const user = window.Telegram.WebApp.initDataUnsafe.user; // Получаем объект user
 const user_photo_url = user?.photo_url; // Получаем URL фотографии пользователя
 
@@ -61,12 +63,18 @@ console.log("!!!!!!!!user_photo_url:", JSON.stringify(user_photo_url, null, 2));
 
 if (user_photo_url) {
     // Если фото профиля доступно
-    img.src = user_photo_url; // Устанавливаем URL фото профиля
+    var img = document.createElement('img');
+    img.src = user_photo_url; 
+    var userPhotoElement = document.getElementById('avatar');
     userPhotoElement.appendChild(img);
 } else {
     // Если фото профиля недоступно, используем альтернативную картинку
+
+    var img = document.createElement('img');
     img.src = './static/Images/avatar.jpg'; // Устанавливаем URL картинки по умолчанию
+    var userPhotoElement = document.getElementById('avatar');
     userPhotoElement.appendChild(img);
+
     console.log("Фото профиля отсутствует:", JSON.stringify(user_photo_url, null, 2));
 }
 
