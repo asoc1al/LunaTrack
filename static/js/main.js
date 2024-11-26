@@ -33,6 +33,13 @@ Telegram.WebApp.ready(() => {
     console.log("Пробуем отключить свайпы");
 });
 
+if (typeof Telegram.WebApp.setSwipeBehavior === "function") {
+    console.log("setSwipeBehavior поддерживается");
+} else {
+    console.error("setSwipeBehavior не поддерживается");
+}
+
+
 
 // let isVerticalSwipesEnabled = true;
 // function toggleVerticalSwipes(enable_swipes) {
