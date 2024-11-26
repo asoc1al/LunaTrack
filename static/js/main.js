@@ -11,26 +11,46 @@ const tg = window.Telegram.WebApp;
 //     Telegram.WebApp.allow_vertical_swipe = false;
 // });
 
-console.log("Информация: _______________________________")
+// console.log("Информация: _______________________________")
 
-console.log("Web App API Version:", Telegram.WebApp.version);
+// console.log("Web App API Version:", Telegram.WebApp.version);
 
 
-if (typeof Telegram.WebApp.disableVerticalSwipes === 'function') {
-    console.log("Метод disableVerticalSwipes поддерживается.");
-} else {
-    console.error("Метод disableVerticalSwipes не поддерживается.");
+// if (typeof Telegram.WebApp.disableVerticalSwipes === 'function') {
+//     console.log("Метод disableVerticalSwipes поддерживается.");
+// } else {
+//     console.error("Метод disableVerticalSwipes не поддерживается.");
+// }
+
+
+// Telegram.WebApp.ready(() => {
+//     if (typeof Telegram.WebApp.disableVerticalSwipes === 'function') {
+//         Telegram.WebApp.disableVerticalSwipes(); // Отключение вертикальных свайпов
+//         console.log("Вертикальные свайпы отключены.");
+//     } else {
+//         console.error("Метод disableVerticalSwipes не поддерживается.");
+//     }
+// });
+
+
+let isVerticalSwipesEnabled = true;
+function toggleVerticalSwipes(enable_swipes) {
+if (!versionAtLeast("7.7")) {
+    console.warn(`[Telegram.WebApp] Changing swipes behavior is not supported in version ${webAppVersion}`);
+    return;
+}
+isVerticalSwipesEnabled = !!enable_swipes;
+WebView.postEvent("web_app_setup_swipe_behavior", false, { allow_vertical_swipe: isVerticalSwipesEnabled });
 }
 
-
-Telegram.WebApp.ready(() => {
-    if (typeof Telegram.WebApp.disableVerticalSwipes === 'function') {
-        Telegram.WebApp.disableVerticalSwipes(); // Отключение вертикальных свайпов
-        console.log("Вертикальные свайпы отключены.");
-    } else {
-        console.error("Метод disableVerticalSwipes не поддерживается.");
+function toggleOrientationLock(locked) {
+    if (!versionAtLeast("8.0")) {
+        console.warn(`[Telegram.WebApp] Orientation locking is not supported in version ${webAppVersion}`);
+        return;
     }
-});
+    setOrientationLock(locked);
+    WebView.postEvent("web_app_toggle_orientation_lock", false, { locked: webAppIsOrientationLocked });
+}
 
 
 
