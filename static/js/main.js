@@ -72,6 +72,7 @@ if (user_photo_url) {
     const img = document.createElement('img');
     img.src = './static/Images/avatar.jpg';  // Default image
     userPhotoElement.appendChild(img);
+    console.log("Чё та не так", user_photo_url)
 }
 
 
