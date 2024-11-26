@@ -57,16 +57,14 @@ const userPhotoElement = document.getElementById('avatar');
 const user = window.Telegram.WebApp.initDataUnsafe.user; // Получаем объект user
 const user_photo_url = user?.photo_url; // Получаем URL фотографии пользователя
 
-console.log(`!!!!!!!!user_photo_url: ${user_photo_url}`);
+console.log("!!!!!!!!user_photo_url:", JSON.stringify(user_photo_url, null, 2));
 
 if (user_photo_url) {
     // Если фото профиля доступно
-    const img = document.createElement('img');
     img.src = user_photo_url; // Устанавливаем URL фото профиля
     userPhotoElement.appendChild(img);
 } else {
     // Если фото профиля недоступно, используем альтернативную картинку
-    const img = document.createElement('img');
     img.src = './static/Images/avatar.jpg'; // Устанавливаем URL картинки по умолчанию
     userPhotoElement.appendChild(img);
     console.log("Фото профиля отсутствует:", JSON.stringify(user_photo_url, null, 2));
