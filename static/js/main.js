@@ -5,29 +5,25 @@ const tg = window.Telegram.WebApp;
 console.log("Web App API Version:", Telegram.WebApp.version);
 
 
-// Проверяем доступность метода WebView.postEvent
-if (typeof WebView.postEvent !== "function") {
-    console.error("Метод WebView.postEvent недоступен");
-} else {
-    console.log("Метод WebView.postEvent доступен");
+// Проверка версии API
+function versionAtLeast(requiredVersion) {
+    const [major, minor] = requiredVersion.split('.').map(Number);
+    const [currentMajor, currentMinor] = Telegram.WebApp.version.split('.').map(Number);
+    return currentMajor > major || (currentMajor === major && currentMinor >= minor);
 }
 
-// Переменная для управления свайпами
-let isVerticalSwipesEnabled = true;
-
-// Функция для включения/отключения вертикальных свайпов
+// Отключение вертикальных свайпов
 function toggleVerticalSwipes(enable_swipes) {
     if (!versionAtLeast("7.7")) {
         console.warn(`[Telegram.WebApp] Changing swipes behavior is not supported in version ${Telegram.WebApp.version}`);
         return;
     }
 
-    isVerticalSwipesEnabled = !!enable_swipes;
     try {
-        WebView.postEvent("web_app_setup_swipe_behavior", false, { allow_vertical_swipe: isVerticalSwipesEnabled });
+        Telegram.WebApp.setSwipeBehavior({ allow_vertical_swipe: enable_swipes });
         console.log(`Вертикальные свайпы ${enable_swipes ? "включены" : "отключены"}`);
     } catch (error) {
-        console.error("Ошибка при вызове WebView.postEvent для swipe_behavior:", error);
+        console.error("Ошибка при вызове setSwipeBehavior:", error);
     }
 }
 
