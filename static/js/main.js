@@ -58,7 +58,9 @@ const userPhotoElement = document.getElementById('avatar');
 const user = window.Telegram.WebApp.initDataUnsafe;
 const user_photo_url = user?.photo_url; // Получаем данные пользователя
 
+
 console.log(`!!!!!!!!user_photo_url: ${user_photo_url}`)
+console.log(`!!!!!!!!user_info: ${user}`)
 
 
 if (user_photo_url) {
