@@ -1,65 +1,69 @@
-// var img = document.createElement("img");
-// img.src = "./static/Images/avatar.jpg";
-// var src = document.getElementById("avatar");
-// src.appendChild(img);
-
 Telegram.WebApp.ready(); // Убедитесь, что WebApp API готово
 const tg = window.Telegram.WebApp;
 
 
-// Telegram.WebApp.onEvent('web_app_init', function() {
-//     Telegram.WebApp.allow_vertical_swipe = false;
-// });
-
-// console.log("Информация: _______________________________")
-
 console.log("Web App API Version:", Telegram.WebApp.version);
 
 
-// if (typeof Telegram.WebApp.disableVerticalSwipes === 'function') {
-//     console.log("Метод disableVerticalSwipes поддерживается.");
-// } else {
-//     console.error("Метод disableVerticalSwipes не поддерживается.");
+// Проверяем доступность метода WebView.postEvent
+if (typeof WebView.postEvent !== "function") {
+    console.error("Метод WebView.postEvent недоступен");
+} else {
+    console.log("Метод WebView.postEvent доступен");
+}
+
+// Переменная для управления свайпами
+let isVerticalSwipesEnabled = true;
+
+// Функция для включения/отключения вертикальных свайпов
+function toggleVerticalSwipes(enable_swipes) {
+    if (!versionAtLeast("7.7")) {
+        console.warn(`[Telegram.WebApp] Changing swipes behavior is not supported in version ${Telegram.WebApp.version}`);
+        return;
+    }
+
+    isVerticalSwipesEnabled = !!enable_swipes;
+    try {
+        WebView.postEvent("web_app_setup_swipe_behavior", false, { allow_vertical_swipe: isVerticalSwipesEnabled });
+        console.log(`Вертикальные свайпы ${enable_swipes ? "включены" : "отключены"}`);
+    } catch (error) {
+        console.error("Ошибка при вызове WebView.postEvent для swipe_behavior:", error);
+    }
+}
+
+// Вызываем функцию для отключения свайпов
+Telegram.WebApp.ready(() => {
+    toggleVerticalSwipes(false); // Отключаем свайпы
+    console.log("Пробуем отключить свайпы");
+});
+
+
+// let isVerticalSwipesEnabled = true;
+// function toggleVerticalSwipes(enable_swipes) {
+// if (!versionAtLeast("7.7")) {
+//     console.warn(`[Telegram.WebApp] Changing swipes behavior is not supported in version ${webAppVersion}`);
+//     return;
+// }
+// isVerticalSwipesEnabled = !!enable_swipes;
+// WebView.postEvent("web_app_setup_swipe_behavior", false, { allow_vertical_swipe: isVerticalSwipesEnabled });
+// }
+
+// function toggleOrientationLock(locked) {
+//     if (!versionAtLeast("8.0")) {
+//         console.warn(`[Telegram.WebApp] Orientation locking is not supported in version ${webAppVersion}`);
+//         return;
+//     }
+//     setOrientationLock(locked);
+//     WebView.postEvent("web_app_toggle_orientation_lock", false, { locked: webAppIsOrientationLocked });
 // }
 
 
-// Telegram.WebApp.ready(() => {
-//     if (typeof Telegram.WebApp.disableVerticalSwipes === 'function') {
-//         Telegram.WebApp.disableVerticalSwipes(); // Отключение вертикальных свайпов
-//         console.log("Вертикальные свайпы отключены.");
-//     } else {
-//         console.error("Метод disableVerticalSwipes не поддерживается.");
-//     }
-// });
 
-
-let isVerticalSwipesEnabled = true;
-function toggleVerticalSwipes(enable_swipes) {
-if (!versionAtLeast("7.7")) {
-    console.warn(`[Telegram.WebApp] Changing swipes behavior is not supported in version ${webAppVersion}`);
-    return;
-}
-isVerticalSwipesEnabled = !!enable_swipes;
-WebView.postEvent("web_app_setup_swipe_behavior", false, { allow_vertical_swipe: isVerticalSwipesEnabled });
-}
-
-function toggleOrientationLock(locked) {
-    if (!versionAtLeast("8.0")) {
-        console.warn(`[Telegram.WebApp] Orientation locking is not supported in version ${webAppVersion}`);
-        return;
-    }
-    setOrientationLock(locked);
-    WebView.postEvent("web_app_toggle_orientation_lock", false, { locked: webAppIsOrientationLocked });
-}
-// var img = document.createElement("img");
-// img.src = "./static/Images/avatar.jpg";
-// var src = document.getElementById("avatar");
-// src.appendChild(img);
 
 const user = window.Telegram.WebApp.initDataUnsafe.user; // Получаем объект user
 const user_photo_url = user?.photo_url; // Получаем URL фотографии пользователя
 
-console.log("!!!!!!!!user_photo_url:", JSON.stringify(user_photo_url, null, 2));
+// console.log("!!!!!!!!user_photo_url:", JSON.stringify(user_photo_url, null, 2));
 
 if (user_photo_url) {
     // Если фото профиля доступно
