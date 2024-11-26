@@ -13,7 +13,7 @@ const tg = window.Telegram.WebApp;
 
 // console.log("Информация: _______________________________")
 
-// console.log("Web App API Version:", Telegram.WebApp.version);
+console.log("Web App API Version:", Telegram.WebApp.version);
 
 
 // if (typeof Telegram.WebApp.disableVerticalSwipes === 'function') {
@@ -81,16 +81,28 @@ if (user_photo_url) {
 
 
 
+// if (typeof Telegram.WebApp.requestFullscreen === 'function') {
+//     Telegram.WebApp.requestFullscreen();
+// } else {
+//     console.error("Метод requestFullscreen не поддерживается.");
+// }
+
+// // Событие для проверки успешности перехода в полноэкранный режим
+// Telegram.WebApp.onEvent('fullscreenChanged', (isFullscreen) => {
+//     console.log("Полноэкранный режим активирован:", isFullscreen);
+// });
+
 if (typeof Telegram.WebApp.requestFullscreen === 'function') {
-    Telegram.WebApp.requestFullscreen();
+    try {
+        Telegram.WebApp.requestFullscreen();
+    } catch (error) {
+        console.error("Ошибка при вызове requestFullscreen:", error);
+    }
 } else {
-    console.error("Метод requestFullscreen не поддерживается.");
+    console.warn("Метод requestFullscreen недоступен.");
 }
 
-// Событие для проверки успешности перехода в полноэкранный режим
-Telegram.WebApp.onEvent('fullscreenChanged', (isFullscreen) => {
-    console.log("Полноэкранный режим активирован:", isFullscreen);
-});
+
 
 //______________________________________________________________________________________________________
 
@@ -318,7 +330,9 @@ const user_info_block = document.getElementById("user-info");
 const user_info = window.Telegram.WebApp.initDataUnsafe;
 const userLang = user_info?.user?.language_code;
 
-console.log(user_info)
+
+
+console.log(`!!!!!!!!user_info!!!!!!!!!!!!!!!:::::::${user_info}`)
 
 function get_user_info(user_info) {
     if (user_info && user_info.user) {
