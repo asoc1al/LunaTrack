@@ -53,26 +53,23 @@ function toggleOrientationLock(locked) {
 }
 
 
-
 const userPhotoElement = document.getElementById('avatar');
-const user = window.Telegram.WebApp.initDataUnsafe;
-const user_photo_url = user?.photo_url; // Получаем данные пользователя
+const user = window.Telegram.WebApp.initDataUnsafe.user; // Получаем объект user
+const user_photo_url = user?.photo_url; // Получаем URL фотографии пользователя
 
-
-console.log(`!!!!!!!!user_photo_url: ${user_photo_url}`)
-
+console.log(`!!!!!!!!user_photo_url: ${user_photo_url}`);
 
 if (user_photo_url) {
     // Если фото профиля доступно
     const img = document.createElement('img');
-    img.src = user_photo_url;  // Set the profile picture URL
+    img.src = user_photo_url; // Устанавливаем URL фото профиля
     userPhotoElement.appendChild(img);
 } else {
     // Если фото профиля недоступно, используем альтернативную картинку
     const img = document.createElement('img');
-    img.src = './static/Images/avatar.jpg';  // Default image
+    img.src = './static/Images/avatar.jpg'; // Устанавливаем URL картинки по умолчанию
     userPhotoElement.appendChild(img);
-    console.log("Чё та не так", user_photo_url)
+    console.log("Фото профиля отсутствует:", user_photo_url);
 }
 
 
