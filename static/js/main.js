@@ -5,39 +5,19 @@ const tg = window.Telegram.WebApp;
 console.log("Web App API Version:", Telegram.WebApp.version);
 
 
-// Проверка версии API
-function versionAtLeast(requiredVersion) {
-    const [major, minor] = requiredVersion.split('.').map(Number);
-    const [currentMajor, currentMinor] = Telegram.WebApp.version.split('.').map(Number);
-    return currentMajor > major || (currentMajor === major && currentMinor >= minor);
-}
-
-// Отключение вертикальных свайпов
-function toggleVerticalSwipes(enable_swipes) {
-    if (!versionAtLeast("7.7")) {
-        console.warn(`[Telegram.WebApp] Changing swipes behavior is not supported in version ${Telegram.WebApp.version}`);
-        return;
-    }
-
-    try {
-        Telegram.WebApp.setSwipeBehavior({ allow_vertical_swipe: enable_swipes });
-        console.log(`Вертикальные свайпы ${enable_swipes ? "включены" : "отключены"}`);
-    } catch (error) {
-        console.error("Ошибка при вызове setSwipeBehavior:", error);
-    }
-}
-
-// Вызываем функцию для отключения свайпов
+// Убедитесь, что WebApp API готово
 Telegram.WebApp.ready(() => {
-    toggleVerticalSwipes(false); // Отключаем свайпы
-    console.log("Пробуем отключить свайпы");
-});
+    console.log("WebApp API готово!");
 
-if (typeof Telegram.WebApp.setSwipeBehavior === "function") {
-    console.log("setSwipeBehavior поддерживается");
-} else {
-    console.error("setSwipeBehavior не поддерживается");
-}
+    // Проверяем, поддерживается ли функция отключения свайпов
+    if (Telegram.WebApp.isFeatureSupported('disable_vertical_swipes')) {
+        // Отключаем вертикальные свайпы
+        Telegram.WebApp.setSwipeBehavior({ allow_vertical_swipe: false });
+        console.log("Вертикальные свайпы отключены.");
+    } else {
+        console.warn("Отключение вертикальных свайпов не поддерживается в этом клиенте.");
+    }
+});
 
 
 
