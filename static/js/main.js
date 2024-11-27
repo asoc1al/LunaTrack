@@ -1,4 +1,4 @@
-// Telegram.WebApp.ready(); // Убедитесь, что WebApp API готово
+Telegram.WebApp.ready(); // Убедитесь, что WebApp API готово
 
 
 console.log("Инициализация WebApp");
@@ -6,22 +6,23 @@ console.log("Инициализация WebApp");
 if (typeof Telegram !== "undefined" && typeof Telegram.WebApp !== "undefined") {
     console.log("Telegram Web App API доступно. Версия:", Telegram.WebApp.version);
 
-    Telegram.WebApp.ready(() => {
-        console.log("WebApp API готово!");
+    console.log("Поддерживается отключение свайпов:", Telegram.WebApp.isFeatureSupported('disable_vertical_swipes'));
 
-        // Проверяем, поддерживается ли функция отключения свайпов
-        if (Telegram.WebApp.isFeatureSupported('disable_vertical_swipes')) {
-            // Отключаем вертикальные свайпы
-            try {
-                Telegram.WebApp.setSwipeBehavior({ allow_vertical_swipe: false });
-                console.log("Вертикальные свайпы отключены.");
-            } catch (error) {
-                console.error("Ошибка при отключении свайпов:", error);
-            }
-        } else {
-            console.warn("Отключение вертикальных свайпов не поддерживается в этом клиенте.");
+
+    console.log("WebApp API готово!");
+
+    // Проверяем, поддерживается ли функция отключения свайпов
+    if (Telegram.WebApp.isFeatureSupported('disable_vertical_swipes')) {
+        // Отключаем вертикальные свайпы
+        try {
+            Telegram.WebApp.setSwipeBehavior({ allow_vertical_swipe: false });
+            console.log("Вертикальные свайпы отключены.");
+        } catch (error) {
+            console.error("Ошибка при отключении свайпов:", error);
         }
-    });
+    } else {
+        console.warn("Отключение вертикальных свайпов не поддерживается в этом клиенте.");
+    }
 } else {
     console.error("Telegram Web App API недоступно. Проверьте окружение.");
 }
