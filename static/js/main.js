@@ -1,5 +1,4 @@
-Telegram.WebApp.ready(); // Убедитесь, что WebApp API готово
-const tg = window.Telegram.WebApp;
+// Telegram.WebApp.ready(); // Убедитесь, что WebApp API готово
 
 
 console.log("Инициализация WebApp");
@@ -28,6 +27,7 @@ if (typeof Telegram !== "undefined" && typeof Telegram.WebApp !== "undefined") {
 }
 
 
+const tg = window.Telegram.WebApp;
 
 
 const user = window.Telegram.WebApp.initDataUnsafe.user; // Получаем объект user
