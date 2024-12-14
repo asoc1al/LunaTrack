@@ -3,29 +3,29 @@ Telegram.WebApp.ready(); // Убедитесь, что WebApp API готово
 
 console.log("Инициализация WebApp");
 
-if (typeof Telegram !== "undefined" && typeof Telegram.WebApp !== "undefined") {
-    console.log("Telegram Web App API доступно. Версия:", Telegram.WebApp.version);
+// if (typeof Telegram !== "undefined" && typeof Telegram.WebApp !== "undefined") {
+//     console.log("Telegram Web App API доступно. Версия:", Telegram.WebApp.version);
 
-    console.log("Поддерживается отключение свайпов:", Telegram.WebApp.isFeatureSupported('disable_vertical_swipes'));
+//     console.log("Поддерживается отключение свайпов:", Telegram.WebApp.isFeatureSupported('disable_vertical_swipes'));
 
 
-    console.log("WebApp API готово!");
+//     console.log("WebApp API готово!");
 
-    // Проверяем, поддерживается ли функция отключения свайпов
-    if (Telegram.WebApp.isFeatureSupported('disable_vertical_swipes')) {
-        // Отключаем вертикальные свайпы
-        try {
-            Telegram.WebApp.setSwipeBehavior({ allow_vertical_swipe: false });
-            console.log("Вертикальные свайпы отключены.");
-        } catch (error) {
-            console.error("Ошибка при отключении свайпов:", error);
-        }
-    } else {
-        console.warn("Отключение вертикальных свайпов не поддерживается в этом клиенте.");
-    }
-} else {
-    console.error("Telegram Web App API недоступно. Проверьте окружение.");
-}
+//     // Проверяем, поддерживается ли функция отключения свайпов
+//     if (Telegram.WebApp.isFeatureSupported('disable_vertical_swipes')) {
+//         // Отключаем вертикальные свайпы
+//         try {
+//             Telegram.WebApp.setSwipeBehavior({ allow_vertical_swipe: false });
+//             console.log("Вертикальные свайпы отключены.");
+//         } catch (error) {
+//             console.error("Ошибка при отключении свайпов:", error);
+//         }
+//     } else {
+//         console.warn("Отключение вертикальных свайпов не поддерживается в этом клиенте.");
+//     }
+// } else {
+//     console.error("Telegram Web App API недоступно. Проверьте окружение.");
+// }
 
 
 const tg = window.Telegram.WebApp;
