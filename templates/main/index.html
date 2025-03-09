@@ -1,0 +1,83 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+<head>
+    {% block styles %}
+        <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    {% endblock %}
+</head>
+
+{% block content %}
+<div class="main_calendar" >
+    <p id="mounth"></p>
+    <ul class="weekdays">
+        <li class='Mon lang' key="mon">Пн</li>
+        <li class='Tue lang' key="tue">Вт</li>
+        <li class='Wed lang' key="wed">Ср</li>
+        <li class='Thu lang' key="thu">Чт</li>
+        <li class='Fri lang' key="fri">Пт</li>
+        <li class='Sat lang' key="sat">Сб</li>
+        <li class='Sun lang' key="sun">Вс</li>
+    </ul>
+    <ul class="dayscircles">
+        <li id="Mon"></li>
+        <li id="Tue"></li>
+        <li id="Wed"></li>
+        <li id="Thu"></li>
+        <li id="Fri"></li>
+        <li id="Sat" class="saturday"></li>
+        <li id="Sun" class="sunday"></li>
+    </ul>
+</div>
+<div class="circle">
+    <p>Цикл через:</p>
+    <span id='period_days'></span>
+    <span id='pregnancy_chance' class="lang" key="pregnancy_chance">Вероятность забеременеть </span>
+    <button id='mark_bottom' type="submit" onclick="OpenMarkPeriod()">Отметить месячные</button>
+</div>
+<div class="advertising">
+    <div class="ad_left">
+        <span>Представляем LunaPro</span>
+        <p>Типичный новостной блок сюда <br>можно рекламу <b>закрыть только Pro</b></p>
+        <a href="#" id='ad_bottom'>Попробовать</a>
+    </div>
+    <div class="ad_right">
+        <a href="#">
+            <img src="{% static 'img/Close.svg' %}">
+        </a>
+    </div>
+</div>
+{% endblock %}
+
+{% block col %}
+<div class="calendar" id='calendar'>
+    <div class="calendar-header">
+        <span class="month-picker" id="month-picker">Февраль</span>
+        <span id="year"></span>
+    </div>
+    <div class="calendar-body">
+        <div class="calendar-week-day">
+            <div class='lang' key="mon">Пн</div>
+            <div class='lang' key="tue">Вт</div>
+            <div class='lang' key="wed">Ср</div>
+            <div class='lang' key="thu">Чт</div>
+            <div class='lang' key="fri">Пт</div>
+            <div class='lang' key="sat">Сб</div>
+            <div class='lang' key="sun">Вс</div>
+        </div>
+        <div class="calendar-days"></div>
+    </div>
+    <div class="calendar-footer">
+        <button class="CloseMarkPeriod" type="button" onclick="CloseMarkPeriod()" key="close">Закрыть</button>
+    </div>
+    <div class="month-list"></div>
+</div>
+<div class="calendar_day" id="cal_day">
+    <span id="cal_day_title" key="cal_day_title" class="lang"></span>
+    <button class="CloseCalDay" type="button" onclick="CloseCalDay()" key="close">Закрыть</button>
+</div>
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript" src="{% static 'js/main.js' %}"></script>
+{% endblock %}

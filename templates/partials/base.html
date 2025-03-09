@@ -1,0 +1,41 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    {% block styles %}
+
+    {% endblock %}
+    <script src="https://telegram.org/js/telegram-web-app.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <link rel="icon" type="image/png" href="{% static 'img/Logo.png' %}">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+
+    <title>LunaTrack</title>
+</head>
+<body>
+    
+    {% include 'partials/header.html' %}
+
+    
+	<main id="content">
+		{% block content %}
+
+		{% endblock %}
+	</main>
+    {% block col %}
+
+    {% endblock %}
+
+    {% include 'partials/footer.html' %}
+    
+<script>
+    const csrftoken = '{{ csrf_token }}';
+</script>
+{% block script%}
+
+{% endblock%}
+</body>
+</html>

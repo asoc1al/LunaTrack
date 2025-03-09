@@ -1,0 +1,22 @@
+{% load static %}
+
+<footer>
+    <div class="heart">
+        <a href="/" hx-get="/">
+            <img src="{% static 'img/Heart.svg' %}" alt="Иконка календаря">
+            <span>Календарь</span>
+        </a>
+    </div>
+    <div class="articles">
+        <a href="{% url 'articles' %}">
+            <img src="{% static 'img/Articles.svg' %}" alt="Иконка статей">
+            <span>Статьи</span>
+        </a>
+    </div>
+    <div class="lunapro">
+        <a href="{% url 'lunapro' %}">
+            <img src="{% static 'img/Luna_pro.svg' %}" alt="Иконка LunaPro">
+            <span>LunaPro</span>
+        </a>
+    </div>
+</footer>

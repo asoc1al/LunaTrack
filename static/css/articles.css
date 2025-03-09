@@ -1,0 +1,85 @@
+/*_________________________________________________________________________*/
+
+:root{
+    --var-body-bg: #fff;
+    --var-artical-title: #070707;
+    --var-artical-description: #0f0f0f;
+    /* --var-calendar-day-week:  #c3c2c8; */
+    /* --var-calendar-days: #f8fbff; */
+    /* --var-hover: #323048; */
+}
+
+
+[dark]{
+    --var-body-bg: #0F0F0F;
+    --var-artical-title: #eee;
+    --var-artical-description: #bebebe;
+    /* --var-calendar-day-week: #79788c; */
+    /* --var-calendar-days: #151426; */
+    /* --var-hover: #edf0f5; */
+
+
+
+}
+
+
+
+
+main{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+
+.swiper{
+    width: 300px;
+/*    height: 100%;*/
+}
+.swiper-slide{
+    /* box-shadow: 0px 30px 60px 0px #A3A8B226; */
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+
+
+
+    width: 305px;
+    margin-right: 30px;
+    display: flex;
+    flex-direction: column;
+}
+.swiper-slide img{ 
+    border-top-left-radius: 25px;
+    border-top-right-radius: 25px;
+}
+.section_title{
+    display: flex;
+    font-size: 13px;
+    color: var(--var-artical-title);
+    font-weight: 500;
+    margin-top: 12px;
+    margin-bottom: 8px;
+}
+
+.card_text{
+    display: flex;
+    margin-top: 16px;
+    flex-direction: column;
+}
+.card_title{
+    font-size: 17px;
+    color: var(--var-artical-title);
+    font-weight: 600;
+}
+.card_description{
+    font-size: 15px;
+    color: var(--var-artical-description);
+    font-weight: 500;
+}
+#end_section{
+    height: 450px;
+}

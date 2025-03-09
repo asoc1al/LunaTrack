@@ -1,0 +1,28 @@
+{% load static %}
+
+<div class="container">
+    <header>
+        <a href='#' id="avatar"></a>
+        <button type="submit" onclick="openSettings()" id="settings">
+            <img src="{% static 'img/Setting.svg' %}">
+        </button>
+        <div class="settingsPopup" id="settingsPopup">
+            <div class="settings_header">Настройки</div>
+            <span class="settings_title">LunaTracker</span>
+            <img src="{% static 'img/Logo.png' %}" class="settings_logo">
+            <div class="dark_mode">
+                <span class="dark_mode_title">Dark Mode</span>
+                <label class="switch">
+                    <input type="checkbox" id="themeToggle" class="switch__input" onchange="ChangeTheme(this.checked)">
+                    <span class="switch__slider"></span>
+                </label>
+            </div>
+            <button id="en" class="translate">en</button>
+            <button id="ru" class="translate">ru</button>
+            <p id="user-info"></p>
+            <button type="button" onclick="closeSettings()">OK</button>
+
+            <div class="project_version">v1.0.0</div>
+        </div>
+    </header>
+</div>

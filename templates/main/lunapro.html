@@ -1,0 +1,36 @@
+{% extends 'partials/base.html' %}
+{% load static %}
+
+<head>
+    {% block styles %}
+    <link rel="stylesheet" type="text/css" href="{% static 'css/lunapro.css' %}">
+    {% endblock %}
+</head>
+
+{% block content %}
+<img src="{% static 'img/LunaPro_bg.svg' %}" class="bg">
+<div class="title">
+    <span>Luna</span>
+    <div>
+        <span>Pro</span>
+    </div>
+</div>
+<div class="points">
+    <ul>
+        <li>Отсутствие рекламы</li>
+        <li>Доступ к статьям</li>
+        <li>Встроенный дневник</li>
+        <li>Возможность добавить партнера</li>
+    </ul>
+</div>
+<div class="by">
+    <button class="by_year">99 stars/мес</button>
+    <span class="ps">*при покупке на год</span>
+    <span class="or">или</span>
+    <button class="by_mount">150 stars/мес</button>
+</div>
+{% endblock %}
+
+{% block script %}
+<script type="text/javascript" src="{% static 'js/lunapro.js' %}"></script>
+{% endblock %}
